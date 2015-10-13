@@ -4,7 +4,6 @@ This is a simple helper to copy the content of input stream into output streams 
 
 ## Overview
 
-<!--
 This library is hosted in the [Maven Central Repositoy](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|1.0.0|jar). You can use it with the following coordinates:
 
 ```xml
@@ -14,7 +13,6 @@ This library is hosted in the [Maven Central Repositoy](http://search.maven.org/
 	<version>1.0.0</version>
 </dependency>
 ```
--->
 
 Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-mail-smime/javadoc/1.0.0/index.html) for further information.
 
