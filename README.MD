@@ -26,7 +26,7 @@ Copying the complete content of an [`InputStream`](http://docs.oracle.com/javase
 The type 'IOUtils' is not API
 ```
 
-and breaks at runtime, if a runtime environment other than the Oracle JRE is used.
+and may break at runtime, if a runtime environment other than the Oracle JRE is used.
 
 While the code to copy the content of an [`InputStream`](http://docs.oracle.com/javase/7/docs/api/index.html?java/io/InputStream.html) into a `byte[]` or into an [`OutputStream`](http://docs.oracle.com/javase/7/docs/api/index.html?java/io/OutputStream.html) surly is not complicated, writing it over and over again is very annoying. On the other hand, importing a major library like [Commons IO](http://commons.apache.org/proper/commons-io/) often appears like overkill, to accomplish such a simple task.
 
@@ -56,7 +56,7 @@ Fetcher.fetch(inputStream, outputStream, bufferSize);
 
 ### Automatic closing of supplied streams
 
-All methods have optional parameters, that can be used to instruct the [`fetcher`](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.0.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html) to close the supplied streams.
+All methods have optional parameters, that can be used to instruct the [`Fetcher`](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.0.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html) to close the supplied streams.
 
 This allows to write compact code like:
 
