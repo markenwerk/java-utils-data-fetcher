@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
-	<description>A stream fetching library for Java</description>
+	<description>A stream fetching helper for Java</description>
 	<url>https://github.com/markenwerk/java-utils-data-fetcher</url>
 
 	<licenses>
