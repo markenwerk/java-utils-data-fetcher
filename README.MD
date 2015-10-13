@@ -14,7 +14,7 @@ This library is hosted in the [Maven Central Repositoy](http://search.maven.org/
 </dependency>
 ```
 
-Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-mail-smime/javadoc/1.0.0/index.html) for further information.
+Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.0.0/index.html) for further information.
 
 ## Motivation
 
