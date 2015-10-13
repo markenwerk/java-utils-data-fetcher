@@ -285,12 +285,11 @@ public final class Fetcher {
 		}
 		try {
 			if (null != in) {
-				if (null != out) {
+				if (null == out) {
 					out = new NullOutputStream();
 					closeOut = true;
 				}
 				byte[] buffer = new byte[bufferSize];
-
 				int length = in.read(buffer);
 				while (length != -1) {
 					out.write(buffer, 0, length);
