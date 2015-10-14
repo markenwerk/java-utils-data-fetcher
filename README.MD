@@ -18,7 +18,7 @@ Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.i
 
 ## Motivation
 
-Copying the complete content of an [`InputStream`][InputStream] into a `byte[]` or into an [`OutputStream`][OutputStream] is a menial task, that has to be dealt with very commonly. While this is certainly not a difficult challenge for any programmer, it is still boring and annoying to do it over and over again, and -- as pretty much everything -- prone to be erroneously, if done in a hurry.
+Copying the complete content of an [`InputStream`][InputStream] into a `byte[]` or into an [`OutputStream`][OutputStream] is a menial task, that has to be dealt with very commonly. While this is certainly not a difficult challenge for any programmer, it is still boring and annoying to do it over and over again, and – as pretty much everything – prone to be erroneously, if done in a hurry.
 
 There are common solutions, beside coding it over and over again. The Oracle JRE provides the class [`IOUtils`](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/IOUtils.java) for this simple task. But this class is not a part of the official Java specifications, which means that using it yields a compiler warning like
 
