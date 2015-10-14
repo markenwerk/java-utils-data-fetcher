@@ -18,7 +18,7 @@ Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.i
 
 ## Motivation
 
-Copying the complete content of an [`InputStream`](http://docs.oracle.com/javase/7/docs/api/index.html?java/io/InputStream.html) into a `byte[]` or into an [`OutputStream`](http://docs.oracle.com/javase/7/docs/api/index.html?java/io/OutputStream.html) is a menial task, that has to be dealt with very commonly. While this is certainly not a difficult challenge for any programmer, it is still boring and annoying to do it over and over again, and -- as pretty much everything -- prone to be erroneously, if done in a hurry.
+Copying the complete content of an [`InputStream`][InputStream] into a `byte[]` or into an [`OutputStream`][OutputStream] is a menial task, that has to be dealt with very commonly. While this is certainly not a difficult challenge for any programmer, it is still boring and annoying to do it over and over again, and -- as pretty much everything -- prone to be erroneously, if done in a hurry.
 
 There are common solutions, beside coding it over and over again. The Oracle JRE provides the class [`IOUtils`](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/IOUtils.java) for this simple task. But this class is not a part of the official Java specifications, which means that using it yields a compiler warning like
 
@@ -54,7 +54,7 @@ Fetcher.fetch(inputStream, outputStream, bufferSize);
 
 ### Automatic closing of supplied streams
 
-Both methods have optional parameters, that can be used to instruct the [`Fetcher`](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.0.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html) to close the supplied streams.
+Both methods have optional parameters, that can be used to instruct the [`Fetcher`][Fetcher] to close the supplied streams.
 
 This allows to write compact code like:
 
@@ -72,11 +72,14 @@ in.close();
 
 There are also version of both methods that take an integer parameter to adjust the buffer size as well.
 
-
 ### Handling of bad parameters
 
 Missing or invalid arguments are handled gracefully with the following behaviour.
 
- - If `null` is given as the [`InputStream`](http://docs.oracle.com/javase/7/docs/api/index.html?java/io/InputStream.html), it is simply ignored and handled as if there was nothing to read. That means, nothing is written to the [`OutputStream`](http://docs.oracle.com/javase/7/docs/api/index.html?java/io/OutputStream.html) and, if requested, the [`OutputStream`](http://docs.oracle.com/javase/7/docs/api/index.html?java/io/OutputStream.html) will be closed. 
- - If `null` is given as the [`OutputStream`](http://docs.oracle.com/javase/7/docs/api/index.html?java/io/OutputStream.html), it is simply ignored, but the content of given [`InputStream`](http://docs.oracle.com/javase/7/docs/api/index.html?java/io/InputStream.html) is fetched anyway. If requested, the [`InputStream`](http://docs.oracle.com/javase/7/docs/api/index.html?java/io/InputStream.html) will be closed. 
+ - If `null` is given as the [`InputStream`][InputStream], it is simply ignored and handled as if there was nothing to read. That means, nothing is written to the [`OutputStream`][OutputStream] and, if requested, the [`OutputStream`][OutputStream] will be closed. 
+ - If `null` is given as the [`OutputStream`][OutputStream], it is simply ignored, but the content of given [`InputStream`][InputStream] is fetched anyway. If requested, the [`InputStream`][InputStream] will be closed. 
  - A non-positive buffer size is replaced with the default buffer size of one [mebibyte](https://en.wikipedia.org/wiki/Mebibyte).
+ 
+[Fetcher]: http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.0.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
+[InputStream]: http://docs.oracle.com/javase/7/docs/api/index.html?java/io/InputStream.html
+[OutputStream]: http://docs.oracle.com/javase/7/docs/api/index.html?java/io/OutputStream.html
