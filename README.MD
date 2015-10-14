@@ -26,11 +26,11 @@ There are common solutions, beside coding it over and over again. The Oracle JRE
 The type 'IOUtils' is not API.
 ```
 
-and may break at runtime; i.e. if a runtime environment other than the Oracle JRE is used. Another solution to accomplishing this simple task, could be to bundle a major library like [Commons IO](http://commons.apache.org/proper/commons-io/). But doing so may appears like overkill, especially if no other functionality of the library is likely to be used.
+and may break at runtime; i.e. if a runtime environment other than the Oracle JRE is used. Another solution to accomplishing this simple task, could be to bundle a major library like [Commons IO](http://commons.apache.org/proper/commons-io/). But doing so may appear like overkill, especially if no other functionality of the library is likely to be used.
 
 ## Usage
 
-this library is intended to be a simple and convenient to use lightweight solution for the mentioned problem. It features two main functionalities:
+This library is intended to be a simple and convenient to use lightweight solution for the mentioned problem. It features two main functionalities:
 
 ```java
 // copy the content of an InputStream into a byte[]
@@ -54,15 +54,13 @@ Fetcher.fetch(inputStream, outputStream, bufferSize);
 
 ### Automatic closing of supplied streams
 
-Both methods have optional parameters, that can be used to instruct the [`Fetcher`][Fetcher] to close the supplied streams.
-
-This allows to write compact code like:
+Both methods have optional parameters, that can be used to instruct the [`Fetcher`][Fetcher] to close the supplied streams. Doing so allows to write compact code like:
 
 ```java
 foo.setContent(Fetcher.fetch(new FileInputStream(file), true));
 ```
 
-instead of unnecessarily verbose code like
+Otherwise, it would be necessary to write unnecessarily verbose code like:
 
 ```java
 InputStream in = new FileInputStream(file);
@@ -70,11 +68,11 @@ foo.setContent(Fetcher.fetch(in));
 in.close();
 ```
 
-There are also version of both methods that take an integer parameter to adjust the buffer size as well.
+There are version of both methods that take an integer parameter to adjust the buffer size as well as boolean parameters to close the supplied streams.
 
 ### Handling of bad parameters
 
-Missing or invalid arguments are handled gracefully with the following behaviour.
+Missing or invalid arguments are handled gracefully with the following behaviour:
 
  - If `null` is given as the [`InputStream`][InputStream], it is simply ignored and handled as if there was nothing to read. That means, nothing is written to the [`OutputStream`][OutputStream] and, if requested, the [`OutputStream`][OutputStream] will be closed. 
  - If `null` is given as the [`OutputStream`][OutputStream], it is simply ignored, but the content of given [`InputStream`][InputStream] is fetched anyway. If requested, the [`InputStream`][InputStream] will be closed. 
