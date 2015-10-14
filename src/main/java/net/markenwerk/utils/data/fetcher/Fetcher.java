@@ -79,7 +79,7 @@ public final class Fetcher {
 	/**
 	 * Copies the content of a given {@link InputStream} into a fresh byte[],
 	 * using {@code byte[]} as a buffer of default buffer size of one <a
-	 * href="https://en.wikipedia.org/wiki/Mebibyte">mebibyte</a> (1024 bytes).
+	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
 	 *
 	 * <p>
 	 * See
@@ -101,7 +101,7 @@ public final class Fetcher {
 	/**
 	 * Copies the content of a given {@link InputStream} into a fresh byte[],
 	 * using {@code byte[]} as a buffer of default buffer size of one <a
-	 * href="https://en.wikipedia.org/wiki/Mebibyte">mebibyte</a> (1024 bytes).
+	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
 	 *
 	 * <p>
 	 * See
@@ -158,7 +158,7 @@ public final class Fetcher {
 	/**
 	 * Copies the content of a given {@link InputStream} into a given
 	 * {@link OutputStream}, using {@code byte[]} as a buffer of default buffer
-	 * size of one <a href="https://en.wikipedia.org/wiki/Mebibyte">mebibyte</a>
+	 * size of one <a href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a>
 	 * (1024 bytes).
 	 *
 	 * <p>
@@ -182,7 +182,7 @@ public final class Fetcher {
 	/**
 	 * Copies the content of a given {@link InputStream} into a given
 	 * {@link OutputStream}, using {@code byte[]} as a buffer of default buffer
-	 * size of one <a href="https://en.wikipedia.org/wiki/Mebibyte">mebibyte</a>
+	 * size of one <a href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a>
 	 * (1024 bytes).
 	 *
 	 * <p>
@@ -256,7 +256,7 @@ public final class Fetcher {
 	 * 
 	 * <p>
 	 * A non-positive buffer size is replaced with the default buffer size of
-	 * one <a href="https://en.wikipedia.org/wiki/Mebibyte">mebibyte</a> (1024
+	 * one <a href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024
 	 * bytes).
 	 * 
 	 * @param in

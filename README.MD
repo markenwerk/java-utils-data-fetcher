@@ -42,7 +42,7 @@ Fetcher.fetch(inputStream, outputStream);
 
 ### Specifying the buffer size
 
-The default buffer size used, is one [mebibyte](https://en.wikipedia.org/wiki/Mebibyte), but any other positive buffer size may be specified with an optional integer parameter.
+The default buffer size used, is one [kibibyte](https://en.wikipedia.org/wiki/Kibibyte), but any other positive buffer size may be specified with an optional integer parameter.
 
 ```java
 // copy the content of an InputStream into a byte[]
@@ -78,7 +78,7 @@ Missing or invalid arguments are handled gracefully with the following behaviour
 
  - If `null` is given as the [`InputStream`][InputStream], it is simply ignored and handled as if there was nothing to read. That means, nothing is written to the [`OutputStream`][OutputStream] and, if requested, the [`OutputStream`][OutputStream] will be closed. 
  - If `null` is given as the [`OutputStream`][OutputStream], it is simply ignored, but the content of given [`InputStream`][InputStream] is fetched anyway. If requested, the [`InputStream`][InputStream] will be closed. 
- - A non-positive buffer size is replaced with the default buffer size of one [mebibyte](https://en.wikipedia.org/wiki/Mebibyte).
+ - A non-positive buffer size is replaced with the default buffer size of one [kibibyte](https://en.wikipedia.org/wiki/Kibibyte).
  
 [Fetcher]: http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.0.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
 [InputStream]: http://docs.oracle.com/javase/7/docs/api/index.html?java/io/InputStream.html
