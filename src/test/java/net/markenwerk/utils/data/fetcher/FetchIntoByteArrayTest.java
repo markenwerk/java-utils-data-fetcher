@@ -114,6 +114,37 @@ public class FetchIntoByteArrayTest {
 	}
 
 	/**
+	 * Fetch BYTES into a new {@code byte[]}, with a negative buffer size, which
+	 * should be ignored.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void fetch_withBadParameters_negativeBufferSize() throws IOException {
+
+		byte[] bytes = Fetcher.fetch(in, -1);
+
+		Assert.assertArrayEquals(BYTES, bytes);
+
+	}
+
+	/**
+	 * Fetch BYTES into a new {@code byte[]}, {@literal null} as an
+	 * {@link InputStream}, which should yield an empty array.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void fetch_withBadParameters_nullStream() throws IOException {
+
+		byte[] bytes = Fetcher.fetch(null);
+
+		Assert.assertNotNull(bytes);
+		Assert.assertTrue(0 == bytes.length);
+
+	}
+
+	/**
 	 * Fetch BYTES into a new {@code byte[]} with a small buffer (smaller than
 	 * the content of the {@link InputStream}), leaving the input stream open by
 	 * default.

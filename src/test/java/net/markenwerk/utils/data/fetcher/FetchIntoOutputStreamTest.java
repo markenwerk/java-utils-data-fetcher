@@ -24,6 +24,7 @@ package net.markenwerk.utils.data.fetcher;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.junit.After;
@@ -151,7 +152,7 @@ public class FetchIntoOutputStreamTest {
 	 * @throws IOException
 	 */
 	@Test
-	public void fetch_autoCloseStreamsInputStreamOnly() throws IOException {
+	public void fetch_autoCloseStreams_inputStreamOnly() throws IOException {
 
 		Fetcher.fetch(in, out, true, false);
 
@@ -167,13 +168,92 @@ public class FetchIntoOutputStreamTest {
 	 * @throws IOException
 	 */
 	@Test
-	public void fetch_autoCloseStreamsOutputStreamOnly() throws IOException {
+	public void fetch_autoCloseStreams_outputStreamOnly() throws IOException {
 
 		Fetcher.fetch(in, out, false, true);
 
 		Assert.assertArrayEquals(BYTES, outBuffer.toByteArray());
 		Assert.assertFalse(in.isClosed());
 		Assert.assertTrue(out.isClosed());
+
+	}
+
+	/**
+	 * Fetch BYTES into an {@link OutputStream}, with a negative buffer size,
+	 * which should be ignored.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void fetch_withBadParameters_negativeBufferSize() throws IOException {
+
+		Fetcher.fetch(in, out, -1);
+
+		Assert.assertArrayEquals(BYTES, outBuffer.toByteArray());
+
+	}
+
+	/**
+	 * Fetch BYTES into an {@link OutputStream}, {@literal null} as an
+	 * {@link InputStream}, which should yield an empty array.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void fetch_withBadParameters_nullInputStream() throws IOException {
+
+		Fetcher.fetch(null, out);
+
+		Assert.assertTrue(0 == outBuffer.toByteArray().length);
+
+	}
+
+	/**
+	 * Fetch BYTES into an {@link OutputStream}, {@literal null} as an
+	 * {@link OutputStream}, which should read the {@link InputStream} anyway.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void fetch_withBadParameters_nullOutputStream() throws IOException {
+
+		Fetcher.fetch(in, null);
+
+		Assert.assertTrue(0 == in.available());
+
+	}
+
+	/**
+	 * Fetch BYTES into an {@link OutputStream}, {@literal null} as an
+	 * {@link InputStream}, closing both streams, which should yield an empty
+	 * array.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void fetch_withBadParameters_nullInputStream_autoCloseStreams() throws IOException {
+
+		Fetcher.fetch(null, out, true, true);
+
+		Assert.assertTrue(0 == outBuffer.toByteArray().length);
+		Assert.assertTrue(out.isClosed());
+
+	}
+
+	/**
+	 * Fetch BYTES into an {@link OutputStream}, {@literal null} as an
+	 * {@link InputStream}, which should yield an empty array, closing both
+	 * stream.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void fetch_withBadParameters_nullOutputStream_autoCloseStreams() throws IOException {
+
+		Fetcher.fetch(in, null, true, true);
+
+		Assert.assertTrue(0 == in.available());
+		Assert.assertTrue(in.isClosed());
 
 	}
 
