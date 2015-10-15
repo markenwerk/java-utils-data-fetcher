@@ -173,6 +173,9 @@ public final class Fetcher {
 	 *             requested, are ignored.
 	 */
 	public static byte[] fetch(InputStream in, int bufferSize, boolean close) throws IOException {
+		if (bufferSize < 1) {
+			bufferSize = DEFAULT_BUFEFR_SIZE;
+		}
 		ByteArrayOutputStream out = new ByteArrayOutputStream(bufferSize);
 		fetch(in, out, bufferSize, close, true);
 		return out.toByteArray();
