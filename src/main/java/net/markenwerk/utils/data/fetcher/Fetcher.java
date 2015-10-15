@@ -100,6 +100,29 @@ public final class Fetcher {
 
 	/**
 	 * Copies the content of a given {@link InputStream} into a fresh byte[],
+	 * using {@code byte[]} as a buffer.
+	 *
+	 * <p>
+	 * See
+	 * {@link Fetcher#fetch(InputStream, OutputStream, int, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
+	 * 
+	 * @param in
+	 *            The {@link InputStream} to read from.
+	 * @param bufferSize
+	 *            The size of the buffer.
+	 * @return A new {@code byte[]}, containing the content of the given
+	 *         {@link InputStream}.
+	 * @throws IOException
+	 *             If anything went wrong while reading from the given
+	 *             {@link InputStream}.
+	 */
+	public static byte[] fetch(InputStream in, int bufferSize) throws IOException {
+		return fetch(in, bufferSize, false);
+	}
+
+	/**
+	 * Copies the content of a given {@link InputStream} into a fresh byte[],
 	 * using {@code byte[]} as a buffer of default buffer size of one <a
 	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
 	 *
