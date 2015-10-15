@@ -9,7 +9,7 @@ import java.io.OutputStream;
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public class NullOutputStream extends OutputStream {
+class NullOutputStream extends OutputStream {
 
 	@Override
 	public void write(int b) throws IOException {
