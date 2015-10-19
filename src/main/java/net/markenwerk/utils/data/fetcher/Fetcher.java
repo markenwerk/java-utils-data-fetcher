@@ -49,8 +49,8 @@ import java.io.OutputStream;
  * allows to write compact code like
  * 
  * <pre>
- * {@code
- * foo.setContent(Fetcher.fetch(new FileInputStream(file), true));
+ * {
+ *    foo.setContent(Fetcher.fetch(new FileInputStream(file), true));
  * }
  * </pre>
  * 
@@ -58,10 +58,9 @@ import java.io.OutputStream;
  * 
  * <pre>
  * {
- * 	&#064;code
- * 	InputStream in = new FileInputStream(file);
- * 	foo.setContent(Fetcher.fetch(in));
- * 	in.close();
+ *    InputStream in = new FileInputStream(file);
+ *    foo.setContent(Fetcher.fetch(in));
+ *    in.close();
  * }
  * </pre>
  * 
