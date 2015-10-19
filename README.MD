@@ -6,17 +6,17 @@ This is a simple helper to copy the content of input stream into output streams 
 
 ## Overview
 
-This library is hosted in the [Maven Central Repositoy](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|1.0.0|jar). You can use it with the following coordinates:
+This library is hosted in the [Maven Central Repositoy](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|1.1.0|jar). You can use it with the following coordinates:
 
 ```xml
 <dependency>
 	<groupId>net.markenwerk</groupId>
 	<artifactId>utils-data-fetcher</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 </dependency>
 ```
 
-Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.0.0/index.html) for further information.
+Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.1.0/index.html) for further information.
 
 ## Motivation
 
@@ -80,6 +80,6 @@ Missing or invalid arguments are handled gracefully with the following behaviour
  - If `null` is given as the [`OutputStream`][OutputStream], it is simply ignored, but the content of given [`InputStream`][InputStream] is fetched anyway. If requested, the [`InputStream`][InputStream] will be closed. 
  - A non-positive buffer size is replaced with the default buffer size of one [kibibyte](https://en.wikipedia.org/wiki/Kibibyte).
  
-[Fetcher]: http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.0.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
+[Fetcher]: http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.1.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
 [InputStream]: http://docs.oracle.com/javase/7/docs/api/index.html?java/io/InputStream.html
 [OutputStream]: http://docs.oracle.com/javase/7/docs/api/index.html?java/io/OutputStream.html
