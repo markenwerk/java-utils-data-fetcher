@@ -54,16 +54,16 @@ public class FetchIntoOutputStreamTest {
 	 * that reads some BYTES.
 	 */
 	@Before
-	public void prepareStreams() {
+	public void prepareInputStream() {
 		in = new ObservableInputStream(new ByteArrayInputStream(BYTES));
 	}
 
 	/**
 	 * Close the {@link ObservableStreams} created by
-	 * {@link FetchIntoByteArrayTest#prepareStreams()}.
+	 * {@link FetchIntoByteArrayTest#prepareInputStream()}.
 	 */
 	@After
-	public void closeStreams() {
+	public void closeInputStream() {
 		if (!in.isClosed()) {
 			try {
 				in.close();
@@ -194,7 +194,7 @@ public class FetchIntoOutputStreamTest {
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, {@literal null} as an
+	 * Fetch nothing into an {@link OutputStream}, {@literal null} as an
 	 * {@link InputStream}, which should yield an empty array.
 	 * 
 	 * @throws IOException
@@ -224,7 +224,7 @@ public class FetchIntoOutputStreamTest {
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, {@literal null} as an
+	 * Fetch nothing into an {@link OutputStream}, {@literal null} as an
 	 * {@link InputStream}, closing both streams, which should yield an empty
 	 * array.
 	 * 
@@ -258,6 +258,38 @@ public class FetchIntoOutputStreamTest {
 	}
 
 	/**
+	 * Fetch nothing into an {@link OutputStream}, {@literal null} as an
+	 * {@link InputStream}, which should yield an empty array, leaving both
+	 * streas open.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void fetch_withBadParameters_nullStreams_leaveStreamsOpen() throws IOException {
+
+		Fetcher.fetch(null, null, false, false);
+
+		Assert.assertTrue(0 == outBuffer.toByteArray().length);
+
+	}
+
+	/**
+	 * Fetch nothing into an {@link OutputStream}, {@literal null} as an
+	 * {@link InputStream}, which should yield an empty array, closing both
+	 * stream.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void fetch_withBadParameters_nullStreams_autoCloseStreams() throws IOException {
+
+		Fetcher.fetch(null, null, true, true);
+
+		Assert.assertTrue(0 == outBuffer.toByteArray().length);
+
+	}
+
+	/**
 	 * Fetch BYTES into an {@link OutputStream} with a small buffer (smaller
 	 * than the content of the {@link Streams}), leaving both streams open by
 	 * default.
@@ -287,7 +319,6 @@ public class FetchIntoOutputStreamTest {
 
 		Fetcher.fetch(in, out, 1, false, false);
 
-		Assert.assertArrayEquals(BYTES, outBuffer.toByteArray());
 		Assert.assertFalse(in.isClosed());
 		Assert.assertFalse(out.isClosed());
 

@@ -23,61 +23,83 @@ package net.markenwerk.utils.data.fetcher;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.EnumSet;
 
 /**
- * Wrapper for an another {@link InputStream} that can tell, if
- * {@link InputStream#close()} has been called;
+ * Wrapper for an another {@link InputStream} that will fail on specific
+ * operations;
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public class ObservableInputStream extends InputStream {
-
-	private final InputStream in;
-
-	private boolean closed;
+public class FailingInputStream extends ObservableInputStream {
 
 	/**
-	 * Creates a new {@link ObservableInputStream} from a given
-	 * {@link InputStream}.
+	 * Enumeration of operations, a {@link FailingInputStream} can fail on.
+	 * 
+	 * @author Torsten Krause (tk at markenwerk dot net)
+	 * @since 1.1.1
+	 *
+	 */
+	public static enum FailOn {
+
+		/**
+		 * Lets a {@link FailingInputStream} fail on
+		 * {@link FailingInputStream#read()}.
+		 */
+		READ,
+
+		/**
+		 * Lets a {@link FailingInputStream} fail on
+		 * {@link FailingInputStream#close()}.
+		 */
+		CLOSE;
+
+	}
+
+	private final EnumSet<FailOn> failOns = EnumSet.noneOf(FailOn.class);
+
+	/**
+	 * Creates a new {@link FailingInputStream} from a given {@link InputStream}
+	 * .
 	 * 
 	 * @param in
-	 *            The {@link InputStream} to wrap.
+	 *            The {@link OutputStream} to wrap.
 	 */
-	public ObservableInputStream(InputStream in) {
-		this.in = in;
+	public FailingInputStream(InputStream in) {
+		super(in);
+	}
+
+	/**
+	 * Specify the operation this {@link FailingInputStream} will fail on.
+	 * 
+	 * @param failOns
+	 *            The operations to fail on.
+	 */
+	public void setFailons(FailOn... failOns) {
+		this.failOns.clear();
+		this.failOns.addAll(Arrays.asList(failOns));
 	}
 
 	@Override
 	public int read() throws IOException {
-		return in.read();
+		failOn(FailOn.READ);
+		return super.read();
 	}
 
 	@Override
 	public void close() throws IOException {
-		if (closed) {
-			throw new IllegalStateException("Inputstream has already been closed");
-		}
 		super.close();
-		closed = true;
+		failOn(FailOn.CLOSE);
 	}
 
-	
-	
-	@Override
-	public int available() throws IOException {
-		return in.available();
-	}
-
-	/**
-	 * Returns whether {@link InputStream#close()} has been called on this
-	 * object.
-	 * 
-	 * @return {@literal true}, if {@link InputStream#close()} has been called,
-	 *         {@literal false} otherwise.
-	 */
-	public boolean isClosed() {
-		return closed;
+	private void failOn(FailOn failOn) throws IOException {
+		if (failOns.contains(failOn)) {
+			throw new IOException(getClass().getSimpleName() + " was asked to fail on " + failOn.name().toLowerCase()
+					+ ".");
+		}
 	}
 
 }

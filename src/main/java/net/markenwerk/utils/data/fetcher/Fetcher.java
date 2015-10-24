@@ -50,7 +50,7 @@ import java.io.OutputStream;
  * 
  * <pre>
  * {
- *    foo.setContent(Fetcher.fetch(new FileInputStream(file), true));
+ * 	foo.setContent(Fetcher.fetch(new FileInputStream(file), true));
  * }
  * </pre>
  * 
@@ -58,9 +58,9 @@ import java.io.OutputStream;
  * 
  * <pre>
  * {
- *    InputStream in = new FileInputStream(file);
- *    foo.setContent(Fetcher.fetch(in));
- *    in.close();
+ * 	InputStream in = new FileInputStream(file);
+ * 	foo.setContent(Fetcher.fetch(in));
+ * 	in.close();
  * }
  * </pre>
  * 
