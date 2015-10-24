@@ -1,6 +1,6 @@
 # A stream fetching helper for Java
 
-[![Build Status](https://travis-ci.org/markenwerk/java-utils-data-fetcher.png?branch=master)](https://travis-ci.org/markenwerk/java-utils-data-fetcher)
+[![Build Status](https://travis-ci.org/markenwerk/java-utils-data-fetcher.png?branch=master)](https://travis-ci.org/markenwerk/java-utils-data-fetcher.svg)
 [![Coverage Status](https://coveralls.io/repos/markenwerk/java-utils-data-fetcher/badge.svg?branch=master&service=github)](https://coveralls.io/github/markenwerk/java-utils-data-fetcher?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/562bcca036d0ab00160013f7/badge.svg?style=flat)](https://www.versioneye.com/user/projects/562bcca036d0ab00160013f7)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.markenwerk/utils-data-fetcher/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.markenwerk/utils-data-fetcher)
