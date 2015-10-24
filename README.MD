@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/markenwerk/java-utils-data-fetcher.png?branch=master)](https://travis-ci.org/markenwerk/java-utils-data-fetcher)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.markenwerk/utils-data-fetcher/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.markenwerk/utils-data-fetcher)
-[![Dependency Status](https://gemnasium.com/net.markenwerk/utils-data-fetcher.svg)](https://gemnasium.com/jirutka/net.markenwerk/utils-data-fetcher)
 
 This is a simple helper to copy the content of input stream into output streams or byte arrays. It is, among other things, intended as an alternative to using [`IOUtils#readFully`](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/IOUtils.java#IOUtils.readFully%28java.io.InputStream%2Cint%2Cboolean%29) for this everyday task.
 
