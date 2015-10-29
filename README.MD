@@ -84,5 +84,5 @@ Missing or invalid arguments are handled gracefully with the following behaviour
  - A non-positive buffer size is replaced with the default buffer size of one [kibibyte](https://en.wikipedia.org/wiki/Kibibyte).
  
 [Fetcher]: http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.1.1/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
-[InputStream]: http://docs.oracle.com/javase/7/docs/api/index.html?java/io/InputStream.html
-[OutputStream]: http://docs.oracle.com/javase/7/docs/api/index.html?java/io/OutputStream.html
+[InputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/InputStream.html
+[OutputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/OutputStream.html
