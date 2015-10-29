@@ -10,6 +10,7 @@
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>A stream fetching helper for Java</description>
 	<url>https://github.com/markenwerk/java-utils-data-fetcher</url>
+	<inceptionYear>2015</inceptionYear>
 
 	<licenses>
 		<license>
