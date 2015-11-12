@@ -182,9 +182,8 @@ public final class Fetcher {
 
 	/**
 	 * Copies the content of a given {@link InputStream} into a given
-	 * {@link OutputStream}, using {@code byte[]} as a buffer of default buffer
-	 * size of one <a href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a>
-	 * (1024 bytes).
+	 * {@link OutputStream}, a buffer of default buffer size of one <a
+	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
 	 *
 	 * <p>
 	 * See
@@ -206,9 +205,8 @@ public final class Fetcher {
 
 	/**
 	 * Copies the content of a given {@link InputStream} into a given
-	 * {@link OutputStream}, using {@code byte[]} as a buffer of default buffer
-	 * size of one <a href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a>
-	 * (1024 bytes).
+	 * {@link OutputStream}, using a buffer of default buffer size of one <a
+	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
 	 *
 	 * <p>
 	 * See
@@ -320,6 +318,7 @@ public final class Fetcher {
 					out.write(buffer, 0, length);
 					length = in.read(buffer);
 				}
+				out.flush();
 			}
 		} catch (IOException e) {
 			throw e;
