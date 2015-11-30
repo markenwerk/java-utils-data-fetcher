@@ -22,62 +22,51 @@
 package net.markenwerk.utils.data.fetcher;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
- * Wrapper for an another {@link InputStream} that can tell, if
- * {@link InputStream#close()} has been called;
+ * A {@link FetchException} is a specialised {@link IOException} that indicates
+ * that a fetch operation of a {@link Fetcher} has failed.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.0.0
+ * @since 2.0.0
+ * @see Fetcher
  */
-class ObservableInputStream extends InputStream {
+public final class FetchException extends IOException {
 
-	private final InputStream in;
-
-	private boolean closed;
+	private static final long serialVersionUID = 8161906006366859761L;
 
 	/**
-	 * Creates a new {@link ObservableInputStream} from a given
-	 * {@link InputStream}.
-	 * 
-	 * @param in
-	 *            The {@link InputStream} to wrap.
+	 * Constructs a {@link FetchException} with the given message and cause. The
+	 * given cause is chained to this exception.
+	 *
+	 * @param message
+	 *            The message.
+	 * @param cause
+	 *            The cause of this {@link FetchException}.
 	 */
-	public ObservableInputStream(InputStream in) {
-		this.in = in;
-	}
-
-	@Override
-	public int read() throws IOException {
-		return in.read();
-	}
-
-	@Override
-	public void close() throws IOException {
-		if (closed) {
-			throw new IllegalStateException("Inputstream has already been closed");
-		}
-		super.close();
-		closed = true;
-	}
-
-	
-	
-	@Override
-	public int available() throws IOException {
-		return in.available();
+	public FetchException(String message, Throwable cause) {
+		super(message, cause);
 	}
 
 	/**
-	 * Returns whether {@link InputStream#close()} has been called on this
-	 * object.
-	 * 
-	 * @return {@literal true}, if {@link InputStream#close()} has been called,
-	 *         {@literal false} otherwise.
+	 * Constructs a {@link FetchException} with the given message.
+	 *
+	 * @param message
+	 *            The message.
 	 */
-	public boolean isClosed() {
-		return closed;
+	public FetchException(String message) {
+		super(message);
+	}
+
+	/**
+	 * Constructs a {@link FetchException} with the given cause. The given cause
+	 * is chained to this exception.
+	 *
+	 * @param cause
+	 *            The cause of this {@link FetchException}.
+	 */
+	public FetchException(Throwable cause) {
+		super(cause);
 	}
 
 }

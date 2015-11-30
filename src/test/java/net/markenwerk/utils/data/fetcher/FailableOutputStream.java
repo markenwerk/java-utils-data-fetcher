@@ -22,22 +22,21 @@
 package net.markenwerk.utils.data.fetcher;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.EnumSet;
 
 /**
- * Wrapper for an another {@link InputStream} that will fail on specific
+ * Wrapper for an another {@link OutputStream} that will fail on specific
  * operations;
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public class FailingInputStream extends ObservableInputStream {
+class FailableOutputStream extends ObservableOutputStream {
 
 	/**
-	 * Enumeration of operations, a {@link FailingInputStream} can fail on.
+	 * Enumeration of operations, a {@link FailableOutputStream} can fail on.
 	 * 
 	 * @author Torsten Krause (tk at markenwerk dot net)
 	 * @since 1.1.1
@@ -46,14 +45,14 @@ public class FailingInputStream extends ObservableInputStream {
 	public static enum FailOn {
 
 		/**
-		 * Lets a {@link FailingInputStream} fail on
-		 * {@link FailingInputStream#read()}.
+		 * Lets a {@link FailingOutputStream} fail on
+		 * {@link FailingOutputStream#write(int)}.
 		 */
-		READ,
+		WRITE,
 
 		/**
-		 * Lets a {@link FailingInputStream} fail on
-		 * {@link FailingInputStream#close()}.
+		 * Lets a {@link FailingOutputStream} fail on
+		 * {@link FailingOutputStream#close()}.
 		 */
 		CLOSE;
 
@@ -62,18 +61,18 @@ public class FailingInputStream extends ObservableInputStream {
 	private final EnumSet<FailOn> failOns = EnumSet.noneOf(FailOn.class);
 
 	/**
-	 * Creates a new {@link FailingInputStream} from a given {@link InputStream}
-	 * .
+	 * Creates a new {@link FailableOutputStream} from a given
+	 * {@link OutputStream}.
 	 * 
-	 * @param in
+	 * @param out
 	 *            The {@link OutputStream} to wrap.
 	 */
-	public FailingInputStream(InputStream in) {
-		super(in);
+	public FailableOutputStream(OutputStream out) {
+		super(out);
 	}
 
 	/**
-	 * Specify the operation this {@link FailingInputStream} will fail on.
+	 * Specify the operation this {@link FailableOutputStream} will fail on.
 	 * 
 	 * @param failOns
 	 *            The operations to fail on.
@@ -84,9 +83,9 @@ public class FailingInputStream extends ObservableInputStream {
 	}
 
 	@Override
-	public int read() throws IOException {
-		failOn(FailOn.READ);
-		return super.read();
+	public void write(int b) throws IOException {
+		failOn(FailOn.WRITE);
+		super.write(b);
 	}
 
 	@Override

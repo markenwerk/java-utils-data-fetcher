@@ -21,63 +21,65 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
- * Wrapper for an another {@link InputStream} that can tell, if
- * {@link InputStream#close()} has been called;
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.0.0
+ * @since 2.0.0
  */
-class ObservableInputStream extends InputStream {
+public abstract class AbstractFetcher implements Fetcher {
 
-	private final InputStream in;
-
-	private boolean closed;
-
-	/**
-	 * Creates a new {@link ObservableInputStream} from a given
-	 * {@link InputStream}.
-	 * 
-	 * @param in
-	 *            The {@link InputStream} to wrap.
-	 */
-	public ObservableInputStream(InputStream in) {
-		this.in = in;
+	@Override
+	public final byte[] fetch(InputStream in) throws FetchException {
+		return fetch(in, false);
 	}
 
 	@Override
-	public int read() throws IOException {
-		return in.read();
+	public final byte[] fetch(InputStream in, boolean close) throws FetchException {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		copy(in, out, close, true);
+		return out.toByteArray();
 	}
 
 	@Override
-	public void close() throws IOException {
-		if (closed) {
-			throw new IllegalStateException("Inputstream has already been closed");
+	public final void copy(InputStream in, OutputStream out) throws FetchException {
+		copy(in, out, false, false);
+	}
+
+	@Override
+	public final void copy(InputStream in, OutputStream out, boolean closeIn, boolean closeOut) throws FetchException {
+		try {
+			if (null != in) {
+				if (null == out) {
+					out = new NullOutputStream();
+					closeOut = true;
+				}
+				doCopy(in, out);
+				out.flush();
+			}
+		} catch (IOException e) {
+			throw new FetchException(e);
+		} finally {
+			if (closeIn && null != in) {
+				try {
+					in.close();
+				} catch (IOException e) {
+				}
+			}
+			if (closeOut && null != out) {
+				try {
+					out.close();
+				} catch (IOException e) {
+				}
+			}
 		}
-		super.close();
-		closed = true;
+
 	}
 
-	
-	
-	@Override
-	public int available() throws IOException {
-		return in.available();
-	}
-
-	/**
-	 * Returns whether {@link InputStream#close()} has been called on this
-	 * object.
-	 * 
-	 * @return {@literal true}, if {@link InputStream#close()} has been called,
-	 *         {@literal false} otherwise.
-	 */
-	public boolean isClosed() {
-		return closed;
-	}
+	protected abstract void doCopy(InputStream in, OutputStream out) throws IOException;
 
 }

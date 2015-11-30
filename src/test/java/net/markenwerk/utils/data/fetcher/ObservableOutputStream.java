@@ -31,7 +31,7 @@ import java.io.OutputStream;
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public class ObservableOutputStream extends OutputStream {
+class ObservableOutputStream extends OutputStream {
 
 	private final OutputStream out;
 

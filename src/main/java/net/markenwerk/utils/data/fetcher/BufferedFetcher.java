@@ -21,63 +21,37 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 /**
- * Wrapper for an another {@link InputStream} that can tell, if
- * {@link InputStream#close()} has been called;
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.0.0
+ * @since 2.0.0
  */
-class ObservableInputStream extends InputStream {
+public final class BufferedFetcher extends AbstractBufferedFetcher {
 
-	private final InputStream in;
-
-	private boolean closed;
+	private final byte[] buffer;
 
 	/**
-	 * Creates a new {@link ObservableInputStream} from a given
-	 * {@link InputStream}.
+	 * Creates a new {@link BufferedFetcher} with the default buffer size of one <a
+	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
 	 * 
-	 * @param in
-	 *            The {@link InputStream} to wrap.
 	 */
-	public ObservableInputStream(InputStream in) {
-		this.in = in;
-	}
-
-	@Override
-	public int read() throws IOException {
-		return in.read();
-	}
-
-	@Override
-	public void close() throws IOException {
-		if (closed) {
-			throw new IllegalStateException("Inputstream has already been closed");
-		}
-		super.close();
-		closed = true;
-	}
-
-	
-	
-	@Override
-	public int available() throws IOException {
-		return in.available();
+	public BufferedFetcher() {
+		this(DEFAULT_BUFEFR_SIZE);
 	}
 
 	/**
-	 * Returns whether {@link InputStream#close()} has been called on this
-	 * object.
+	 * Creates a new {@link BufferedFetcher} with the given buffer size.
 	 * 
-	 * @return {@literal true}, if {@link InputStream#close()} has been called,
-	 *         {@literal false} otherwise.
+	 * @param bufferSize
+	 *            The buffer size.
 	 */
-	public boolean isClosed() {
-		return closed;
+	public BufferedFetcher(int bufferSize) {
+		buffer = makeBuffer(bufferSize);
+	}
+
+	@Override
+	protected byte[] getBuffer() {
+		return buffer;
 	}
 
 }

@@ -21,63 +21,20 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 /**
- * Wrapper for an another {@link InputStream} that can tell, if
- * {@link InputStream#close()} has been called;
+ * JUnit tests for {@link BufferedFetcher#fetch(java.io.Streams)} methods on
+ * stream that fail.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-class ObservableInputStream extends InputStream {
+public class BufferedFetcherTests extends AbstractFetcherTests<BufferedFetcher> {
 
-	private final InputStream in;
-
-	private boolean closed;
-
-	/**
-	 * Creates a new {@link ObservableInputStream} from a given
-	 * {@link InputStream}.
-	 * 
-	 * @param in
-	 *            The {@link InputStream} to wrap.
-	 */
-	public ObservableInputStream(InputStream in) {
-		this.in = in;
-	}
+	private final BufferedFetcher instance = new BufferedFetcher();
 
 	@Override
-	public int read() throws IOException {
-		return in.read();
-	}
-
-	@Override
-	public void close() throws IOException {
-		if (closed) {
-			throw new IllegalStateException("Inputstream has already been closed");
-		}
-		super.close();
-		closed = true;
-	}
-
-	
-	
-	@Override
-	public int available() throws IOException {
-		return in.available();
-	}
-
-	/**
-	 * Returns whether {@link InputStream#close()} has been called on this
-	 * object.
-	 * 
-	 * @return {@literal true}, if {@link InputStream#close()} has been called,
-	 *         {@literal false} otherwise.
-	 */
-	public boolean isClosed() {
-		return closed;
+	protected BufferedFetcher createFetcher() {
+		return instance;
 	}
 
 }
