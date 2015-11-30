@@ -68,14 +68,11 @@ import java.io.OutputStream;
 public interface Fetcher {
 
 	/**
-	 * Fetches the content of a given {@link InputStream} into a fresh byte[],
-	 * using {@code byte[]} as a buffer of default buffer size of one <a
-	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
+	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
 	 *
 	 * <p>
-	 * See
-	 * {@link Fetcher#fetch(InputStream, OutputStream, int, boolean, boolean)}
-	 * for the handling of missing or invalid arguments.
+	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
+	 * the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
@@ -88,14 +85,11 @@ public interface Fetcher {
 	public byte[] fetch(InputStream in) throws FetchException;
 
 	/**
-	 * Fetches the content of a given {@link InputStream} into a fresh byte[],
-	 * using {@code byte[]} as a buffer of default buffer size of one <a
-	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
+	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
 	 *
 	 * <p>
-	 * See
-	 * {@link Fetcher#fetch(InputStream, OutputStream, int, boolean, boolean)}
-	 * for the handling of missing or invalid arguments.
+	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
+	 * the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
@@ -114,13 +108,11 @@ public interface Fetcher {
 
 	/**
 	 * Copies the content of a given {@link InputStream} into a given
-	 * {@link OutputStream}, a buffer of default buffer size of one <a
-	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
+	 * {@link OutputStream}.
 	 *
 	 * <p>
-	 * See
-	 * {@link Fetcher#fetch(InputStream, OutputStream, int, boolean, boolean)}
-	 * for the handling of missing or invalid arguments.
+	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
+	 * the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
@@ -135,13 +127,22 @@ public interface Fetcher {
 
 	/**
 	 * Copies the content of a given {@link InputStream} into a given
-	 * {@link OutputStream}, using a buffer of default buffer size of one <a
-	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
-	 *
+	 * {@link OutputStream}.
+	 * 
 	 * <p>
-	 * See
-	 * {@link Fetcher#fetch(InputStream, OutputStream, int, boolean, boolean)}
-	 * for the handling of missing or invalid arguments.
+	 * Missing or invalid arguments are handled gracefully with the following
+	 * behaviour.
+	 * 
+	 * <p>
+	 * A {@code null} is given as an {@link InputStream}, it is simply ignored
+	 * and handled as if there was nothing to read. If {@code closeOut} is
+	 * {@literal true}, the given {@link OutputStream} will be closed anyway
+	 * 
+	 * <p>
+	 * A {@code null} is given as an {@link OutputStream}, it is simply ignored,
+	 * but the content of given {@link InputStream} is fetched anyway. If
+	 * {@code closeIn} is {@literal true}, the given {@link InputStream} will be
+	 * closed anyway
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
