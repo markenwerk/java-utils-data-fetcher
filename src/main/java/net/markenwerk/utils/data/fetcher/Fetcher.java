@@ -25,9 +25,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * A convenient replacement for {@code IOUtils.toByteArray()} to perform the
- * everyday and menial task of reading an entire {@code InputStream} into a
- * {@code byte[]} with the method {@link Fetcher#fetch(InputStream)}.
+ * A {@link Fetcher} can fetch the entire content of a given {@link InputStream}
+ * into a fresh {@code byte[]} or copy it into a given {@link OutputStream}.
+ * 
+ * <p>
+ * It is, among other things, intended as a replacement for
+ * {@code IOUtils.toByteArray()} to perform the everyday and menial task of
+ * reading an entire {@code InputStream}.
  * 
  * <p>
  * Since the class {@code sun.misc.IOUtils}, which provides this functionality,
@@ -48,7 +52,7 @@ import java.io.OutputStream;
  * 
  * <pre>
  * {
- * 	foo.setContent(Fetcher.fetch(new FileInputStream(file), true));
+ * 	foo.setContent(fetcher.fetch(new FileInputStream(file), true));
  * }
  * </pre>
  * 
@@ -57,7 +61,7 @@ import java.io.OutputStream;
  * <pre>
  * {
  * 	InputStream in = new FileInputStream(file);
- * 	foo.setContent(Fetcher.fetch(in));
+ * 	foo.setContent(fetcher.fetch(in));
  * 	in.close();
  * }
  * </pre>

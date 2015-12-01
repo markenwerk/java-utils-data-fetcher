@@ -26,6 +26,23 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
+ * {@link AbstractBufferedFetcher} is a sensible base implementation of
+ * {@link Fetcher} that uses a {@code byte[]} as buffer, to while copying all
+ * bytes from an {@link InputStream} to an {@link OutputStream} by sequentually
+ * reading from the {@link InputStream} into the buffer and then writing from
+ * the buffer to the {@link OutputStream}.
+ * 
+ * <p>
+ * Implementers must only implment a single method that provides a
+ * {@code byte[]} to be used as a buffer in
+ * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream)}:
+ * {@link AbstractBufferedFetcher#obtainBuffer()}.
+ * 
+ * <p>
+ * Implementers may also override
+ * {@link AbstractBufferedFetcher#returnBuffer(byte[])}, which is called after
+ * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream)} has
+ * finished using it.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.0.0
@@ -34,20 +51,52 @@ public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 
 	protected static final int DEFAULT_BUFEFR_SIZE = 1024;
 
-	protected static final byte[] makeBuffer(int bufferSize) {
+	protected static final byte[] createBuffer(int bufferSize) {
 		return new byte[bufferSize > 0 ? bufferSize : DEFAULT_BUFEFR_SIZE];
 	}
 
 	@Override
 	protected final void doCopy(InputStream in, OutputStream out) throws IOException {
-		byte[] buffer = getBuffer();
-		int length = in.read(buffer);
-		while (length != -1) {
-			out.write(buffer, 0, length);
-			length = in.read(buffer);
+		byte[] buffer = obtainBuffer();
+		try {
+			int length = in.read(buffer);
+			while (length != -1) {
+				out.write(buffer, 0, length);
+				length = in.read(buffer);
+			}
+		} catch (IOException e) {
+			throw e;
+		} finally {
+			returnBuffer(buffer);
 		}
 	}
 
-	protected abstract byte[] getBuffer();
+	/**
+	 * Called by
+	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream)} to
+	 * obtain a {@code byte[]} to be used as a buffer.
+	 * 
+	 * <p>
+	 * Every {@code bute[]} that is returned by this method will be passed as an
+	 * argument of {@link AbstractBufferedFetcher#returnBuffer(byte[])} after
+	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream)} has
+	 * finished using it.
+	 * 
+	 * 
+	 * @return The a {@code byte[]} to be used as a buffer.
+	 */
+	protected abstract byte[] obtainBuffer();
+
+	/**
+	 * Called by
+	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream)} to
+	 * return a {@code byte[]} that has previously been obtained from
+	 * {@link AbstractBufferedFetcher#obtainBuffer()}.
+	 * 
+	 * @param buffer
+	 *            The {@code byte[]} to be returned.
+	 */
+	protected void returnBuffer(byte[] buffer) {
+	}
 
 }

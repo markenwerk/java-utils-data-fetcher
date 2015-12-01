@@ -27,6 +27,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
+ * {@link AbstractFetcher} is a sensible base implementation of {@link Fetcher}.
+ * 
+ * <p>
+ * Implementers must only implment a single simplified method that copies all
+ * bytes from an {@link InputStream} to an {@link OutputStream}:
+ * {@link AbstractFetcher#doCopy(InputStream, OutputStream)}.
+ * 
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.0.0
@@ -80,6 +87,26 @@ public abstract class AbstractFetcher implements Fetcher {
 
 	}
 
+	/**
+	 * Copies the content of a given {@link InputStream} into a given
+	 * {@link OutputStream}.
+	 * 
+	 * <p>
+	 * It is garanteed that neither the given {@link InputStream} nor the given
+	 * {@link OutputStream} is {@literal null}.
+	 * 
+	 * <p>
+	 * Implementers must not close either of the given streams.
+	 * 
+	 * @param in
+	 *            The {@link InputStream} to read from.
+	 * @param out
+	 *            The {@link OutputStream} to write to.
+	 * @throws IOException
+	 *             If anything went wrong while reading from the given
+	 *             {@link InputStream} or writing to the given
+	 *             {@link OutputStream}.
+	 */
 	protected abstract void doCopy(InputStream in, OutputStream out) throws IOException;
 
 }

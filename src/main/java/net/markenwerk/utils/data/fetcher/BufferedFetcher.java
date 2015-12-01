@@ -21,7 +21,19 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
 /**
+ * {@link AbstractBufferedFetcher} is a sensible base implementation of
+ * {@link Fetcher} that uses a {@code byte[]} as buffer, to while copying all
+ * bytes from an {@link InputStream} to an {@link OutputStream} by sequentually
+ * reading from the {@link InputStream} into the buffer and then writing from
+ * the buffer to the {@link OutputStream}.
+ * 
+ * <p>
+ * The buffer is eagerly allocated in the constructor just once and then used
+ * for every operation. A {@link BufferedFetcher} is therefore not threadsafe.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.0.0
@@ -31,8 +43,9 @@ public final class BufferedFetcher extends AbstractBufferedFetcher {
 	private final byte[] buffer;
 
 	/**
-	 * Creates a new {@link BufferedFetcher} with the default buffer size of one <a
-	 * href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024 bytes).
+	 * Creates a new {@link BufferedFetcher} with the default buffer size of one
+	 * <a href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024
+	 * bytes).
 	 * 
 	 */
 	public BufferedFetcher() {
@@ -46,11 +59,11 @@ public final class BufferedFetcher extends AbstractBufferedFetcher {
 	 *            The buffer size.
 	 */
 	public BufferedFetcher(int bufferSize) {
-		buffer = makeBuffer(bufferSize);
+		buffer = createBuffer(bufferSize);
 	}
 
 	@Override
-	protected byte[] getBuffer() {
+	protected byte[] obtainBuffer() {
 		return buffer;
 	}
 
