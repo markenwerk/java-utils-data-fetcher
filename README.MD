@@ -9,17 +9,17 @@ This is a simple helper to copy the content of input stream into output streams 
 
 ## Overview
 
-This library is hosted in the [Maven Central Repositoy](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|1.1.2|jar). You can use it with the following coordinates:
+This library is hosted in the [Maven Central Repositoy](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|2.0.0|jar). You can use it with the following coordinates:
 
 ```xml
 <dependency>
 	<groupId>net.markenwerk</groupId>
 	<artifactId>utils-data-fetcher</artifactId>
-	<version>1.1.2</version>
+	<version>2.0.0</version>
 </dependency>
 ```
 
-Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.1.2/index.html) for further information.
+Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/2.0.0/index.html) for further information.
 
 ## Motivation
 
@@ -33,28 +33,20 @@ The type 'IOUtils' is not API.
 
 and may break at runtime; i.e. if a runtime environment other than the Oracle JRE is used. Another solution to accomplishing this simple task, could be to bundle a major library like [Commons IO](http://commons.apache.org/proper/commons-io/). But doing so may appear like overkill, especially if no other functionality of the library is likely to be used.
 
+
 ## Usage
 
-This library is intended to be a simple and convenient to use lightweight solution for the mentioned problem. It features two main functionalities:
+This library is intended to be a simple and convenient to use solution for the mentioned problem. It features two main functionalities:
 
 ```java
+// create a simple fetcher
+Fetcher fetcher = new BufferedFetcher();
+
 // copy the content of an InputStream into a byte[]
-byte[] bytes = Fetcher.fetch(inputStream);
+byte[] bytes = fetcher.fetch(inputStream);
 
 // copy the content of an InputStream into an OutputStream
-Fetcher.fetch(inputStream, outputStream);
-```
-
-### Specifying the buffer size
-
-The default buffer size used, is one [kibibyte](https://en.wikipedia.org/wiki/Kibibyte), but any other positive buffer size may be specified with an optional integer parameter.
-
-```java
-// copy the content of an InputStream into a byte[]
-byte[] bytes = Fetcher.fetch(inputStream, bufferSize);
-
-// copy the content of an InputStream into an OutputStream
-Fetcher.fetch(inputStream, outputStream, bufferSize);
+fetcher.fetch(inputStream, outputStream);
 ```
 
 ### Automatic closing of supplied streams
@@ -62,7 +54,7 @@ Fetcher.fetch(inputStream, outputStream, bufferSize);
 Both methods have optional parameters, that can be used to instruct the [`Fetcher`][Fetcher] to close the supplied streams. Doing so allows to write compact code like:
 
 ```java
-foo.setContent(Fetcher.fetch(new FileInputStream(file), true));
+foo.setContent(fetcher.fetch(new FileInputStream(file), true));
 ```
 
 Otherwise, it would be necessary to write unnecessarily verbose code like:
@@ -73,8 +65,6 @@ foo.setContent(Fetcher.fetch(in));
 in.close();
 ```
 
-There are version of both methods that take an integer parameter to adjust the buffer size as well as boolean parameters to close the supplied streams.
-
 ### Handling of bad parameters
 
 Missing or invalid arguments are handled gracefully with the following behaviour:
@@ -83,6 +73,16 @@ Missing or invalid arguments are handled gracefully with the following behaviour
  - If `null` is given as the [`OutputStream`][OutputStream], it is simply ignored, but the content of given [`InputStream`][InputStream] is fetched anyway. If requested, the [`InputStream`][InputStream] will be closed. 
  - A non-positive buffer size is replaced with the default buffer size of one [kibibyte](https://en.wikipedia.org/wiki/Kibibyte).
  
-[Fetcher]: http://markenwerk.github.io/java-utils-data-fetcher/javadoc/1.1.2/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
+### Implementations
+ 
+This library provides [`BufferedFetcher`][BufferedFetcher] as the simpelest possible implementations of [`Fetcher`][Fetcher]. It eagerly allocates a `byte[]` as a buffer in the constructor and used it to perform fetch operations by sequentually reading from the [`InputStream`][InputStream] into the buffer and then writing from the buffer to the [`OutputStream`][OutputStream]. It is not threadsafe.
+
+Variations of the bufferd copying stratigy (e.g. lazy buffer creation, threadsafeness) or compleatly other copying stratagies can easily be implemented by extending [`AbstractBufferedFetcher`][AbstractBufferedFetcher] or [`AbstractFetcher`][AbstractFetcher] respectively.
+ 
+[AbstractBufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.0.0/index.html?net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html
+[AbstractFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.0.0/index.html?net/markenwerk/utils/data/fetcher/AbstractFetcher.html
+[BufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.0.0/index.html?net/markenwerk/utils/data/fetcher/BufferedFetcher.html
+[Fetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.0.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
+
 [InputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/InputStream.html
 [OutputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/OutputStream.html
