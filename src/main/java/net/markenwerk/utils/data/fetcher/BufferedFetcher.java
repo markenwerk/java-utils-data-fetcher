@@ -26,7 +26,7 @@ import java.io.OutputStream;
 
 /**
  * {@link AbstractBufferedFetcher} is a sensible base implementation of
- * {@link Fetcher} that uses a {@code byte[]} as buffer, to while copying all
+ * {@link Fetcher} that uses a {@code byte[]} as buffer, while copying all
  * bytes from an {@link InputStream} to an {@link OutputStream} by sequentually
  * reading from the {@link InputStream} into the buffer and then writing from
  * the buffer to the {@link OutputStream}.
