@@ -54,14 +54,14 @@ fetcher.fetch(inputStream, outputStream);
 Both methods have optional parameters, that can be used to instruct the [`Fetcher`][Fetcher] to close the supplied streams. Doing so allows to write compact code like:
 
 ```java
-foo.setContent(fetcher.fetch(new FileInputStream(file), true));
+foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file), true));
 ```
 
 Otherwise, it would be necessary to write unnecessarily verbose code like:
 
 ```java
 InputStream in = new FileInputStream(file);
-foo.setContent(Fetcher.fetch(in));
+foo.setContent(new BufferedFetcher().fetch(in));
 in.close();
 ```
 
