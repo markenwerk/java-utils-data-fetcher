@@ -35,14 +35,13 @@ import java.io.OutputStream;
  * <p>
  * Implementers must only implment a single method that provides a
  * {@code byte[]} to be used as a buffer in
- * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream)}:
- * {@link AbstractBufferedFetcher#obtainBuffer()}.
+ * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}: {@link AbstractBufferedFetcher#obtainBuffer()}.
  * 
  * <p>
  * Implementers may also override
  * {@link AbstractBufferedFetcher#returnBuffer(byte[])}, which is called after
- * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream)} has
- * finished using it.
+ * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+ * has finished using it.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.0.0
@@ -84,14 +83,14 @@ public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 
 	/**
 	 * Called by
-	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream)} to
-	 * obtain a {@code byte[]} to be used as a buffer.
+	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+	 * to obtain a {@code byte[]} to be used as a buffer.
 	 * 
 	 * <p>
 	 * Every {@code bute[]} that is returned by this method will be passed as an
 	 * argument of {@link AbstractBufferedFetcher#returnBuffer(byte[])} after
-	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream)} has
-	 * finished using it.
+	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+	 * has finished using it.
 	 * 
 	 * 
 	 * @return The a {@code byte[]} to be used as a buffer.
@@ -100,8 +99,8 @@ public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 
 	/**
 	 * Called by
-	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream)} to
-	 * return a {@code byte[]} that has previously been obtained from
+	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+	 * to return a {@code byte[]} that has previously been obtained from
 	 * {@link AbstractBufferedFetcher#obtainBuffer()}.
 	 * 
 	 * @param buffer

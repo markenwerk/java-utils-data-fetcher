@@ -32,7 +32,7 @@ import java.io.OutputStream;
  * <p>
  * Implementers must only implment a single simplified method that copies all
  * bytes from an {@link InputStream} to an {@link OutputStream}:
- * {@link AbstractFetcher#doCopy(InputStream, OutputStream)}.
+ * {@link AbstractFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}.
  * 
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
@@ -125,11 +125,12 @@ public abstract class AbstractFetcher implements Fetcher {
 	 *            The {@link OutputStream} to write to.
 	 * @param listener
 	 *            The {@link FetchProgressListener} to report to.
-	 * @throws IOException
+	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given
 	 *             {@link OutputStream}.
 	 */
-	protected abstract void doCopy(InputStream in, OutputStream out, FetchProgressListener listener) throws FetchException;
+	protected abstract void doCopy(InputStream in, OutputStream out, FetchProgressListener listener)
+			throws FetchException;
 
 }
