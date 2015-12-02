@@ -69,9 +69,11 @@ public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 				length = in.read(buffer);
 			}
 			out.flush();
+			listener.onFetchProgress(total);
 			listener.onFetchSuccedded(total);
 		} catch (IOException e) {
-			FetchException fetchException = new FetchException(e);
+			FetchException fetchException = new FetchException("Fetch failed after " + total + " "
+					+ (1 == total ? "byte has" : "bytes have") + " been copied successully.", e);
 			listener.onFetchFailed(fetchException, total);
 			throw fetchException;
 		} finally {
