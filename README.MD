@@ -9,17 +9,17 @@ This is a simple helper to copy the content of input stream into output streams 
 
 ## Overview
 
-This library is hosted in the [Maven Central Repositoy](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|2.0.0|jar). You can use it with the following coordinates:
+This library is hosted in the [Maven Central Repositoy](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|2.1.0|jar). You can use it with the following coordinates:
 
 ```xml
 <dependency>
 	<groupId>net.markenwerk</groupId>
 	<artifactId>utils-data-fetcher</artifactId>
-	<version>2.0.0</version>
+	<version>2.1.0</version>
 </dependency>
 ```
 
-Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/2.0.0/index.html) for further information.
+Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/2.1.0/index.html) for further information.
 
 ## Motivation
 
@@ -51,7 +51,7 @@ fetcher.fetch(inputStream, outputStream);
 
 ### Automatic closing of supplied streams
 
-Both methods have optional parameters, that can be used to instruct the [`Fetcher`][Fetcher] to close the supplied streams. Doing so allows to write compact code like:
+Both methods have optional `boolean` parameters, that can be used to instruct the [`Fetcher`][Fetcher] to close the supplied streams. Doing so allows to write compact code like:
 
 ```java
 foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file), true));
@@ -63,6 +63,17 @@ Otherwise, it would be necessary to write unnecessarily verbose code like:
 InputStream in = new FileInputStream(file);
 foo.setContent(new BufferedFetcher().fetch(in));
 in.close();
+```
+
+### Listen to fetch progress
+
+Both methods optionally take a [`FetchProgressListener`][FetchProgressListener] that gets notified on various points in the lifecycle (`started`, `progressed`, `succeded` or `failed`, `finished`) of a fetch operation. The [`BaseFetchProgressListener`][BaseFetchProgressListener] is a convenient base implementation with empty methods.
+
+```java
+foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file), new BaseFetchProgressListener(){
+	public void onFetchProgress(long bytesFetched) {
+		System.out.println(bytesFetched + " bytes fetched so far.");
+}));
 ```
 
 ### Handling of bad parameters
@@ -79,10 +90,12 @@ This library provides [`BufferedFetcher`][BufferedFetcher] as the simpelest poss
 
 Variations of the bufferd copying stratigy (e.g. lazy buffer creation, threadsafeness) or compleatly other copying stratagies can easily be implemented by extending [`AbstractBufferedFetcher`][AbstractBufferedFetcher] or [`AbstractFetcher`][AbstractFetcher] respectively.
  
-[AbstractBufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.0.0/index.html?net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html
-[AbstractFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.0.0/index.html?net/markenwerk/utils/data/fetcher/AbstractFetcher.html
-[BufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.0.0/index.html?net/markenwerk/utils/data/fetcher/BufferedFetcher.html
-[Fetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.0.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
+[AbstractBufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html
+[AbstractFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/AbstractFetcher.html
+[BaseFetchProgressListener]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html
+[BufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/BufferedFetcher.html
+[Fetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
+[FetchProgressListener]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/FetchProgressListener.html
 
 [InputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/InputStream.html
 [OutputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/OutputStream.html
