@@ -21,24 +21,35 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
 /**
- * A {@link NullOutputStream} is an {@link OutputStream} that does nothing.
+ * A {@link FetchProgressAdapter} is an implementation of
+ * {@link FetchProgressListener} with emtp methods. It is intended a base for
+ * custom {@link FetchProgressListener} implementations, that don't need to
+ * implement all methods.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.1.0
  */
-class NullOutputStream extends OutputStream {
+public abstract class FetchProgressAdapter implements FetchProgressListener {
 
-	public static final NullOutputStream INSTANCE = new NullOutputStream();
-
-	private NullOutputStream() {
+	@Override
+	public void onFetchStarted() {
 	}
 
 	@Override
-	public void write(int b) throws IOException {
+	public void onFetchProgress(long bytesFetched) {
 	}
 
+	@Override
+	public void onFetchSuccedded(Long bytesFetched) {
+	}
+
+	@Override
+	public void onFetchFailed(FetchException exception, Long bytesFetched) {
+	}
+
+	@Override
+	public void onFetchFinished() {
+	}
+	
 }

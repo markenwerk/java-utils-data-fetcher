@@ -111,6 +111,49 @@ public interface Fetcher {
 	public byte[] fetch(InputStream in, boolean close) throws FetchException;
 
 	/**
+	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
+	 *
+	 * <p>
+	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
+	 * the handling of missing or invalid arguments.
+	 * 
+	 * @param in
+	 *            The {@link InputStream} to read from.
+	 * @param listener
+	 *            The {@link FetchProgressListener} to report to.
+	 * @param close
+	 *            Whether to close the given {@link InputStream}, after reading
+	 *            from it.
+	 * @return A new {@code byte[]}, containing the content of the given
+	 *         {@link InputStream}.
+	 * @throws FetchException
+	 *             If anything went wrong while reading from the given
+	 *             {@link InputStream}. {@link FetchException FetchExceptions}
+	 *             thrown while trying to close the given {@link InputStream},
+	 *             if requested, are ignored.
+	 */
+	public byte[] fetch(InputStream in, FetchProgressListener listener, boolean close) throws FetchException;
+
+	/**
+	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
+	 *
+	 * <p>
+	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
+	 * the handling of missing or invalid arguments.
+	 * 
+	 * @param in
+	 *            The {@link InputStream} to read from.
+	 * @param listener
+	 *            The {@link FetchProgressListener} to report to.
+	 * @return A new {@code byte[]}, containing the content of the given
+	 *         {@link InputStream}.
+	 * @throws FetchException
+	 *             If anything went wrong while reading from the given
+	 *             {@link InputStream}.
+	 */
+	public byte[] fetch(InputStream in, FetchProgressListener listener) throws FetchException;
+
+	/**
 	 * Copies the content of a given {@link InputStream} into a given
 	 * {@link OutputStream}.
 	 *
@@ -166,5 +209,67 @@ public interface Fetcher {
 	 *             requested, are ignored.
 	 */
 	public void copy(InputStream in, OutputStream out, boolean closeIn, boolean closeOut) throws FetchException;
+
+	/**
+	 * Copies the content of a given {@link InputStream} into a given
+	 * {@link OutputStream}.
+	 *
+	 * <p>
+	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
+	 * the handling of missing or invalid arguments.
+	 * 
+	 * @param in
+	 *            The {@link InputStream} to read from.
+	 * @param out
+	 *            The {@link OutputStream} to write to.
+	 * @param listener
+	 *            The {@link FetchProgressListener} to report to.
+	 * @throws FetchException
+	 *             If anything went wrong while reading from the given
+	 *             {@link InputStream} or writing to the given
+	 *             {@link OutputStream}.
+	 */
+	public void copy(InputStream in, OutputStream out, FetchProgressListener listener) throws FetchException;
+
+	/**
+	 * Copies the content of a given {@link InputStream} into a given
+	 * {@link OutputStream}.
+	 * 
+	 * <p>
+	 * Missing or invalid arguments are handled gracefully with the following
+	 * behaviour.
+	 * 
+	 * <p>
+	 * A {@code null} is given as an {@link InputStream}, it is simply ignored
+	 * and handled as if there was nothing to read. If {@code closeOut} is
+	 * {@literal true}, the given {@link OutputStream} will be closed anyway
+	 * 
+	 * <p>
+	 * A {@code null} is given as an {@link OutputStream}, it is simply ignored,
+	 * but the content of given {@link InputStream} is fetched anyway. If
+	 * {@code closeIn} is {@literal true}, the given {@link InputStream} will be
+	 * closed anyway
+	 * 
+	 * @param in
+	 *            The {@link InputStream} to read from.
+	 * @param out
+	 *            The {@link OutputStream} to write to.
+	 * @param listener
+	 *            The {@link FetchProgressListener} to report to.
+	 * @param closeIn
+	 *            Whether to close the given {@link InputStream}, after reading
+	 *            from it.
+	 * @param closeOut
+	 *            Whether to close the given {@link OutputStream}, after writing
+	 *            to it.
+	 * @throws FetchException
+	 *             If anything went wrong while reading from the given
+	 *             {@link InputStream} or writing to the given
+	 *             {@link OutputStream}. {@link FetchException FetchExceptions}
+	 *             thrown while trying to close one of the given streams, if
+	 *             requested, are ignored.
+	 */
+	public void copy(InputStream in, OutputStream out, FetchProgressListener listener, boolean closeIn, boolean closeOut)
+			throws FetchException;
 
 }

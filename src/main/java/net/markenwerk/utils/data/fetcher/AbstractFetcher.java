@@ -42,13 +42,23 @@ public abstract class AbstractFetcher implements Fetcher {
 
 	@Override
 	public final byte[] fetch(InputStream in) throws FetchException {
-		return fetch(in, false);
+		return fetch(in, NullFetchProgressListener.INSTANCE, false);
 	}
 
 	@Override
 	public final byte[] fetch(InputStream in, boolean close) throws FetchException {
+		return fetch(in, NullFetchProgressListener.INSTANCE, close);
+	}
+
+	@Override
+	public final byte[] fetch(InputStream in, FetchProgressListener listener) throws FetchException {
+		return fetch(in, listener, false);
+	}
+
+	@Override
+	public final byte[] fetch(InputStream in, FetchProgressListener listener, boolean close) throws FetchException {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		copy(in, out, close, true);
+		copy(in, out, listener, close, true);
 		return out.toByteArray();
 	}
 
@@ -59,25 +69,35 @@ public abstract class AbstractFetcher implements Fetcher {
 
 	@Override
 	public final void copy(InputStream in, OutputStream out, boolean closeIn, boolean closeOut) throws FetchException {
+		copy(in, out, NullFetchProgressListener.INSTANCE, closeIn, closeOut);
+	}
+
+	@Override
+	public final void copy(InputStream in, OutputStream out, FetchProgressListener listener) throws FetchException {
+		copy(in, out, listener, false, false);
+	}
+
+	@Override
+	public final void copy(InputStream in, OutputStream out, FetchProgressListener listener, boolean closeIn,
+			boolean closeOut) throws FetchException {
+		doCopy(null != in ? in : NullInputStream.INSTANCE, null != out ? out : NullOutputStream.INSTANCE,
+				null != listener ? listener : NullFetchProgressListener.INSTANCE, closeIn, closeOut);
+	}
+
+	private void doCopy(InputStream in, OutputStream out, FetchProgressListener listener, boolean closeIn,
+			boolean closeOut) throws FetchException {
 		try {
-			if (null != in) {
-				if (null == out) {
-					out = new NullOutputStream();
-					closeOut = true;
-				}
-				doCopy(in, out);
-				out.flush();
-			}
-		} catch (IOException e) {
-			throw new FetchException(e);
+			doCopy(in, out, listener);
+		} catch (FetchException e) {
+			throw e;
 		} finally {
-			if (closeIn && null != in) {
+			if (closeIn) {
 				try {
 					in.close();
 				} catch (IOException e) {
 				}
 			}
-			if (closeOut && null != out) {
+			if (closeOut) {
 				try {
 					out.close();
 				} catch (IOException e) {
@@ -93,7 +113,8 @@ public abstract class AbstractFetcher implements Fetcher {
 	 * 
 	 * <p>
 	 * It is garanteed that neither the given {@link InputStream} nor the given
-	 * {@link OutputStream} is {@literal null}.
+	 * {@link OutputStream} nor the given {@link FetchProgressListener} is
+	 * {@literal null}.
 	 * 
 	 * <p>
 	 * Implementers must not close either of the given streams.
@@ -102,11 +123,13 @@ public abstract class AbstractFetcher implements Fetcher {
 	 *            The {@link InputStream} to read from.
 	 * @param out
 	 *            The {@link OutputStream} to write to.
+	 * @param listener
+	 *            The {@link FetchProgressListener} to report to.
 	 * @throws IOException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given
 	 *             {@link OutputStream}.
 	 */
-	protected abstract void doCopy(InputStream in, OutputStream out) throws IOException;
+	protected abstract void doCopy(InputStream in, OutputStream out, FetchProgressListener listener) throws FetchException;
 
 }

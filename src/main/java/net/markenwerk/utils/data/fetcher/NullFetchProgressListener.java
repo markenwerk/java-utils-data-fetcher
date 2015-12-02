@@ -21,24 +21,18 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
 /**
- * A {@link NullOutputStream} is an {@link OutputStream} that does nothing.
+ * A {@link NullFetchProgressListener} is a {@link FetchProgressListener} that
+ * does nothing.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.1.0
  */
-class NullOutputStream extends OutputStream {
+class NullFetchProgressListener extends FetchProgressAdapter {
 
-	public static final NullOutputStream INSTANCE = new NullOutputStream();
+	public static final NullFetchProgressListener INSTANCE = new NullFetchProgressListener();
 
-	private NullOutputStream() {
-	}
-
-	@Override
-	public void write(int b) throws IOException {
+	private NullFetchProgressListener() {
 	}
 
 }

@@ -56,17 +56,26 @@ public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 	}
 
 	@Override
-	protected final void doCopy(InputStream in, OutputStream out) throws IOException {
+	protected final void doCopy(InputStream in, OutputStream out, FetchProgressListener listener) throws FetchException {
 		byte[] buffer = obtainBuffer();
+		listener.onFetchStarted();
+		long total = 0;
 		try {
 			int length = in.read(buffer);
 			while (length != -1) {
+				total += length;
 				out.write(buffer, 0, length);
+				listener.onFetchProgress(total);
 				length = in.read(buffer);
 			}
+			out.flush();
+			listener.onFetchSuccedded(total);
 		} catch (IOException e) {
-			throw e;
+			FetchException fetchException = new FetchException(e);
+			listener.onFetchFailed(fetchException, total);
+			throw fetchException;
 		} finally {
+			listener.onFetchFinished();
 			returnBuffer(buffer);
 		}
 	}
