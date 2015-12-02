@@ -70,12 +70,14 @@ in.close();
 Both methods optionally take a [`FetchProgressListener`][FetchProgressListener] that gets notified on various points in the lifecycle (`started`, `progressed`, `succeded` or `failed`, `finished`) of a fetch operation. The [`BaseFetchProgressListener`][BaseFetchProgressListener] is a convenient base implementation with empty methods.
 
 ```java
-foo.setContent(new BufferedFetcher().fetch(
-	new FileInputStream(file),	new BaseFetchProgressListener() {
+foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file),
+	new BaseFetchProgressListener() {
 		public void onFetchProgress(long bytesFetched) {
 			System.out.println(bytesFetched + " bytes fetched so far.");
 		}
-	},	true);
+	},
+	true
+);
 ```
 
 ### Handling of bad parameters
