@@ -73,7 +73,7 @@ Both methods optionally take a [`FetchProgressListener`][FetchProgressListener] 
 foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file), new BaseFetchProgressListener(){
 	public void onFetchProgress(long bytesFetched) {
 		System.out.println(bytesFetched + " bytes fetched so far.");
-}));
+}), true);
 ```
 
 ### Handling of bad parameters
@@ -84,7 +84,7 @@ Missing or invalid arguments are handled gracefully with the following behaviour
  - If `null` is given as the [`OutputStream`][OutputStream], it is simply ignored, but the content of given [`InputStream`][InputStream] is fetched anyway. If requested, the [`InputStream`][InputStream] will be closed. 
  - A non-positive buffer size is replaced with the default buffer size of one [kibibyte](https://en.wikipedia.org/wiki/Kibibyte).
  
-### Implementations
+### Custom implementations
  
 This library provides [`BufferedFetcher`][BufferedFetcher] as the simpelest possible implementations of [`Fetcher`][Fetcher]. It eagerly allocates a `byte[]` as a buffer in the constructor and used it to perform fetch operations by sequentually reading from the [`InputStream`][InputStream] into the buffer and then writing from the buffer to the [`OutputStream`][OutputStream]. It is not threadsafe.
 
