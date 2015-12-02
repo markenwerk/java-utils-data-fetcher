@@ -28,7 +28,7 @@ package net.markenwerk.utils.data.fetcher;
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.1.0
  */
-class NullFetchProgressListener extends FetchProgressAdapter {
+class NullFetchProgressListener extends BaseFetchProgressListener {
 
 	public static final NullFetchProgressListener INSTANCE = new NullFetchProgressListener();
 

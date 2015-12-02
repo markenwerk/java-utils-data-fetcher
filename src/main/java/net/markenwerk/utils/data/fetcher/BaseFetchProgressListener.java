@@ -22,7 +22,7 @@
 package net.markenwerk.utils.data.fetcher;
 
 /**
- * A {@link FetchProgressAdapter} is an implementation of
+ * A {@link BaseFetchProgressListener} is an implementation of
  * {@link FetchProgressListener} with emtp methods. It is intended a base for
  * custom {@link FetchProgressListener} implementations, that don't need to
  * implement all methods.
@@ -30,7 +30,7 @@ package net.markenwerk.utils.data.fetcher;
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.1.0
  */
-public abstract class FetchProgressAdapter implements FetchProgressListener {
+public abstract class BaseFetchProgressListener implements FetchProgressListener {
 
 	@Override
 	public void onFetchStarted() {
