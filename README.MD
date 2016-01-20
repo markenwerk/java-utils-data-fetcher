@@ -89,7 +89,7 @@ Missing or invalid arguments are handled gracefully with the following behaviour
  
 ### Custom implementations
  
-This library provides [`BufferedFetcher`][BufferedFetcher] as the simpelest possible implementations of [`Fetcher`][Fetcher]. It eagerly allocates a `byte[]` as a buffer in the constructor and used it to perform fetch operations by sequentually reading from the [`InputStream`][InputStream] into the buffer and then writing from the buffer to the [`OutputStream`][OutputStream]. It is not threadsafe.
+This library provides [`BufferedFetcher`][BufferedFetcher] as the simpelest possible implementations of [`Fetcher`][Fetcher]. It eagerly allocates a `byte[]` during constructor and uses it as a buffer to perform fetch operations by sequentually reading from the [`InputStream`][InputStream] into the buffer and then writing from the buffer to the [`OutputStream`][OutputStream]. It is not threadsafe.
 
 Variations of the bufferd copying stratigy (e.g. lazy buffer creation, threadsafeness) or compleatly other copying stratagies can easily be implemented by extending [`AbstractBufferedFetcher`][AbstractBufferedFetcher] or [`AbstractFetcher`][AbstractFetcher] respectively.
  
