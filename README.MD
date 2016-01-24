@@ -9,17 +9,17 @@ This is a simple helper to copy the content of input stream into output streams 
 
 ## Overview
 
-This library is hosted in the [Maven Central Repositoy](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|2.1.0|jar). You can use it with the following coordinates:
+This library is hosted in the [Maven Central Repositoy](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|2.1.1|jar). You can use it with the following coordinates:
 
 ```xml
 <dependency>
 	<groupId>net.markenwerk</groupId>
 	<artifactId>utils-data-fetcher</artifactId>
-	<version>2.1.0</version>
+	<version>2.1.1</version>
 </dependency>
 ```
 
-Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/2.1.0/index.html) for further information.
+Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/2.1.1/index.html) for further information.
 
 ## Motivation
 
@@ -93,12 +93,12 @@ This library provides [`BufferedFetcher`][BufferedFetcher] as the simpelest poss
 
 Variations of the bufferd copying stratigy (e.g. lazy buffer creation, threadsafeness) or compleatly other copying stratagies can easily be implemented by extending [`AbstractBufferedFetcher`][AbstractBufferedFetcher] or [`AbstractFetcher`][AbstractFetcher] respectively.
  
-[AbstractBufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html
-[AbstractFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/AbstractFetcher.html
-[BaseFetchProgressListener]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html
-[BufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/BufferedFetcher.html
-[Fetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
-[FetchProgressListener]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.0/index.html?net/markenwerk/utils/data/fetcher/FetchProgressListener.html
+[AbstractBufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html
+[AbstractFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/AbstractFetcher.html
+[BaseFetchProgressListener]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html
+[BufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/BufferedFetcher.html
+[Fetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
+[FetchProgressListener]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/FetchProgressListener.html
 
 [InputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/InputStream.html
 [OutputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/OutputStream.html
