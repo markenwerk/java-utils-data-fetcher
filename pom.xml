@@ -91,6 +91,11 @@
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<version>3.0.1</version>
+				<configuration>
+					<instructions>
+						<Bundle-DocURL>${project.scm.url}</Bundle-DocURL>
+					</instructions>
+				</configuration>
 				<executions>
 					<execution>
 						<id>bundle-manifest</id>
