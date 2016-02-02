@@ -87,13 +87,14 @@
 					</archive>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<version>3.0.1</version>
 				<configuration>
 					<instructions>
-						<Bundle-DocURL>${project.scm.url}</Bundle-DocURL>
+						<Bundle-DocURL>${project.url}</Bundle-DocURL>
 					</instructions>
 				</configuration>
 				<executions>
@@ -111,7 +112,7 @@
 
 	<profiles>
 		<profile>
-			<id>release</id>
+			<id>install</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -132,6 +133,9 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<version>2.10.3</version>
+						<configuration>
+							<notimestamp>true</notimestamp>
+						</configuration>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -161,7 +165,7 @@
 		</profile>
 
 		<profile>
-			<id>sonatype</id>
+			<id>release</id>
 			<distributionManagement>
 				<snapshotRepository>
 					<id>ossrh</id>
@@ -185,6 +189,30 @@
 							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 							<autoReleaseAfterClose>true</autoReleaseAfterClose>
 						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-scm-publish-plugin</artifactId>
+						<version>1.1</version>
+						<configuration>
+							<checkoutDirectory>${project.build.directory}/gh-pages</checkoutDirectory>
+							<checkinComment>Javadoc for ${project.artifactId}:${project.version}</checkinComment>
+							<content>${project.build.directory}/apidocs</content>
+							<siteOutputEncoding>UTF-8</siteOutputEncoding>
+							<skipDeletedFiles>true</skipDeletedFiles>
+							<pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
+							<scmBranch>gh-pages</scmBranch>
+						</configuration>
+						<executions>
+							<execution>
+								<id>publish-javadocs</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>publish-scm</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
@@ -217,5 +245,4 @@
 			</build>
 		</profile>
 	</profiles>
-
 </project>
