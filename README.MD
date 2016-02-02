@@ -100,5 +100,5 @@ Variations of the bufferd copying stratigy (e.g. lazy buffer creation, threadsaf
 [Fetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
 [FetchProgressListener]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/FetchProgressListener.html
 
-[InputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/InputStream.html
-[OutputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/OutputStream.html
+[InputStream]: http://docs.oracle.com/javase/8/docs/api/index.html?java/io/InputStream.html
+[OutputStream]: http://docs.oracle.com/javase/8/docs/api/index.html?java/io/OutputStream.html
