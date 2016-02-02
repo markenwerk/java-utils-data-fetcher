@@ -93,12 +93,12 @@ This library provides [`BufferedFetcher`][BufferedFetcher] as the simpelest poss
 
 Variations of the bufferd copying stratigy (e.g. lazy buffer creation, threadsafeness) or compleatly other copying stratagies can easily be implemented by extending [`AbstractBufferedFetcher`][AbstractBufferedFetcher] or [`AbstractFetcher`][AbstractFetcher] respectively.
  
-[AbstractBufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html
-[AbstractFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/AbstractFetcher.html
-[BaseFetchProgressListener]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html
-[BufferedFetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/BufferedFetcher.html
-[Fetcher]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
-[FetchProgressListener]: http://static.javadoc.io/net.markenwerk/utils-data-fetcher/2.1.1/index.html?net/markenwerk/utils/data/fetcher/FetchProgressListener.html
+[AbstractBufferedFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/package-summary.html
+[AbstractFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractFetcher.html
+[BaseFetchProgressListener]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html
+[BufferedFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/BufferedFetcher.html
+[Fetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
+[FetchProgressListener]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/FetchProgressListener.html
 
 [InputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/InputStream.html
 [OutputStream]: http://docs.oracle.com/javase/6/docs/api/index.html?java/io/OutputStream.html
