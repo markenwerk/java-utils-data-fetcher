@@ -9,7 +9,7 @@
 
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>A stream fetching helper for Java</description>
-	<url>https://github.com/markenwerk/java-utils-data-fetcher</url>
+	<url>${urls.github}</url>
 	<inceptionYear>2015</inceptionYear>
 
 	<licenses>
@@ -28,18 +28,32 @@
 		<developer>
 			<name>Torsten Krause</name>
 			<email>tk@markenwerk.net</email>
-			<organization>Markenwerk – Gesellschaft für markenbildende Maßnahmen mbH</organization>
-			<organizationUrl>http://markenwerk.net/</organizationUrl>
+			<organization>${project.organization.name}</organization>
+			<organizationUrl>${project.organization.url}</organizationUrl>
 		</developer>
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@github.com:markenwerk/java-utils-data-fetcher.git</connection>
-		<developerConnection>scm:git:git@github.com:markenwerk/java-utils-data-fetcher.git</developerConnection>
-		<url>https://github.com/markenwerk/java-utils-data-fetcher</url>
+		<connection>${connections.github}</connection>
+		<developerConnection>${connections.github}</developerConnection>
+		<url>${urls.github}</url>
 	</scm>
 
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>${urls.travis}</url>
+	</ciManagement>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>${urls.github}/issues</url>
+	</issueManagement>
+
 	<properties>
+		<project.identifier>markenwerk/java-${project.artifactId}</project.identifier>
+		<urls.travis>https://travis-ci.org/${project.identifier}</urls.travis>
+		<urls.github>https://github.com/${project.identifier}</urls.github>
+		<connections.github>scm:git:git@github.com:${project.identifier}.git</connections.github>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
