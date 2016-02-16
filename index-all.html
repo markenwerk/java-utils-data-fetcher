@@ -77,7 +77,7 @@
 <dd>
 <div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractBufferedFetcher</code></a> is a sensible base implementation of
  <a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a> that uses a <code>byte[]</code> as buffer, to while copying all
- bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a> by sequentually
+ bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a> by sequentially
  reading from the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into the buffer and then writing from
  the buffer to the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </dd>
@@ -98,7 +98,7 @@
 <dt><a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">BaseFetchProgressListener</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
 <dd>
 <div class="block">A <a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher"><code>BaseFetchProgressListener</code></a> is an implementation of
- <a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher"><code>FetchProgressListener</code></a> with emtp methods.</div>
+ <a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher"><code>FetchProgressListener</code></a> with empty methods.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html#BaseFetchProgressListener--">BaseFetchProgressListener()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher">BaseFetchProgressListener</a></dt>
 <dd>&nbsp;</dd>
@@ -106,7 +106,7 @@
 <dd>
 <div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractBufferedFetcher</code></a> is a sensible base implementation of
  <a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a> that uses a <code>byte[]</code> as buffer, while copying all
- bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a> by sequentually
+ bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a> by sequentially
  reading from the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into the buffer and then writing from
  the buffer to the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </dd>
@@ -208,7 +208,7 @@
 </dd>
 <dt><a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">FetchException</span></a> - Exception in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
 <dd>
-<div class="block">A <a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> is a specialised <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io"><code>IOException</code></a> that indicates
+<div class="block">A <a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> is a specialized <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io"><code>IOException</code></a> that indicates
  that a fetch operation of a <a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a> has failed.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchException.html#FetchException-java.lang.String-java.lang.Throwable-">FetchException(String, Throwable)</a></span> - Constructor for exception net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a></dt>
@@ -280,7 +280,7 @@
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchSuccedded-java.lang.Long-">onFetchSuccedded(Long)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></dt>
 <dd>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
- has succeded.</div>
+ has succeeded.</div>
 </dd>
 </dl>
 <a name="I:R">

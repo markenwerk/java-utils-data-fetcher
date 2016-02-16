@@ -125,12 +125,12 @@ var activeTableTab = "activeTableTab";
 extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></pre>
 <div class="block"><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractBufferedFetcher</code></a> is a sensible base implementation of
  <a href="../../../../../net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a> that uses a <code>byte[]</code> as buffer, to while copying all
- bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a> by sequentually
+ bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a> by sequentially
  reading from the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into the buffer and then writing from
  the buffer to the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.
  
  <p>
- Implementers must only implment a single method that provides a
+ Implementers must only implement a single method that provides a
  <code>byte[]</code> to be used as a buffer in
  <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>doCopy(InputStream, OutputStream, FetchProgressListener)</code></a>: <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#obtainBuffer--"><code>obtainBuffer()</code></a>.
  
@@ -320,7 +320,7 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractFetche
  <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.
  
  <p>
- It is garanteed that neither the given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> nor the given
+ It is guaranteed that neither the given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> nor the given
  <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a> nor the given <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher"><code>FetchProgressListener</code></a> is
  null.
  
@@ -352,7 +352,7 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractFetche
  to obtain a <code>byte[]</code> to be used as a buffer.
  
  <p>
- Every <code>bute[]</code> that is returned by this method will be passed as an
+ Every <code>byte[]</code> that is returned by this method will be passed as an
  argument of <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#returnBuffer-byte:A-"><code>returnBuffer(byte[])</code></a> after
  <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>doCopy(InputStream, OutputStream, FetchProgressListener)</code></a>
  has finished using it.</div>
