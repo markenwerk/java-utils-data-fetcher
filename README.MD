@@ -11,7 +11,7 @@ This is a simple helper to copy the content of input stream into output streams 
 
 ## Overview
 
-This library is hosted in the [Maven Central Repositoy](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|2.1.1|jar). You can use it with the following coordinates:
+This library is hosted in the [Maven Central Repository](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|2.1.1|jar). You can use it with the following coordinates:
 
 ```xml
 <dependency>
@@ -69,7 +69,7 @@ in.close();
 
 ### Listen to fetch progress
 
-Both methods optionally take a [`FetchProgressListener`][FetchProgressListener] that gets notified on various points in the lifecycle (`started`, `progressed`, `succeded` or `failed`, `finished`) of a fetch operation. The [`BaseFetchProgressListener`][BaseFetchProgressListener] is a convenient base implementation with empty methods.
+Both methods optionally take a [`FetchProgressListener`][FetchProgressListener] that gets notified on various points in the lifecycle (`started`, `progressed`, `succeeded` or `failed`, `finished`) of a fetch operation. The [`BaseFetchProgressListener`][BaseFetchProgressListener] is a convenient base implementation with empty methods.
 
 ```java
 foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file),
@@ -91,9 +91,9 @@ Missing or invalid arguments are handled gracefully with the following behaviour
  
 ### Custom implementations
  
-This library provides [`BufferedFetcher`][BufferedFetcher] as the simpelest possible implementations of [`Fetcher`][Fetcher]. It eagerly allocates a `byte[]` during constructor and uses it as a buffer to perform fetch operations by sequentually reading from the [`InputStream`][InputStream] into the buffer and then writing from the buffer to the [`OutputStream`][OutputStream]. It is not threadsafe.
+This library provides [`BufferedFetcher`][BufferedFetcher] as the simplest possible implementations of [`Fetcher`][Fetcher]. It eagerly allocates a `byte[]` during construction and uses it as a buffer to perform fetch operations by sequentially reading from the [`InputStream`][InputStream] into the buffer and then writing from the buffer to the [`OutputStream`][OutputStream]. It is not threadsafe.
 
-Variations of the bufferd copying stratigy (e.g. lazy buffer creation, threadsafeness) or compleatly other copying stratagies can easily be implemented by extending [`AbstractBufferedFetcher`][AbstractBufferedFetcher] or [`AbstractFetcher`][AbstractFetcher] respectively.
+Variations of the buffered copying strategy (e.g. lazy buffer creation, threadsafeness) or completely other copying strategies can easily be implemented by extending [`AbstractBufferedFetcher`][AbstractBufferedFetcher] or [`AbstractFetcher`][AbstractFetcher] respectively.
  
 [AbstractBufferedFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/package-summary.html
 [AbstractFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractFetcher.html
