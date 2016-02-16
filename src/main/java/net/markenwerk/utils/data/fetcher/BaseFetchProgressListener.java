@@ -23,7 +23,7 @@ package net.markenwerk.utils.data.fetcher;
 
 /**
  * A {@link BaseFetchProgressListener} is an implementation of
- * {@link FetchProgressListener} with emtp methods. It is intended a base for
+ * {@link FetchProgressListener} with empty methods. It is intended a base for
  * custom {@link FetchProgressListener} implementations, that don't need to
  * implement all methods.
  * 

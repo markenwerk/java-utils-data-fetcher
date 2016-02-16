@@ -28,12 +28,12 @@ import java.io.OutputStream;
 /**
  * {@link AbstractBufferedFetcher} is a sensible base implementation of
  * {@link Fetcher} that uses a {@code byte[]} as buffer, to while copying all
- * bytes from an {@link InputStream} to an {@link OutputStream} by sequentually
+ * bytes from an {@link InputStream} to an {@link OutputStream} by sequentially
  * reading from the {@link InputStream} into the buffer and then writing from
  * the buffer to the {@link OutputStream}.
  * 
  * <p>
- * Implementers must only implment a single method that provides a
+ * Implementers must only implement a single method that provides a
  * {@code byte[]} to be used as a buffer in
  * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}: {@link AbstractBufferedFetcher#obtainBuffer()}.
  * 
@@ -87,7 +87,7 @@ public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 	 * to obtain a {@code byte[]} to be used as a buffer.
 	 * 
 	 * <p>
-	 * Every {@code bute[]} that is returned by this method will be passed as an
+	 * Every {@code byte[]} that is returned by this method will be passed as an
 	 * argument of {@link AbstractBufferedFetcher#returnBuffer(byte[])} after
 	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
 	 * has finished using it.

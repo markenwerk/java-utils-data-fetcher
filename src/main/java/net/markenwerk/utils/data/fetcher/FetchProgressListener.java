@@ -41,7 +41,7 @@ public interface FetchProgressListener {
 	 * 
 	 * <p>
 	 * The progress will only be reported if the {@link Fetcher} is capable of
-	 * monitoring the progres.
+	 * monitoring the progress.
 	 * 
 	 * @param bytesFetched
 	 *            Total amount of bytes fetched so far.
@@ -50,11 +50,11 @@ public interface FetchProgressListener {
 
 	/**
 	 * Indicates that the process of fetching bytes from an {@link InputStream}
-	 * has succeded.
+	 * has succeeded.
 	 * 
 	 * @param bytesFetched
-	 *            Total total amount of bytes fetchd or {@literal null}, if the
-	 *            {@link Fetcher} is not capable of monitoring the progres
+	 *            Total total amount of bytes fetched or {@literal null}, if the
+	 *            {@link Fetcher} is not capable of monitoring the progress.
 	 */
 	public void onFetchSuccedded(Long bytesFetched);
 
@@ -69,9 +69,9 @@ public interface FetchProgressListener {
 	 *            {@link FetchProgressListener} has been given to.
 	 * 
 	 * @param bytesFetched
-	 *            Total total amount of bytes fetchd before the process failed
+	 *            Total total amount of bytes fetched before the process failed
 	 *            or {@literal null}, if the {@link Fetcher} is not capable of
-	 *            monitoring the progres
+	 *            monitoring the progress.
 	 */
 	public void onFetchFailed(FetchException exception, Long bytesFetched);
 

@@ -24,7 +24,7 @@ package net.markenwerk.utils.data.fetcher;
 import java.io.IOException;
 
 /**
- * A {@link FetchException} is a specialised {@link IOException} that indicates
+ * A {@link FetchException} is a specialized {@link IOException} that indicates
  * that a fetch operation of a {@link Fetcher} has failed.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)

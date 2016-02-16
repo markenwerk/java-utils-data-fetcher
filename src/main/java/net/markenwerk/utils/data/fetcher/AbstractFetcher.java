@@ -30,7 +30,7 @@ import java.io.OutputStream;
  * {@link AbstractFetcher} is a sensible base implementation of {@link Fetcher}.
  * 
  * <p>
- * Implementers must only implment a single simplified method that copies all
+ * Implementers must only implement a single simplified method that copies all
  * bytes from an {@link InputStream} to an {@link OutputStream}:
  * {@link AbstractFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}.
  * 
@@ -112,7 +112,7 @@ public abstract class AbstractFetcher implements Fetcher {
 	 * {@link OutputStream}.
 	 * 
 	 * <p>
-	 * It is garanteed that neither the given {@link InputStream} nor the given
+	 * It is guaranteed that neither the given {@link InputStream} nor the given
 	 * {@link OutputStream} nor the given {@link FetchProgressListener} is
 	 * {@literal null}.
 	 * 
