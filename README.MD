@@ -93,7 +93,9 @@ Missing or invalid arguments are handled gracefully with the following behaviour
  
 This library provides [`BufferedFetcher`][BufferedFetcher] as the simplest possible implementations of [`Fetcher`][Fetcher]. It eagerly allocates a `byte[]` during construction and uses it as a buffer to perform fetch operations by sequentially reading from the [`InputStream`][InputStream] into the buffer and then writing from the buffer to the [`OutputStream`][OutputStream]. It is not threadsafe.
 
-Variations of the buffered copying strategy (e.g. lazy buffer creation, threadsafeness) or completely other copying strategies can easily be implemented by extending [`AbstractBufferedFetcher`][AbstractBufferedFetcher] or [`AbstractFetcher`][AbstractFetcher] respectively.
+Variations of the buffered copying strategy (e.g. lazy buffer creation, threadsafeness) or completely other copying strategies can easily be implemented by extending [`AbstractFetcher`][AbstractFetcher] or [`AbstractBufferedFetcher`][AbstractBufferedFetcher] respectively.
+
+[`AbstractFetcher`][AbstractFetcher] reduces all methods from the [`Fetcher`][Fetcher] interface to a single method (`doCopy(InputStream, OutputStream, FetchProgressListener)`) where every parameter is guaranteed to be not `null`, and therefore greatly simplifies the implementation of new fetch strategies. [`AbstractBufferedFetcher`] is such an implementation of the aforementioned buffering fetch strategy that handles the sequentially write-read cycles and notifies the [`FetchProgressListener`][FetchProgressListener] accordingly, but leaves the buffer allocation strategy to be specified.
  
 [AbstractBufferedFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/package-summary.html
 [AbstractFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractFetcher.html
