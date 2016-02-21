@@ -33,12 +33,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * JUnit tests for {@link Fetcher#fetch(java.io.Streams)} methods on stream that
+ * JUnit tests for {@link Fetcher#fetch(InputStream)} methods on stream that
  * fail.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @param <ActualFetcher>
- *            The actual {@link Fetcher} type to be tested.
+ *           The actual {@link Fetcher} type to be tested.
  * @since 1.0.0
  */
 public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
@@ -61,11 +61,16 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 		fetcher = createFetcher();
 	}
 
+	/**
+	 * Creates the {@link Fetcher} to be tested.
+	 * 
+	 * @return The {@link Fetcher} to be tested.
+	 */
 	protected abstract ActualFetcher createFetcher();
 
 	/**
-	 * Create a new {@link ObservableStreams} from an {@link ByteArrayStreams}
-	 * that reads some BYTES.
+	 * Create a new {@link ObservableInputStream} from an
+	 * {@link ByteArrayInputStream} that reads some BYTES.
 	 */
 	@Before
 	public void prepareInputStream() {
@@ -73,7 +78,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	}
 
 	/**
-	 * Close the {@link ObservableStreams} created by
+	 * Close the {@link ObservableInputStream} created by
 	 * {@link AbstractFetcherTests#prepareInputStream()}.
 	 */
 	@After
@@ -127,8 +132,8 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	}
 
 	/**
-	 * Fetch BYTES into a new {@code byte[]}, leaving the input stream
-	 * explicitly open.
+	 * Fetch BYTES into a new {@code byte[]}, leaving the input stream explicitly
+	 * open.
 	 * 
 	 * @throws IOException
 	 */
@@ -440,8 +445,8 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 
 	/**
 	 * Fetch BYTES into an {@link OutputStream}, failing on
-	 * {@link InputStream#close()} and {@link OutputStream#close()}, leaving
-	 * both streams open.
+	 * {@link InputStream#close()} and {@link OutputStream#close()}, leaving both
+	 * streams open.
 	 * 
 	 * @throws IOException
 	 */
@@ -459,8 +464,8 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 
 	/**
 	 * Fetch BYTES into an {@link OutputStream}, failing on
-	 * {@link InputStream#close()} and {@link OutputStream#close()}, closing
-	 * both stream.
+	 * {@link InputStream#close()} and {@link OutputStream#close()}, closing both
+	 * stream.
 	 * 
 	 * @throws IOException
 	 */

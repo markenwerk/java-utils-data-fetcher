@@ -46,14 +46,14 @@ class FailableInputStream extends ObservableInputStream {
 	public static enum FailOn {
 
 		/**
-		 * Lets a {@link FailingInputStream} fail on
-		 * {@link FailingInputStream#read()}.
+		 * Lets a {@link FailableInputStream} fail on
+		 * {@link FailableInputStream#read()}.
 		 */
 		READ,
 
 		/**
-		 * Lets a {@link FailingInputStream} fail on
-		 * {@link FailingInputStream#close()}.
+		 * Lets a {@link FailableInputStream} fail on
+		 * {@link FailableInputStream#close()}.
 		 */
 		CLOSE;
 
@@ -66,7 +66,7 @@ class FailableInputStream extends ObservableInputStream {
 	 * .
 	 * 
 	 * @param in
-	 *            The {@link OutputStream} to wrap.
+	 *           The {@link OutputStream} to wrap.
 	 */
 	public FailableInputStream(InputStream in) {
 		super(in);
@@ -76,7 +76,7 @@ class FailableInputStream extends ObservableInputStream {
 	 * Specify the operation this {@link FailableInputStream} will fail on.
 	 * 
 	 * @param failOns
-	 *            The operations to fail on.
+	 *           The operations to fail on.
 	 */
 	public void setFailons(FailOn... failOns) {
 		this.failOns.clear();
@@ -97,8 +97,8 @@ class FailableInputStream extends ObservableInputStream {
 
 	private void failOn(FailOn failOn) throws IOException {
 		if (failOns.contains(failOn)) {
-			throw new IOException(getClass().getSimpleName() + " was asked to fail on " + failOn.name().toLowerCase()
-					+ ".");
+			throw new IOException(
+					getClass().getSimpleName() + " was asked to fail on " + failOn.name().toLowerCase() + ".");
 		}
 	}
 
