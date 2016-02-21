@@ -132,7 +132,8 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractFetche
  <p>
  Implementers must only implement a single method that provides a
  <code>byte[]</code> to be used as a buffer in
- <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>doCopy(InputStream, OutputStream, FetchProgressListener)</code></a>: <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#obtainBuffer--"><code>obtainBuffer()</code></a>.
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>doCopy(InputStream, OutputStream, FetchProgressListener)</code></a>
+ : <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#obtainBuffer--"><code>obtainBuffer()</code></a>.
  
  <p>
  Implementers may also override
@@ -165,7 +166,9 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractFetche
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected static int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#DEFAULT_BUFEFR_SIZE">DEFAULT_BUFEFR_SIZE</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#DEFAULT_BUFEFR_SIZE">DEFAULT_BUFEFR_SIZE</a></span></code>
+<div class="block">The default buffer size of one kibibyte.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -201,7 +204,9 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractFetche
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>protected static byte[]</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#createBuffer-int-">createBuffer</a></span>(int&nbsp;bufferSize)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#createBuffer-int-">createBuffer</a></span>(int&nbsp;bufferSize)</code>
+<div class="block">Safely creates a new byte[] to be used as a buffer.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
@@ -265,6 +270,7 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractFetche
 <li class="blockList">
 <h4>DEFAULT_BUFEFR_SIZE</h4>
 <pre>protected static final&nbsp;int DEFAULT_BUFEFR_SIZE</pre>
+<div class="block">The default buffer size of one kibibyte.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../constant-values.html#net.markenwerk.utils.data.fetcher.AbstractBufferedFetcher.DEFAULT_BUFEFR_SIZE">Constant Field Values</a></dd>
@@ -303,6 +309,15 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractFetche
 <li class="blockList">
 <h4>createBuffer</h4>
 <pre>protected static final&nbsp;byte[]&nbsp;createBuffer(int&nbsp;bufferSize)</pre>
+<div class="block">Safely creates a new byte[] to be used as a buffer.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>bufferSize</code> - The size of the byte[] to be created. Defaults to the
+           <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#DEFAULT_BUFEFR_SIZE"><code>default</code></a>
+           buffer size, if the given buffer size is not positive.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The new byte[].</dd>
+</dl>
 </li>
 </ul>
 <a name="doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">
