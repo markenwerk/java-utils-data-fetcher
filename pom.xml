@@ -142,8 +142,6 @@
 				<version>2.10.3</version>
 				<configuration>
 					<notimestamp>true</notimestamp>
-					<links>
-					</links>
 				</configuration>
 				<executions>
 					<execution>

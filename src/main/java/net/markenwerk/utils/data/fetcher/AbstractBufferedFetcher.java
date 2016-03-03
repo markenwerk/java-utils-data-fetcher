@@ -35,7 +35,8 @@ import java.io.OutputStream;
  * <p>
  * Implementers must only implement a single method that provides a
  * {@code byte[]} to be used as a buffer in
- * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}: {@link AbstractBufferedFetcher#obtainBuffer()}.
+ * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+ * : {@link AbstractBufferedFetcher#obtainBuffer()}.
  * 
  * <p>
  * Implementers may also override
@@ -48,8 +49,20 @@ import java.io.OutputStream;
  */
 public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 
+	/**
+	 * The default buffer size of one kibibyte.
+	 */
 	protected static final int DEFAULT_BUFEFR_SIZE = 1024;
 
+	/**
+	 * Safely creates a new {@literal byte[]} to be used as a buffer.
+	 * 
+	 * @param bufferSize
+	 *           The size of the {@literal byte[]} to be created. Defaults to the
+	 *           {@link AbstractBufferedFetcher#DEFAULT_BUFEFR_SIZE default}
+	 *           buffer size, if the given buffer size is not positive.
+	 * @return The new {@literal byte[]}.
+	 */
 	protected static final byte[] createBuffer(int bufferSize) {
 		return new byte[bufferSize > 0 ? bufferSize : DEFAULT_BUFEFR_SIZE];
 	}
@@ -104,7 +117,7 @@ public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 	 * {@link AbstractBufferedFetcher#obtainBuffer()}.
 	 * 
 	 * @param buffer
-	 *            The {@code byte[]} to be returned.
+	 *           The {@code byte[]} to be returned.
 	 */
 	protected void returnBuffer(byte[] buffer) {
 	}

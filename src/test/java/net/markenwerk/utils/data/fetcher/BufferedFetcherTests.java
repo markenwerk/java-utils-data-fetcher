@@ -21,9 +21,11 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
+import java.io.InputStream;
+
 /**
- * JUnit tests for {@link BufferedFetcher#fetch(java.io.Streams)} methods on
- * stream that fail.
+ * JUnit tests for {@link BufferedFetcher#fetch(InputStream)} methods on stream
+ * that fail.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0

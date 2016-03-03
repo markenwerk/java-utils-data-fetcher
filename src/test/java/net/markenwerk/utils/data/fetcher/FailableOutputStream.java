@@ -45,14 +45,14 @@ class FailableOutputStream extends ObservableOutputStream {
 	public static enum FailOn {
 
 		/**
-		 * Lets a {@link FailingOutputStream} fail on
-		 * {@link FailingOutputStream#write(int)}.
+		 * Lets a {@link FailableOutputStream} fail on
+		 * {@link FailableOutputStream#write(int)}.
 		 */
 		WRITE,
 
 		/**
-		 * Lets a {@link FailingOutputStream} fail on
-		 * {@link FailingOutputStream#close()}.
+		 * Lets a {@link FailableOutputStream} fail on
+		 * {@link FailableOutputStream#close()}.
 		 */
 		CLOSE;
 
@@ -65,7 +65,7 @@ class FailableOutputStream extends ObservableOutputStream {
 	 * {@link OutputStream}.
 	 * 
 	 * @param out
-	 *            The {@link OutputStream} to wrap.
+	 *           The {@link OutputStream} to wrap.
 	 */
 	public FailableOutputStream(OutputStream out) {
 		super(out);
@@ -75,7 +75,7 @@ class FailableOutputStream extends ObservableOutputStream {
 	 * Specify the operation this {@link FailableOutputStream} will fail on.
 	 * 
 	 * @param failOns
-	 *            The operations to fail on.
+	 *           The operations to fail on.
 	 */
 	public void setFailons(FailOn... failOns) {
 		this.failOns.clear();
@@ -96,8 +96,8 @@ class FailableOutputStream extends ObservableOutputStream {
 
 	private void failOn(FailOn failOn) throws IOException {
 		if (failOns.contains(failOn)) {
-			throw new IOException(getClass().getSimpleName() + " was asked to fail on " + failOn.name().toLowerCase()
-					+ ".");
+			throw new IOException(
+					getClass().getSimpleName() + " was asked to fail on " + failOn.name().toLowerCase() + ".");
 		}
 	}
 
