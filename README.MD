@@ -11,7 +11,7 @@ This is a simple helper to copy the content of input stream into output streams 
 
 ## Overview
 
-This library is hosted in the [Maven Central Repository](http://search.maven.org/#artifactdetails|net.markenwerk|utils-data-fetcher|2.1.1|jar). You can use it with the following coordinates:
+This library is hosted in the [Maven Central Repository](https://maven-badges.herokuapp.com/maven-central/net.markenwerk/utils-data-fetcher). You can use it with the following coordinates:
 
 ```xml
 <dependency>
