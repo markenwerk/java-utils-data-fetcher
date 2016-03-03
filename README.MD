@@ -17,7 +17,7 @@ This library is hosted in the [Maven Central Repository](https://maven-badges.he
 <dependency>
 	<groupId>net.markenwerk</groupId>
 	<artifactId>utils-data-fetcher</artifactId>
-	<version>2.1.1</version>
+	<version>2.1.2</version>
 </dependency>
 ```
 
