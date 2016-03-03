@@ -119,7 +119,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * Fetch BYTES into a new {@code byte[]}, leaving the input stream open by
 	 * default.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the fetch process failed unexpectedly.
 	 */
 	@Test
 	public void fetch_leaveStreamOpenByDefault() throws IOException {
@@ -135,7 +135,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * Fetch BYTES into a new {@code byte[]}, leaving the input stream explicitly
 	 * open.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the fetch process failed unexpectedly.
 	 */
 	@Test
 	public void fetch_leaveStreamOpen() throws IOException {
@@ -150,7 +150,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	/**
 	 * Fetch BYTES into a new {@code byte[]}, closing the input stream.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the fetch process failed unexpectedly.
 	 */
 	@Test
 	public void fetch_autoCloseStream() throws IOException {
@@ -166,7 +166,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * Fetch BYTES into a new {@code byte[]}, {@literal null} as an
 	 * {@link InputStream}, which should yield an empty array.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the fetch process failed unexpectedly.
 	 */
 	@Test
 	public void fetch_withBadParameters_nullStream() throws IOException {
@@ -182,7 +182,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * Fetch BYTES into an {@link OutputStream}, leaving both streams open by
 	 * default.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_leaveStreamsOpenByDefault() throws IOException {
@@ -199,7 +199,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * Fetch BYTES into an {@link OutputStream}, leaving both streams explicitly
 	 * open.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_leaveStreamsOpen() throws IOException {
@@ -215,7 +215,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	/**
 	 * Fetch BYTES into an {@link OutputStream}, closing both stream.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_autoCloseStreams() throws IOException {
@@ -231,7 +231,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	/**
 	 * Fetch BYTES into an {@link OutputStream}, closing both stream.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_autoCloseStreams_inputStreamOnly() throws IOException {
@@ -247,7 +247,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	/**
 	 * Fetch BYTES into an {@link OutputStream}, closing both stream.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_autoCloseStreams_outputStreamOnly() throws IOException {
@@ -264,7 +264,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * Fetch nothing into an {@link OutputStream}, {@literal null} as an
 	 * {@link InputStream}, which should yield an empty array.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withBadParameters_nullInputStream() throws IOException {
@@ -279,7 +279,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * Fetch BYTES into an {@link OutputStream}, {@literal null} as an
 	 * {@link OutputStream}, which should read the {@link InputStream} anyway.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withBadParameters_nullOutputStream() throws IOException {
@@ -295,7 +295,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * {@link InputStream}, closing both streams, which should yield an empty
 	 * array.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withBadParameters_nullInputStream_autoCloseStreams() throws IOException {
@@ -312,7 +312,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * {@link InputStream}, which should yield an empty array, closing both
 	 * stream.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withBadParameters_nullOutputStream_autoCloseStreams() throws IOException {
@@ -327,9 +327,9 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	/**
 	 * Fetch nothing into an {@link OutputStream}, {@literal null} as an
 	 * {@link InputStream}, which should yield an empty array, leaving both
-	 * streas open.
+	 * streams open.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withBadParameters_nullStreams_leaveStreamsOpen() throws IOException {
@@ -345,7 +345,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * {@link InputStream}, which should yield an empty array, closing both
 	 * stream.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withBadParameters_nullStreams_autoCloseStreams() throws IOException {
@@ -360,7 +360,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * Fetch BYTES into an {@link OutputStream}, failing on
 	 * {@link InputStream#read()}, leaving both streams open.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withFailingRead_leavStreamsOpen() throws IOException {
@@ -381,7 +381,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * Fetch BYTES into an {@link OutputStream}, failing on
 	 * {@link InputStream#read()}, closing both stream.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withFailingRead_autoCloseStreams() throws IOException {
@@ -403,7 +403,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * {@link OutputStream#write(int)}, which should yield an empty array,
 	 * leaving both streams open.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withFailingWrite_leavStreamsOpen() throws IOException {
@@ -425,7 +425,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * {@link OutputStream#write(int)}, which should yield an empty array,
 	 * closing both stream.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withFailingWrite_autoCloseStreams() throws IOException {
@@ -448,7 +448,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * {@link InputStream#close()} and {@link OutputStream#close()}, leaving both
 	 * streams open.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withFailingClose_leavStreamsOpen() throws IOException {
@@ -467,7 +467,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	 * {@link InputStream#close()} and {@link OutputStream#close()}, closing both
 	 * stream.
 	 * 
-	 * @throws IOException
+	 * @throws IOException If the copy process failed unexpectedly.
 	 */
 	@Test
 	public void copy_withFailingClose_autoCloseStreams() throws IOException {
