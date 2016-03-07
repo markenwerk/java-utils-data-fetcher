@@ -214,7 +214,7 @@
 							<checkinComment>Javadoc for ${project.artifactId}:${project.version}</checkinComment>
 							<content>${project.build.directory}/apidocs</content>
 							<siteOutputEncoding>UTF-8</siteOutputEncoding>
-							<skipDeletedFiles>true</skipDeletedFiles>
+							<skipDeletedFiles>false</skipDeletedFiles>
 							<pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
 							<scmBranch>gh-pages</scmBranch>
 						</configuration>
