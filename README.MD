@@ -21,7 +21,7 @@ This library is hosted in the [Maven Central Repository](https://maven-badges.he
 </dependency>
 ```
 
-Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/2.1.1/index.html) for further information.
+Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/index.html) for further information.
 
 ## Motivation
 
