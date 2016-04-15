@@ -25,19 +25,18 @@ import java.io.IOException;
 
 /**
  * A {@link FetchException} is a specialized {@link IOException} that indicates
- * that a fetch operation of a {@link Fetcher} has failed.
+ * that a fetch operation of a {@link ByteFetcher} has failed.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.0.0
- * @see Fetcher
+ * @see ByteFetcher
  */
 public final class FetchException extends IOException {
 
 	private static final long serialVersionUID = 8161906006366859761L;
 
 	/**
-	 * Constructs a {@link FetchException} with the given message and cause. The
-	 * given cause is chained to this exception.
+	 * Creates a new {@link FetchException} with the given message and cause.
 	 *
 	 * @param message
 	 *            The message.
@@ -49,7 +48,7 @@ public final class FetchException extends IOException {
 	}
 
 	/**
-	 * Constructs a {@link FetchException} with the given message.
+	 * Creates a new {@link FetchException} with the given message.
 	 *
 	 * @param message
 	 *            The message.
@@ -59,14 +58,13 @@ public final class FetchException extends IOException {
 	}
 
 	/**
-	 * Constructs a {@link FetchException} with the given cause. The given cause
-	 * is chained to this exception.
+	 * Creates a new {@link FetchException} with the given cause.
 	 *
 	 * @param cause
 	 *            The cause of this {@link FetchException}.
 	 */
 	public FetchException(Throwable cause) {
-		super(cause);
+		super(null == cause ? null : cause.getMessage(), cause);
 	}
 
 }
