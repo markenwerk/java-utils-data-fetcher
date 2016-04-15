@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2015 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,35 +21,29 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
+import java.io.IOException;
+import java.io.Reader;
+
 /**
- * A {@link BaseFetchProgressListener} is an implementation of
- * {@link FetchProgressListener} with empty methods. It is intended a base for
- * custom {@link FetchProgressListener} implementations, that don't need to
- * implement all methods.
+ * A {@link NullReader} is an {@link Reader} that does nothing.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 2.1.0
+ * @since 3.0.0
  */
-public abstract class BaseFetchProgressListener implements FetchProgressListener {
+class NullReader extends Reader {
 
-	@Override
-	public void onFetchStarted() {
+	public static final NullReader INSTANCE = new NullReader();
+
+	private NullReader() {
 	}
 
 	@Override
-	public void onFetchProgress(long bytesFetched) {
+	public int read(char[] buffer, int offset, int length) throws IOException {
+		return -1;
 	}
 
 	@Override
-	public void onFetchSuccedded(Long bytesFetched) {
+	public void close() throws IOException {
 	}
 
-	@Override
-	public void onFetchFailed(FetchException exception, Long bytesFetched) {
-	}
-
-	@Override
-	public void onFetchFinished() {
-	}
-	
 }

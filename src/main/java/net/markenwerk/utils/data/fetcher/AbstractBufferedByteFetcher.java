@@ -26,8 +26,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * {@link AbstractBufferedFetcher} is a sensible base implementation of
- * {@link Fetcher} that uses a {@code byte[]} as buffer, to while copying all
+ * {@link AbstractBufferedByteFetcher} is a sensible base implementation of
+ * {@link ByteFetcher} that uses a {@code byte[]} as buffer, to while copying all
  * bytes from an {@link InputStream} to an {@link OutputStream} by sequentially
  * reading from the {@link InputStream} into the buffer and then writing from
  * the buffer to the {@link OutputStream}.
@@ -35,22 +35,22 @@ import java.io.OutputStream;
  * <p>
  * Implementers must only implement a single method that provides a
  * {@code byte[]} to be used as a buffer in
- * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
- * : {@link AbstractBufferedFetcher#obtainBuffer()}.
+ * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+ * : {@link AbstractBufferedByteFetcher#obtainBuffer()}.
  * 
  * <p>
  * Implementers may also override
- * {@link AbstractBufferedFetcher#returnBuffer(byte[])}, which is called after
- * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+ * {@link AbstractBufferedByteFetcher#returnBuffer(byte[])}, which is called after
+ * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
  * has finished using it.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.0.0
  */
-public abstract class AbstractBufferedFetcher extends AbstractFetcher {
+public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 
 	/**
-	 * The default buffer size of one kibibyte.
+	 * The default buffer size of 1024 bytes.
 	 */
 	protected static final int DEFAULT_BUFEFR_SIZE = 1024;
 
@@ -59,7 +59,7 @@ public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 	 * 
 	 * @param bufferSize
 	 *           The size of the {@literal byte[]} to be created. Defaults to the
-	 *           {@link AbstractBufferedFetcher#DEFAULT_BUFEFR_SIZE default}
+	 *           {@link AbstractBufferedByteFetcher#DEFAULT_BUFEFR_SIZE default}
 	 *           buffer size, if the given buffer size is not positive.
 	 * @return The new {@literal byte[]}.
 	 */
@@ -96,13 +96,13 @@ public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 
 	/**
 	 * Called by
-	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+	 * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
 	 * to obtain a {@code byte[]} to be used as a buffer.
 	 * 
 	 * <p>
 	 * Every {@code byte[]} that is returned by this method will be passed as an
-	 * argument of {@link AbstractBufferedFetcher#returnBuffer(byte[])} after
-	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+	 * argument of {@link AbstractBufferedByteFetcher#returnBuffer(byte[])} after
+	 * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
 	 * has finished using it.
 	 * 
 	 * 
@@ -112,9 +112,9 @@ public abstract class AbstractBufferedFetcher extends AbstractFetcher {
 
 	/**
 	 * Called by
-	 * {@link AbstractBufferedFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+	 * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
 	 * to return a {@code byte[]} that has previously been obtained from
-	 * {@link AbstractBufferedFetcher#obtainBuffer()}.
+	 * {@link AbstractBufferedByteFetcher#obtainBuffer()}.
 	 * 
 	 * @param buffer
 	 *           The {@code byte[]} to be returned.

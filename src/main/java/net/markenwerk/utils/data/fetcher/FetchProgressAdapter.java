@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,17 +22,34 @@
 package net.markenwerk.utils.data.fetcher;
 
 /**
- * A {@link NullFetchProgressListener} is a {@link FetchProgressListener} that
- * does nothing.
+ * A {@link FetchProgressAdapter} is an implementation of
+ * {@link FetchProgressListener} with empty methods. It is intended a base for
+ * custom {@link FetchProgressListener} implementations, that don't need to
+ * implement all methods.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.1.0
  */
-class NullFetchProgressListener extends FetchProgressAdapter {
+public abstract class FetchProgressAdapter implements FetchProgressListener {
 
-	public static final NullFetchProgressListener INSTANCE = new NullFetchProgressListener();
-
-	private NullFetchProgressListener() {
+	@Override
+	public void onFetchStarted() {
 	}
 
+	@Override
+	public void onFetchProgress(long bytesFetched) {
+	}
+
+	@Override
+	public void onFetchSuccedded(Long bytesFetched) {
+	}
+
+	@Override
+	public void onFetchFailed(FetchException exception, Long bytesFetched) {
+	}
+
+	@Override
+	public void onFetchFinished() {
+	}
+	
 }

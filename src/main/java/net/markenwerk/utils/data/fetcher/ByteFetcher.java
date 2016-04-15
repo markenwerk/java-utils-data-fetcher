@@ -25,8 +25,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * A {@link Fetcher} can fetch the entire content of a given {@link InputStream}
- * into a fresh {@code byte[]} or copy it into a given {@link OutputStream}.
+ * A {@link ByteFetcher} can fetch the entire content of a given
+ * {@link InputStream} into a fresh {@code byte[]} or copy it into a given
+ * {@link OutputStream}.
  * 
  * <p>
  * It is, among other things, intended as a replacement for
@@ -39,11 +40,6 @@ import java.io.OutputStream;
  * usually yield a compiler warning like "{@code The type 'IOUtils' is not API}"
  * and might break at runtime, if a runtime environment other than the Oracle
  * JRE is used.
- * 
- * <p>
- * Furthermore, this class allows to copy the content of an {@link InputStream}
- * directly into an {@link OutputStream}, using the method
- * {@link Fetcher#copy(InputStream, OutputStream)}.
  * 
  * <p>
  * All methods take optional parameters to specify the buffer size and to
@@ -69,14 +65,14 @@ import java.io.OutputStream;
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.0.0
  */
-public interface Fetcher {
+public interface ByteFetcher {
 
 	/**
 	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
 	 *
 	 * <p>
-	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
@@ -92,8 +88,8 @@ public interface Fetcher {
 	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
 	 *
 	 * <p>
-	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
@@ -114,8 +110,8 @@ public interface Fetcher {
 	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
 	 *
 	 * <p>
-	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
@@ -138,8 +134,8 @@ public interface Fetcher {
 	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
 	 *
 	 * <p>
-	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
@@ -158,8 +154,8 @@ public interface Fetcher {
 	 * {@link OutputStream}.
 	 *
 	 * <p>
-	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
@@ -215,8 +211,8 @@ public interface Fetcher {
 	 * {@link OutputStream}.
 	 *
 	 * <p>
-	 * See {@link Fetcher#copy(InputStream, OutputStream, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.

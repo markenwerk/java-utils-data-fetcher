@@ -27,27 +27,28 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * {@link AbstractFetcher} is a sensible base implementation of {@link Fetcher}.
+ * {@link AbstractByteFetcher} is a sensible base implementation of
+ * {@link ByteFetcher}.
  * 
  * <p>
  * Implementers must only implement a single simplified method that copies all
  * bytes from an {@link InputStream} to an {@link OutputStream}:
- * {@link AbstractFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}.
+ * {@link AbstractByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}.
  * 
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.0.0
  */
-public abstract class AbstractFetcher implements Fetcher {
+public abstract class AbstractByteFetcher implements ByteFetcher {
 
 	@Override
 	public final byte[] fetch(InputStream in) throws FetchException {
-		return fetch(in, NullFetchProgressListener.INSTANCE, false);
+		return fetch(in, null, false);
 	}
 
 	@Override
 	public final byte[] fetch(InputStream in, boolean close) throws FetchException {
-		return fetch(in, NullFetchProgressListener.INSTANCE, close);
+		return fetch(in, null, close);
 	}
 
 	@Override
@@ -69,7 +70,7 @@ public abstract class AbstractFetcher implements Fetcher {
 
 	@Override
 	public final void copy(InputStream in, OutputStream out, boolean closeIn, boolean closeOut) throws FetchException {
-		copy(in, out, NullFetchProgressListener.INSTANCE, closeIn, closeOut);
+		copy(in, out, null, closeIn, closeOut);
 	}
 
 	@Override
@@ -80,8 +81,16 @@ public abstract class AbstractFetcher implements Fetcher {
 	@Override
 	public final void copy(InputStream in, OutputStream out, FetchProgressListener listener, boolean closeIn,
 			boolean closeOut) throws FetchException {
-		doCopy(null != in ? in : NullInputStream.INSTANCE, null != out ? out : NullOutputStream.INSTANCE,
-				null != listener ? listener : NullFetchProgressListener.INSTANCE, closeIn, closeOut);
+		if (null == in) {
+			in = NullInputStream.INSTANCE;
+		}
+		if (null == out) {
+			out = NullOutputStream.INSTANCE;
+		}
+		if (null == listener) {
+			listener = NullFetchProgressListener.INSTANCE;
+		}
+		doCopy(in, out, listener, closeIn, closeOut);
 	}
 
 	private void doCopy(InputStream in, OutputStream out, FetchProgressListener listener, boolean closeIn,

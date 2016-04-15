@@ -21,49 +21,49 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
 
 /**
- * {@link AbstractBufferedFetcher} is a sensible base implementation of
- * {@link Fetcher} that uses a {@code byte[]} as buffer, while copying all
- * bytes from an {@link InputStream} to an {@link OutputStream} by sequentially
- * reading from the {@link InputStream} into the buffer and then writing from
- * the buffer to the {@link OutputStream}.
+ * {@link AbstractBufferedCharacterFetcher} is a sensible base implementation of
+ * {@link CharacterFetcher} that uses a {@code char[]} as buffer, while copying
+ * all chars from an {@link Reader} to an {@link Writer} by sequentially reading
+ * from the {@link Reader} into the buffer and then writing from the buffer to
+ * the {@link Writer}.
  * 
  * <p>
  * The buffer is eagerly allocated in the constructor just once and then used
- * for every operation. A {@link BufferedFetcher} is therefore not threadsafe.
+ * for every operation. A {@link BufferedCharacterFetcher} is therefore not
+ * threadsafe.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 2.0.0
+ * @since 3.0.0
  */
-public final class BufferedFetcher extends AbstractBufferedFetcher {
+public final class BufferedCharacterFetcher extends AbstractBufferedCharacterFetcher {
 
-	private final byte[] buffer;
+	private final char[] buffer;
 
 	/**
-	 * Creates a new {@link BufferedFetcher} with the default buffer size of one
-	 * <a href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024
-	 * bytes).
-	 * 
+	 * Creates a new {@link BufferedCharacterFetcher} with the default buffer
+	 * size of 1024 characters.
 	 */
-	public BufferedFetcher() {
+	public BufferedCharacterFetcher() {
 		this(DEFAULT_BUFEFR_SIZE);
 	}
 
 	/**
-	 * Creates a new {@link BufferedFetcher} with the given buffer size.
+	 * Creates a new {@link BufferedCharacterFetcher} with the given buffer
+	 * size.
 	 * 
 	 * @param bufferSize
 	 *            The buffer size.
 	 */
-	public BufferedFetcher(int bufferSize) {
+	public BufferedCharacterFetcher(int bufferSize) {
 		buffer = createBuffer(bufferSize);
 	}
 
 	@Override
-	protected byte[] obtainBuffer() {
+	protected char[] obtainBuffer() {
 		return buffer;
 	}
 

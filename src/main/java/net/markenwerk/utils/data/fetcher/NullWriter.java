@@ -21,18 +21,32 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
+import java.io.IOException;
+import java.io.Writer;
+
 /**
- * A {@link NullFetchProgressListener} is a {@link FetchProgressListener} that
- * does nothing.
+ * A {@link NullWriter} is a {@link Writer} that does nothing.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 2.1.0
+ * @since 3.0.0
  */
-class NullFetchProgressListener extends FetchProgressAdapter {
+class NullWriter extends Writer {
 
-	public static final NullFetchProgressListener INSTANCE = new NullFetchProgressListener();
+	public static final NullWriter INSTANCE = new NullWriter();
 
-	private NullFetchProgressListener() {
+	private NullWriter() {
+	}
+
+	@Override
+	public void write(char[] buffer, int offset, int length) throws IOException {
+	}
+
+	@Override
+	public void flush() throws IOException {
+	}
+
+	@Override
+	public void close() throws IOException {
 	}
 
 }

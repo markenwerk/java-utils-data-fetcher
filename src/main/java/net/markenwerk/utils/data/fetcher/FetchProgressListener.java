@@ -40,7 +40,7 @@ public interface FetchProgressListener {
 	 * has progressed.
 	 * 
 	 * <p>
-	 * The progress will only be reported if the {@link Fetcher} is capable of
+	 * The progress will only be reported if the {@link ByteFetcher} is capable of
 	 * monitoring the progress.
 	 * 
 	 * @param bytesFetched
@@ -54,7 +54,7 @@ public interface FetchProgressListener {
 	 * 
 	 * @param bytesFetched
 	 *            Total total amount of bytes fetched or {@literal null}, if the
-	 *            {@link Fetcher} is not capable of monitoring the progress.
+	 *            {@link ByteFetcher} is not capable of monitoring the progress.
 	 */
 	public void onFetchSuccedded(Long bytesFetched);
 
@@ -65,12 +65,12 @@ public interface FetchProgressListener {
 	 * @param exception
 	 *            The {@link FetchException} that caused the process to fail.
 	 *            This is the same {@link FetchException} that is thrown in the
-	 *            failing method of {@link Fetcher} that this
+	 *            failing method of {@link ByteFetcher} that this
 	 *            {@link FetchProgressListener} has been given to.
 	 * 
 	 * @param bytesFetched
 	 *            Total total amount of bytes fetched before the process failed
-	 *            or {@literal null}, if the {@link Fetcher} is not capable of
+	 *            or {@literal null}, if the {@link ByteFetcher} is not capable of
 	 *            monitoring the progress.
 	 */
 	public void onFetchFailed(FetchException exception, Long bytesFetched);

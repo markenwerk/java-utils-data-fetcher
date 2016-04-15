@@ -33,19 +33,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * JUnit tests for {@link Fetcher#fetch(InputStream)} methods on stream that
+ * JUnit tests for {@link ByteFetcher#fetch(InputStream)} methods on stream that
  * fail.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @param <ActualFetcher>
- *           The actual {@link Fetcher} type to be tested.
+ *           The actual {@link ByteFetcher} type to be tested.
  * @since 1.0.0
  */
-public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
+public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher> {
 
 	private static final byte[] BYTES = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-	private Fetcher fetcher;
+	private ByteFetcher fetcher;
 
 	private FailableInputStream in;
 
@@ -54,7 +54,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	private FailableOutputStream out;
 
 	/**
-	 * Create a new {@link Fetcher}.
+	 * Create a new {@link ByteFetcher}.
 	 */
 	@Before
 	public void prepareFetcher() {
@@ -62,9 +62,9 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 	}
 
 	/**
-	 * Creates the {@link Fetcher} to be tested.
+	 * Creates the {@link ByteFetcher} to be tested.
 	 * 
-	 * @return The {@link Fetcher} to be tested.
+	 * @return The {@link ByteFetcher} to be tested.
 	 */
 	protected abstract ActualFetcher createFetcher();
 
@@ -79,7 +79,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 
 	/**
 	 * Close the {@link ObservableInputStream} created by
-	 * {@link AbstractFetcherTests#prepareInputStream()}.
+	 * {@link AbstractByteFetcherTests#prepareInputStream()}.
 	 */
 	@After
 	public void closeInputStream() {
@@ -103,7 +103,7 @@ public abstract class AbstractFetcherTests<ActualFetcher extends Fetcher> {
 
 	/**
 	 * Close the {@link ObservableOutputStream} created by
-	 * {@link AbstractFetcherTests#prepareOutputStream()}.
+	 * {@link AbstractByteFetcherTests#prepareOutputStream()}.
 	 */
 	@After
 	public void closeOutputStream() {
