@@ -7,9 +7,10 @@
 [![Issues](https://img.shields.io/github/issues/markenwerk/java-utils-data-fetcher.svg)](https://github.com/markenwerk/java-utils-data-fetcher/issues)
 [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/markenwerk/java-utils-data-fetcher/blob/master/LICENSE)
 
-This is a simple helper to fetch the complete content of an input stream or a readable. It is, among other things, intended as an alternative to using [`IOUtils#readFully`](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/IOUtils.java#IOUtils.readFully%28java.io.InputStream%2Cint%2Cboolean%29) for this everyday task.
 
 ## Overview
+
+This is a simple helper to fetch the complete content of an input stream or a readable. It is, among other things, intended as an alternative to using [`IOUtils#readFully`](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/IOUtils.java#IOUtils.readFully%28java.io.InputStream%2Cint%2Cboolean%29) for this everyday task.
 
 This library is hosted in the [Maven Central Repository](https://maven-badges.herokuapp.com/maven-central/net.markenwerk/utils-data-fetcher). You can use it with the following coordinates:
 
@@ -21,7 +22,7 @@ This library is hosted in the [Maven Central Repository](https://maven-badges.he
 </dependency>
 ```
 
-Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/javadoc/index.html) for further information.
+Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/index.html) for further information.
 
 ## Motivation
 
@@ -39,9 +40,9 @@ This library provides a simple and lightweight alternative. For the sake of comp
  
 ## Usage
 
-This library is intended to be a simple and convenient to use solution for the mentioned problem.
+### Fetching byte streams
 
-It features two main functionalities to handle byte streams:
+This library provides the [`ByteFetcher`][ByteFetcher] which features two main functionalities to handle byte streams:
 
 ```java
 // create a simple ByteFetcher
@@ -54,7 +55,9 @@ byte[] bytes = fetcher.fetch(inputStream);
 fetcher.fetch(inputStream, outputStream);
 ```
 
-It features three main functionalities to handle character streams:
+### Fetching character streams
+
+This library provides the [`CharacterFetcher`][CharacterFetcher] which features three main functionalities to handle character streams:
 
 ```java
 // create a simple CharacterFetcher
@@ -72,7 +75,7 @@ fetcher.fetch(readable, appendable);
 
 ### Automatic closing of supplied streams
 
-All methods have optional `boolean` parameters, that can be used to instruct the [`Fetcher`][Fetcher] to close the supplied streams. Doing so allows to write compact code like:
+All methods have optional `boolean` parameters, that can be used to instruct the [`ByteFetcher`][ByteFetcher] or [`CharacterFetcher`][CharacterFetcher] to close the supplied streams. Doing so allows to write compact code like:
 
 ```java
 foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file), true));
@@ -135,3 +138,4 @@ Variations of the buffered copying strategy (e.g. lazy buffer creation, threadsa
 [InputStream]: http://docs.oracle.com/javase/8/docs/api/index.html?java/io/InputStream.html
 [OutputStream]: http://docs.oracle.com/javase/8/docs/api/index.html?java/io/OutputStream.html
 [Readable]: http://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Readable.html
+[String]: http://docs.oracle.com/javase/8/docs/api/index.html?java/lang/String.html
