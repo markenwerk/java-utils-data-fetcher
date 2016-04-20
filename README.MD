@@ -105,7 +105,7 @@ All methods optionally take a [`FetchProgressListener`][FetchProgressListener] t
 foo.setContent(new BufferedByteFetcher().fetch(
 	new FileInputStream(file),
 	new FetchProgressAdapter() {
-		public void onFetchProgress(long bytesFetched) {
+		public void onProgress(long bytesFetched) {
 			System.out.println(bytesFetched + " bytes fetched so far.");
 		}
 	},

@@ -83,7 +83,7 @@ public abstract class AbstractBufferedCharacterFetcher extends AbstractCharacter
 	@Override
 	protected final void doCopy(Readable in, Appendable out, FetchProgressListener listener) throws FetchException {
 		char[] buffer = obtainBuffer();
-		listener.onFetchStarted();
+		listener.onStarted();
 		try {
 			if (in instanceof Reader && out instanceof Writer) {
 				doDirectIoCopy(buffer, (Reader) in, (Writer) out, listener);
@@ -91,7 +91,7 @@ public abstract class AbstractBufferedCharacterFetcher extends AbstractCharacter
 				doCharBufferCopy(buffer, in, out, listener);
 			}
 		} finally {
-			listener.onFetchFinished();
+			listener.onFinished();
 			returnBuffer(buffer);
 		}
 	}
@@ -104,12 +104,12 @@ public abstract class AbstractBufferedCharacterFetcher extends AbstractCharacter
 			while (length != -1) {
 				total += length;
 				out.write(buffer, 0, length);
-				listener.onFetchProgress(total);
+				listener.onProgress(total);
 				length = in.read(buffer);
 			}
 			out.flush();
-			listener.onFetchProgress(total);
-			listener.onFetchSuccedded(total);
+			listener.onProgress(total);
+			listener.onSuccedded(total);
 		} catch (IOException e) {
 			throw createException(listener, total, e);
 		}
@@ -127,14 +127,14 @@ public abstract class AbstractBufferedCharacterFetcher extends AbstractCharacter
 					out.append(charBuffer.get(i));
 				}
 				charBuffer.clear();
-				listener.onFetchProgress(total);
+				listener.onProgress(total);
 				length = in.read(charBuffer);
 			}
 			if (out instanceof Flushable) {
 				((Flushable) out).flush();
 			}
-			listener.onFetchProgress(total);
-			listener.onFetchSuccedded(total);
+			listener.onProgress(total);
+			listener.onSuccedded(total);
 		} catch (IOException e) {
 			throw createException(listener, total, e);
 		}
@@ -143,7 +143,7 @@ public abstract class AbstractBufferedCharacterFetcher extends AbstractCharacter
 	private FetchException createException(FetchProgressListener listener, long total, IOException exception) {
 		FetchException fetchException = new FetchException("Fetch failed after " + total + " "
 				+ (1 == total ? "char has" : "chars have") + " been copied successully.", exception);
-		listener.onFetchFailed(fetchException, total);
+		listener.onFailed(fetchException, total);
 		return fetchException;
 	}
 

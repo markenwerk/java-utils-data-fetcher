@@ -73,23 +73,23 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 	@Override
 	protected final void doCopy(InputStream in, OutputStream out, FetchProgressListener listener) throws FetchException {
 		byte[] buffer = obtainBuffer();
-		listener.onFetchStarted();
+		listener.onStarted();
 		long total = 0;
 		try {
 			int length = in.read(buffer);
 			while (length != -1) {
 				total += length;
 				out.write(buffer, 0, length);
-				listener.onFetchProgress(total);
+				listener.onProgress(total);
 				length = in.read(buffer);
 			}
 			out.flush();
-			listener.onFetchProgress(total);
-			listener.onFetchSuccedded(total);
+			listener.onProgress(total);
+			listener.onSuccedded(total);
 		} catch (IOException e) {
 			throw createException(listener, total, e);
 		} finally {
-			listener.onFetchFinished();
+			listener.onFinished();
 			returnBuffer(buffer);
 		}
 	}
@@ -97,7 +97,7 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 	private FetchException createException(FetchProgressListener listener, long total, IOException e) {
 		FetchException fetchException = new FetchException("Fetch failed after " + total + " "
 				+ (1 == total ? "byte has" : "bytes have") + " been copied successully.", e);
-		listener.onFetchFailed(fetchException, total);
+		listener.onFailed(fetchException, total);
 		return fetchException;
 	}
 

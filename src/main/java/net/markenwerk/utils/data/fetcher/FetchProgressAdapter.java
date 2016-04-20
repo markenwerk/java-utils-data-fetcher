@@ -33,23 +33,23 @@ package net.markenwerk.utils.data.fetcher;
 public abstract class FetchProgressAdapter implements FetchProgressListener {
 
 	@Override
-	public void onFetchStarted() {
+	public void onStarted() {
 	}
 
 	@Override
-	public void onFetchProgress(long bytesFetched) {
+	public void onProgress(long bytesFetched) {
 	}
 
 	@Override
-	public void onFetchSuccedded(Long bytesFetched) {
+	public void onSuccedded(Long bytesFetched) {
 	}
 
 	@Override
-	public void onFetchFailed(FetchException exception, Long bytesFetched) {
+	public void onFailed(FetchException exception, Long bytesFetched) {
 	}
 
 	@Override
-	public void onFetchFinished() {
+	public void onFinished() {
 	}
 	
 }

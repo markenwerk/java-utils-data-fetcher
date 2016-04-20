@@ -33,7 +33,7 @@ public interface FetchProgressListener {
 	 * Indicates that the process of fetching bytes from an {@link InputStream}
 	 * has started.
 	 */
-	public void onFetchStarted();
+	public void onStarted();
 
 	/**
 	 * Indicates that the process of fetching bytes from an {@link InputStream}
@@ -46,7 +46,7 @@ public interface FetchProgressListener {
 	 * @param bytesFetched
 	 *            Total amount of bytes fetched so far.
 	 */
-	public void onFetchProgress(long bytesFetched);
+	public void onProgress(long bytesFetched);
 
 	/**
 	 * Indicates that the process of fetching bytes from an {@link InputStream}
@@ -56,7 +56,7 @@ public interface FetchProgressListener {
 	 *            Total total amount of bytes fetched or {@literal null}, if the
 	 *            {@link ByteFetcher} is not capable of monitoring the progress.
 	 */
-	public void onFetchSuccedded(Long bytesFetched);
+	public void onSuccedded(Long bytesFetched);
 
 	/**
 	 * Indicates that the process of fetching bytes from an {@link InputStream}
@@ -73,7 +73,7 @@ public interface FetchProgressListener {
 	 *            or {@literal null}, if the {@link ByteFetcher} is not capable of
 	 *            monitoring the progress.
 	 */
-	public void onFetchFailed(FetchException exception, Long bytesFetched);
+	public void onFailed(FetchException exception, Long bytesFetched);
 
 	/**
 	 * Indicates that the process of fetching bytes from an {@link InputStream}
@@ -81,10 +81,10 @@ public interface FetchProgressListener {
 	 * 
 	 * <p>
 	 * This method will be called after either
-	 * {@link FetchProgressListener#onFetchSuccedded(Long)} or
-	 * {@link FetchProgressListener#onFetchFailed(FetchException, Long)} has
+	 * {@link FetchProgressListener#onSuccedded(Long)} or
+	 * {@link FetchProgressListener#onFailed(FetchException, Long)} has
 	 * been called.
 	 */
-	public void onFetchFinished();
+	public void onFinished();
 
 }
