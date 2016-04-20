@@ -7,7 +7,7 @@
 [![Issues](https://img.shields.io/github/issues/markenwerk/java-utils-data-fetcher.svg)](https://github.com/markenwerk/java-utils-data-fetcher/issues)
 [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/markenwerk/java-utils-data-fetcher/blob/master/LICENSE)
 
-This is a simple helper to copy the content of input stream into output streams or byte arrays. It is, among other things, intended as an alternative to using [`IOUtils#readFully`](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/IOUtils.java#IOUtils.readFully%28java.io.InputStream%2Cint%2Cboolean%29) for this everyday task.
+This is a simple helper to fetch the complete content of an input stream or a readable. It is, among other things, intended as an alternative to using [`IOUtils#readFully`](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/IOUtils.java#IOUtils.readFully%28java.io.InputStream%2Cint%2Cboolean%29) for this everyday task.
 
 ## Overview
 
@@ -35,14 +35,17 @@ The type 'IOUtils' is not API.
 
 and may break at runtime; i.e. if a runtime environment other than the Oracle JRE is used. Another solution to accomplishing this simple task, could be to bundle a major library like [Commons IO](http://commons.apache.org/proper/commons-io/). But doing so may appear like overkill, especially if no other functionality of the library is likely to be used.
 
-
+This library provides a simple and lightweight alternative. For the sake of completeness, the equivalent  functionality for copying the complete content of an [`Readable`][Readable] into a [`String`][String] or into a `char[]` or into an [`Appendable`][Appendable] is included.
+ 
 ## Usage
 
-This library is intended to be a simple and convenient to use solution for the mentioned problem. It features two main functionalities:
+This library is intended to be a simple and convenient to use solution for the mentioned problem.
+
+It features two main functionalities to handle byte streams:
 
 ```java
-// create a simple fetcher
-Fetcher fetcher = new BufferedFetcher();
+// create a simple ByteFetcher
+ByteFetcher fetcher = new BufferedByteFetcher();
 
 // copy the content of an InputStream into a byte[]
 byte[] bytes = fetcher.fetch(inputStream);
@@ -51,9 +54,25 @@ byte[] bytes = fetcher.fetch(inputStream);
 fetcher.fetch(inputStream, outputStream);
 ```
 
+It features three main functionalities to handle character streams:
+
+```java
+// create a simple CharacterFetcher
+CharacterFetcher fetcher = new BufferedCharacterFetcher();
+
+// copy the content of a Readable into a char[]
+char[] characters = fetcher.fetch(readable);
+
+// copy the content of a Readable into a String
+String string = fetcher.read(readable);
+
+// copy the content of a Readable into an Appendable
+fetcher.fetch(readable, appendable);
+```
+
 ### Automatic closing of supplied streams
 
-Both methods have optional `boolean` parameters, that can be used to instruct the [`Fetcher`][Fetcher] to close the supplied streams. Doing so allows to write compact code like:
+All methods have optional `boolean` parameters, that can be used to instruct the [`Fetcher`][Fetcher] to close the supplied streams. Doing so allows to write compact code like:
 
 ```java
 foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file), true));
@@ -69,10 +88,11 @@ in.close();
 
 ### Listen to fetch progress
 
-Both methods optionally take a [`FetchProgressListener`][FetchProgressListener] that gets notified on various points in the lifecycle (`started`, `progressed`, `succeeded` or `failed`, `finished`) of a fetch operation. The [`BaseFetchProgressListener`][BaseFetchProgressListener] is a convenient base implementation with empty methods.
+All methods optionally take a [`FetchProgressListener`][FetchProgressListener] that gets notified on various points in the lifecycle (`started`, `progressed`, `succeeded` or `failed`, `finished`) of a fetch operation. The [`BaseFetchProgressListener`][BaseFetchProgressListener] is a convenient base implementation with empty methods.
 
 ```java
-foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file),
+foo.setContent(new BufferedFetcher().fetch(
+	new FileInputStream(file),
 	new BaseFetchProgressListener() {
 		public void onFetchProgress(long bytesFetched) {
 			System.out.println(bytesFetched + " bytes fetched so far.");
@@ -86,23 +106,32 @@ foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file),
 
 Missing or invalid arguments are handled gracefully with the following behaviour:
 
- - If `null` is given as the [`InputStream`][InputStream], it is simply ignored and handled as if there was nothing to read. That means, nothing is written to the [`OutputStream`][OutputStream] and, if requested, the [`OutputStream`][OutputStream] will be closed. 
- - If `null` is given as the [`OutputStream`][OutputStream], it is simply ignored, but the content of given [`InputStream`][InputStream] is fetched anyway. If requested, the [`InputStream`][InputStream] will be closed. 
+ - If `null` is given as the [`InputStream`][InputStream], or [`Readable`][Readable] it is simply ignored and handled as if there was nothing to read. That means, nothing is written to the [`OutputStream`][OutputStream] or [`Appendable`][Appendable] and, if requested, the [`OutputStream`][OutputStream] or [`Appendable`][Appendable] will be closed. 
+ - If `null` is given as the [`OutputStream`][OutputStream] or [`Appendable`][Appendable], it is simply ignored, but the content of given [`InputStream`][InputStream] or [`Readable`][Readable] is fetched anyway. If requested, the [`InputStream`][InputStream] or [`Readable`][Readable] will be closed. 
  
 ### Custom implementations
  
-This library provides [`BufferedFetcher`][BufferedFetcher] as the simplest possible implementations of [`Fetcher`][Fetcher]. It eagerly allocates a `byte[]` during construction and uses it as a buffer to perform fetch operations by sequentially reading from the [`InputStream`][InputStream] into the buffer and then writing from the buffer to the [`OutputStream`][OutputStream]. It is not threadsafe.
+This library provides [`BufferedByteFetcher`][BufferedByteFetcher] as the simplest possible implementations of [`ByteFetcher`][ByteFetcher]. It eagerly allocates a `byte[]` during construction and uses it as a buffer to perform fetch operations by sequentially reading from the [`InputStream`][InputStream] into the buffer and then writing from the buffer to the [`OutputStream`][OutputStream]. It is not threadsafe.
 
-Variations of the buffered copying strategy (e.g. lazy buffer creation, threadsafeness) or completely other copying strategies can easily be implemented by extending [`AbstractFetcher`][AbstractFetcher] or [`AbstractBufferedFetcher`][AbstractBufferedFetcher] respectively.
+Variations of the buffered copying strategy (e.g. lazy buffer creation, threadsafeness) or completely other copying strategies can easily be implemented by extending [`AbstractByteFetcher`][AbstractByteFetcher] or [`AbstractBufferedByteFetcher`][AbstractBufferedByteFetcher] respectively.
 
-[`AbstractFetcher`][AbstractFetcher] reduces all methods from the [`Fetcher`][Fetcher] interface to the single method `doCopy(InputStream, OutputStream, FetchProgressListener)` where every parameter is guaranteed to be not `null`, and therefore greatly simplifies the implementation of new fetch strategies. [`AbstractBufferedFetcher`][AbstractBufferedFetcher] is such an implementation of the aforementioned buffering fetch strategy that handles the sequentially write-read cycles and notifies the [`FetchProgressListener`][FetchProgressListener] accordingly, but leaves the buffer allocation strategy to be specified.
+[`AbstractByteFetcher`][AbstractByteFetcher] reduces all methods from the [`ByteFetcher`][ByteFetcher] interface to the single method `doCopy(InputStream, OutputStream, FetchProgressListener)` where every parameter is guaranteed to be not `null`, and therefore greatly simplifies the implementation of new fetch strategies. [`AbstractBufferedByteFetcher`][AbstractBufferedByteFetcher] is such an implementation of the aforementioned buffering fetch strategy that handles the sequentially write-read cycles and notifies the [`FetchProgressListener`][FetchProgressListener] accordingly, but leaves the buffer allocation strategy to be specified.
+
+[`AbstractCharacterFetcher`][AbstractCharacterFetcher], [`AbstractBufferedCharacterFetcher`][AbstractBufferedCharacterFetcher] and [`BufferedCharacterFetcher`][BufferedCharacterFetcher] provide the equivalent functionality for [`CharacterFetcher`][CharacterFetcher].
+
  
-[AbstractBufferedFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/package-summary.html
-[AbstractFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractFetcher.html
+[AbstractBufferedByteFetcher]:  http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html
+[AbstractBufferedCharacterFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html
+[AbstractByteFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html
+[AbstractCharacterFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html
 [BaseFetchProgressListener]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html
-[BufferedFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/BufferedFetcher.html
-[Fetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/Fetcher.html
+[BufferedByteFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html
+[BufferedCharacterFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html
+[ByteFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/ByteFetcher.html
+[CharacterFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/CharacterFetcher.html
 [FetchProgressListener]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/FetchProgressListener.html
 
+[Appendable]: http://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Appendable.html
 [InputStream]: http://docs.oracle.com/javase/8/docs/api/index.html?java/io/InputStream.html
 [OutputStream]: http://docs.oracle.com/javase/8/docs/api/index.html?java/io/OutputStream.html
+[Readable]: http://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Readable.html
