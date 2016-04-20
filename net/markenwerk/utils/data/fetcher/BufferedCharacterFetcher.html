@@ -207,7 +207,7 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBuffer
 <td class="colFirst"><code>protected char[]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html#obtainBuffer--">obtainBuffer</a></span>()</code>
 <div class="block">Called by
- <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Readable, Appendable, FetchProgressListener)</code></a>
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.io.Reader-java.io.Writer-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Reader, Writer, FetchProgressListener)</code></a>
  to obtain a <code>char[]</code> to be used as a buffer.</div>
 </td>
 </tr>
@@ -215,7 +215,7 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBuffer
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html#returnBuffer-char:A-">returnBuffer</a></span>(char[]&nbsp;buffer)</code>
 <div class="block">Called by
- <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Readable, Appendable, FetchProgressListener)</code></a>
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.io.Reader-java.io.Writer-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Reader, Writer, FetchProgressListener)</code></a>
  to return a <code>char[]</code> that has previously been obtained from
  <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#obtainBuffer--"><code>AbstractBufferedCharacterFetcher.obtainBuffer()</code></a>.</div>
 </td>
@@ -226,7 +226,7 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBuffer
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;net.markenwerk.utils.data.fetcher.<a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedCharacterFetcher</a></h3>
-<code><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#createBuffer-int-">createBuffer</a>, <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy</a></code></li>
+<code><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#createBuffer-int-">createBuffer</a>, <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.io.Reader-java.io.Writer-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.net.markenwerk.utils.data.fetcher.AbstractCharacterFetcher">
@@ -299,14 +299,14 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBuffer
 <pre>protected&nbsp;char[]&nbsp;obtainBuffer()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#obtainBuffer--">AbstractBufferedCharacterFetcher</a></code></span></div>
 <div class="block">Called by
- <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Readable, Appendable, FetchProgressListener)</code></a>
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.io.Reader-java.io.Writer-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Reader, Writer, FetchProgressListener)</code></a>
  to obtain a <code>char[]</code> to be used as a buffer.
  
  <p>
  Every <code>char[]</code> that is returned by this method will be passed as an
  argument of <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#returnBuffer-char:A-"><code>AbstractBufferedCharacterFetcher.returnBuffer(char[])</code></a>
  after
- <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Readable, Appendable, FetchProgressListener)</code></a>
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.io.Reader-java.io.Writer-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Reader, Writer, FetchProgressListener)</code></a>
  has finished using it.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
@@ -325,7 +325,7 @@ extends <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBuffer
 <pre>protected&nbsp;void&nbsp;returnBuffer(char[]&nbsp;buffer)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#returnBuffer-char:A-">AbstractBufferedCharacterFetcher</a></code></span></div>
 <div class="block">Called by
- <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Readable, Appendable, FetchProgressListener)</code></a>
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.io.Reader-java.io.Writer-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Reader, Writer, FetchProgressListener)</code></a>
  to return a <code>char[]</code> that has previously been obtained from
  <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#obtainBuffer--"><code>AbstractBufferedCharacterFetcher.obtainBuffer()</code></a>.</div>
 <dl>

@@ -162,36 +162,36 @@ implements <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgre
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">onFetchFailed</a></span>(<a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a>&nbsp;exception,
-             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">onFailed</a></span>(<a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a>&nbsp;exception,
+        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</code>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has failed.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFetchFinished--">onFetchFinished</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFinished--">onFinished</a></span>()</code>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has finished.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFetchProgress-long-">onFetchProgress</a></span>(long&nbsp;bytesFetched)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onProgress-long-">onProgress</a></span>(long&nbsp;bytesFetched)</code>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has progressed.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFetchStarted--">onFetchStarted</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onStarted--">onStarted</a></span>()</code>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has started.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFetchSuccedded-java.lang.Long-">onFetchSuccedded</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onSuccedded-java.lang.Long-">onSuccedded</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</code>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has succeeded.</div>
 </td>
@@ -235,30 +235,30 @@ implements <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgre
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="onFetchStarted--">
+<a name="onStarted--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onFetchStarted</h4>
-<pre>public&nbsp;void&nbsp;onFetchStarted()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchStarted--">FetchProgressListener</a></code></span></div>
+<h4>onStarted</h4>
+<pre>public&nbsp;void&nbsp;onStarted()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onStarted--">FetchProgressListener</a></code></span></div>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has started.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchStarted--">onFetchStarted</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></code></dd>
+<dd><code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onStarted--">onStarted</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></code></dd>
 </dl>
 </li>
 </ul>
-<a name="onFetchProgress-long-">
+<a name="onProgress-long-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onFetchProgress</h4>
-<pre>public&nbsp;void&nbsp;onFetchProgress(long&nbsp;bytesFetched)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchProgress-long-">FetchProgressListener</a></code></span></div>
+<h4>onProgress</h4>
+<pre>public&nbsp;void&nbsp;onProgress(long&nbsp;bytesFetched)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onProgress-long-">FetchProgressListener</a></code></span></div>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has progressed.
  
@@ -267,45 +267,45 @@ implements <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgre
  monitoring the progress.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchProgress-long-">onFetchProgress</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></code></dd>
+<dd><code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onProgress-long-">onProgress</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>bytesFetched</code> - Total amount of bytes fetched so far.</dd>
 </dl>
 </li>
 </ul>
-<a name="onFetchSuccedded-java.lang.Long-">
+<a name="onSuccedded-java.lang.Long-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onFetchSuccedded</h4>
-<pre>public&nbsp;void&nbsp;onFetchSuccedded(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchSuccedded-java.lang.Long-">FetchProgressListener</a></code></span></div>
+<h4>onSuccedded</h4>
+<pre>public&nbsp;void&nbsp;onSuccedded(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onSuccedded-java.lang.Long-">FetchProgressListener</a></code></span></div>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has succeeded.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchSuccedded-java.lang.Long-">onFetchSuccedded</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></code></dd>
+<dd><code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onSuccedded-java.lang.Long-">onSuccedded</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>bytesFetched</code> - Total total amount of bytes fetched or null, if the
             <a href="../../../../../net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>ByteFetcher</code></a> is not capable of monitoring the progress.</dd>
 </dl>
 </li>
 </ul>
-<a name="onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">
+<a name="onFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onFetchFailed</h4>
-<pre>public&nbsp;void&nbsp;onFetchFailed(<a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a>&nbsp;exception,
-                          <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">FetchProgressListener</a></code></span></div>
+<h4>onFailed</h4>
+<pre>public&nbsp;void&nbsp;onFailed(<a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a>&nbsp;exception,
+                     <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">FetchProgressListener</a></code></span></div>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has failed.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">onFetchFailed</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></code></dd>
+<dd><code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">onFailed</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>exception</code> - The <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> that caused the process to fail.
             This is the same <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> that is thrown in the
@@ -317,25 +317,25 @@ implements <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgre
 </dl>
 </li>
 </ul>
-<a name="onFetchFinished--">
+<a name="onFinished--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>onFetchFinished</h4>
-<pre>public&nbsp;void&nbsp;onFetchFinished()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchFinished--">FetchProgressListener</a></code></span></div>
+<h4>onFinished</h4>
+<pre>public&nbsp;void&nbsp;onFinished()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFinished--">FetchProgressListener</a></code></span></div>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has finished.
  
  <p>
  This method will be called after either
- <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchSuccedded-java.lang.Long-"><code>FetchProgressListener.onFetchSuccedded(Long)</code></a> or
- <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-"><code>FetchProgressListener.onFetchFailed(FetchException, Long)</code></a> has
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onSuccedded-java.lang.Long-"><code>FetchProgressListener.onSuccedded(Long)</code></a> or
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-"><code>FetchProgressListener.onFailed(FetchException, Long)</code></a> has
  been called.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchFinished--">onFetchFinished</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></code></dd>
+<dd><code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFinished--">onFinished</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></code></dd>
 </dl>
 </li>
 </ul>

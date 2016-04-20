@@ -131,36 +131,36 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">onFetchFailed</a></span>(<a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a>&nbsp;exception,
-             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">onFailed</a></span>(<a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a>&nbsp;exception,
+        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</code>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has failed.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchFinished--">onFetchFinished</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFinished--">onFinished</a></span>()</code>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has finished.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchProgress-long-">onFetchProgress</a></span>(long&nbsp;bytesFetched)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onProgress-long-">onProgress</a></span>(long&nbsp;bytesFetched)</code>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has progressed.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchStarted--">onFetchStarted</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onStarted--">onStarted</a></span>()</code>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has started.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchSuccedded-java.lang.Long-">onFetchSuccedded</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onSuccedded-java.lang.Long-">onSuccedded</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</code>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has succeeded.</div>
 </td>
@@ -180,24 +180,24 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="onFetchStarted--">
+<a name="onStarted--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onFetchStarted</h4>
-<pre>void&nbsp;onFetchStarted()</pre>
+<h4>onStarted</h4>
+<pre>void&nbsp;onStarted()</pre>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has started.</div>
 </li>
 </ul>
-<a name="onFetchProgress-long-">
+<a name="onProgress-long-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onFetchProgress</h4>
-<pre>void&nbsp;onFetchProgress(long&nbsp;bytesFetched)</pre>
+<h4>onProgress</h4>
+<pre>void&nbsp;onProgress(long&nbsp;bytesFetched)</pre>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has progressed.
  
@@ -210,13 +210,13 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
-<a name="onFetchSuccedded-java.lang.Long-">
+<a name="onSuccedded-java.lang.Long-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onFetchSuccedded</h4>
-<pre>void&nbsp;onFetchSuccedded(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</pre>
+<h4>onSuccedded</h4>
+<pre>void&nbsp;onSuccedded(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</pre>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has succeeded.</div>
 <dl>
@@ -226,14 +226,14 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
-<a name="onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">
+<a name="onFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onFetchFailed</h4>
-<pre>void&nbsp;onFetchFailed(<a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a>&nbsp;exception,
-                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</pre>
+<h4>onFailed</h4>
+<pre>void&nbsp;onFailed(<a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a>&nbsp;exception,
+              <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;bytesFetched)</pre>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has failed.</div>
 <dl>
@@ -248,20 +248,20 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
-<a name="onFetchFinished--">
+<a name="onFinished--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>onFetchFinished</h4>
-<pre>void&nbsp;onFetchFinished()</pre>
+<h4>onFinished</h4>
+<pre>void&nbsp;onFinished()</pre>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has finished.
  
  <p>
  This method will be called after either
- <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchSuccedded-java.lang.Long-"><code>onFetchSuccedded(Long)</code></a> or
- <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-"><code>onFetchFailed(FetchException, Long)</code></a> has
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onSuccedded-java.lang.Long-"><code>onSuccedded(Long)</code></a> or
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-"><code>onFailed(FetchException, Long)</code></a> has
  been called.</div>
 </li>
 </ul>

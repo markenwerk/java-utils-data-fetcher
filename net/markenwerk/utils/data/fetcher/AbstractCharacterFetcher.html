@@ -125,7 +125,7 @@ implements <a href="../../../../../net/markenwerk/utils/data/fetcher/CharacterFe
  <p>
  Implementers must only implement a single simplified method that copies all
  characters from an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>:
- <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>doCopy(Readable, Appendable, FetchProgressListener)</code></a>.</div>
+ <a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#doCopy-java.io.Reader-java.io.Writer-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>doCopy(Reader, Writer, FetchProgressListener)</code></a>.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>3.0.0</dd>
@@ -207,8 +207,8 @@ implements <a href="../../../../../net/markenwerk/utils/data/fetcher/CharacterFe
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>protected abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
-      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang">Appendable</a>&nbsp;out,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#doCopy-java.io.Reader-java.io.Writer-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io">Reader</a>&nbsp;in,
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io">Writer</a>&nbsp;out,
       <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>
 <div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a given
  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>.</div>
@@ -715,14 +715,14 @@ implements <a href="../../../../../net/markenwerk/utils/data/fetcher/CharacterFe
 </dl>
 </li>
 </ul>
-<a name="doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">
+<a name="doCopy-java.io.Reader-java.io.Writer-net.markenwerk.utils.data.fetcher.FetchProgressListener-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>doCopy</h4>
-<pre>protected abstract&nbsp;void&nbsp;doCopy(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
-                               <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang">Appendable</a>&nbsp;out,
+<pre>protected abstract&nbsp;void&nbsp;doCopy(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io">Reader</a>&nbsp;in,
+                               <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io">Writer</a>&nbsp;out,
                                <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)
                         throws <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a></pre>
 <div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a given
