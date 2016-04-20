@@ -23,7 +23,11 @@ package net.markenwerk.utils.data.fetcher;
 
 import java.io.CharArrayWriter;
 import java.io.Closeable;
+import java.io.Flushable;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.CharBuffer;
 
 /**
  * {@link AbstractCharacterFetcher} is a sensible base implementation of
@@ -32,7 +36,7 @@ import java.io.IOException;
  * <p>
  * Implementers must only implement a single simplified method that copies all
  * characters from an {@link Readable} to an {@link Appendable}:
- * {@link AbstractCharacterFetcher#doCopy(Readable, Appendable, FetchProgressListener)}.
+ * {@link AbstractCharacterFetcher#doCopy(Reader, Writer, FetchProgressListener)}.
  * 
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
@@ -115,7 +119,7 @@ public abstract class AbstractCharacterFetcher implements CharacterFetcher {
 	private void doCopy(Readable in, Appendable out, FetchProgressListener listener, boolean closeIn, boolean closeOut)
 			throws FetchException {
 		try {
-			doCopy(in, out, listener);
+			doCopy(makeReader(in), makeWriter(out), listener);
 		} catch (FetchException e) {
 			throw e;
 		} finally {
@@ -133,6 +137,55 @@ public abstract class AbstractCharacterFetcher implements CharacterFetcher {
 			}
 		}
 
+	}
+
+	private Reader makeReader(final Readable in) {
+		if (in instanceof Reader) {
+			return (Reader) in;
+		} else {
+			return new Reader() {
+				@Override
+				public int read(char[] buffer, int offset, int length) throws IOException {
+					return in.read(CharBuffer.wrap(buffer, offset, length));
+				}
+
+				@Override
+				public void close() throws IOException {
+					if (in instanceof Closeable) {
+						((Closeable) in).close();
+					}
+				}
+			};
+		}
+	}
+
+	private Writer makeWriter(final Appendable out) {
+		if (out instanceof Writer) {
+			return (Writer) out;
+		} else {
+			return new Writer() {
+				@Override
+				public void write(char[] buffer, int offset, int length) throws IOException {
+					for (int i = offset, n = offset + length; i < n; i++) {
+						out.append(buffer[i]);
+					}
+				}
+
+				@Override
+				public void flush() throws IOException {
+					if (out instanceof Flushable) {
+						((Flushable) out).flush();
+					}
+				}
+
+				@Override
+				public void close() throws IOException {
+					if (out instanceof Closeable) {
+						((Closeable) out).close();
+					}
+				}
+			};
+		}
 	}
 
 	/**
@@ -157,6 +210,6 @@ public abstract class AbstractCharacterFetcher implements CharacterFetcher {
 	 *             If anything went wrong while reading from the given
 	 *             {@link Readable} or writing to the given {@link Appendable}.
 	 */
-	protected abstract void doCopy(Readable in, Appendable out, FetchProgressListener listener) throws FetchException;
+	protected abstract void doCopy(Reader in, Writer out, FetchProgressListener listener) throws FetchException;
 
 }

@@ -21,7 +21,6 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
-import java.io.Flushable;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
@@ -36,7 +35,7 @@ import java.nio.CharBuffer;
  * 
  * <p>
  * If
- * {@link AbstractBufferedCharacterFetcher#doCopy(Readable, Appendable, FetchProgressListener)}
+ * {@link AbstractBufferedCharacterFetcher#doCopy(Reader, Writer, FetchProgressListener)}
  * is called with a {@link Reader} and a {@link Writer}, which should be the
  * most common case, the {@code char[]} buffer is used directly, otherwise a
  * {@link CharBuffer} is wrapped around the {@code char[]} buffer.
@@ -46,13 +45,13 @@ import java.nio.CharBuffer;
  * {@link AbstractBufferedCharacterFetcher#obtainBuffer()} and
  * {@link AbstractBufferedCharacterFetcher#returnBuffer(char[])} that manage a
  * {@code char[]} to be used as a buffer in
- * {@link AbstractBufferedCharacterFetcher#doCopy(Readable, Appendable, FetchProgressListener)}.
+ * {@link AbstractBufferedCharacterFetcher#doCopy(Reader, Writer, FetchProgressListener)}.
  * 
  * <p>
  * Implementers may also override
  * {@link AbstractBufferedCharacterFetcher#returnBuffer(char[])}, which is
  * called after
- * {@link AbstractBufferedCharacterFetcher#doCopy(Readable, Appendable, FetchProgressListener)}
+ * {@link AbstractBufferedCharacterFetcher#doCopy(Reader, Writer, FetchProgressListener)}
  * has finished using it.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
@@ -81,23 +80,9 @@ public abstract class AbstractBufferedCharacterFetcher extends AbstractCharacter
 	}
 
 	@Override
-	protected final void doCopy(Readable in, Appendable out, FetchProgressListener listener) throws FetchException {
+	protected final void doCopy(Reader in, Writer out, FetchProgressListener listener) throws FetchException {
 		char[] buffer = obtainBuffer();
 		listener.onStarted();
-		try {
-			if (in instanceof Reader && out instanceof Writer) {
-				doDirectIoCopy(buffer, (Reader) in, (Writer) out, listener);
-			} else {
-				doCharBufferCopy(buffer, in, out, listener);
-			}
-		} finally {
-			listener.onFinished();
-			returnBuffer(buffer);
-		}
-	}
-
-	private final void doDirectIoCopy(char[] buffer, Reader in, Writer out, FetchProgressListener listener)
-			throws FetchException {
 		long total = 0;
 		try {
 			int length = in.read(buffer);
@@ -112,31 +97,9 @@ public abstract class AbstractBufferedCharacterFetcher extends AbstractCharacter
 			listener.onSuccedded(total);
 		} catch (IOException e) {
 			throw createException(listener, total, e);
-		}
-	}
-
-	private void doCharBufferCopy(char[] buffer, Readable in, Appendable out, FetchProgressListener listener)
-			throws FetchException {
-		CharBuffer charBuffer = CharBuffer.wrap(buffer);
-		long total = 0;
-		try {
-			int length = in.read(charBuffer);
-			while (length != -1) {
-				total += length;
-				for (int i = 0; i < length; i++) {
-					out.append(charBuffer.get(i));
-				}
-				charBuffer.clear();
-				listener.onProgress(total);
-				length = in.read(charBuffer);
-			}
-			if (out instanceof Flushable) {
-				((Flushable) out).flush();
-			}
-			listener.onProgress(total);
-			listener.onSuccedded(total);
-		} catch (IOException e) {
-			throw createException(listener, total, e);
+		} finally {
+			listener.onFinished();
+			returnBuffer(buffer);
 		}
 	}
 
@@ -149,14 +112,14 @@ public abstract class AbstractBufferedCharacterFetcher extends AbstractCharacter
 
 	/**
 	 * Called by
-	 * {@link AbstractBufferedCharacterFetcher#doCopy(Readable, Appendable, FetchProgressListener)}
+	 * {@link AbstractBufferedCharacterFetcher#doCopy(Reader, Writer, FetchProgressListener)}
 	 * to obtain a {@code char[]} to be used as a buffer.
 	 * 
 	 * <p>
 	 * Every {@code char[]} that is returned by this method will be passed as an
 	 * argument of {@link AbstractBufferedCharacterFetcher#returnBuffer(char[])}
 	 * after
-	 * {@link AbstractBufferedCharacterFetcher#doCopy(Readable, Appendable, FetchProgressListener)}
+	 * {@link AbstractBufferedCharacterFetcher#doCopy(Reader, Writer, FetchProgressListener)}
 	 * has finished using it.
 	 * 
 	 * 
@@ -166,7 +129,7 @@ public abstract class AbstractBufferedCharacterFetcher extends AbstractCharacter
 
 	/**
 	 * Called by
-	 * {@link AbstractBufferedCharacterFetcher#doCopy(Readable, Appendable, FetchProgressListener)}
+	 * {@link AbstractBufferedCharacterFetcher#doCopy(Reader, Writer, FetchProgressListener)}
 	 * to return a {@code char[]} that has previously been obtained from
 	 * {@link AbstractBufferedCharacterFetcher#obtainBuffer()}.
 	 * 
