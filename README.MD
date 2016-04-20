@@ -12,6 +12,13 @@
 
 This is a simple helper to fetch the complete content of an input stream or a readable. It is, among other things, intended as an alternative to using [`IOUtils#readFully`](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/IOUtils.java#IOUtils.readFully%28java.io.InputStream%2Cint%2Cboolean%29) for this everyday task.
 
+- [Fetching `byte` streams](#fetching-byte-streams)
+- [Fetching `char` streams](#fetching-char-streams)
+- [Automatic closing of supplied streams](#automatic-closing-of-supplied-streams)
+- [Listen to fetch progress](#listen-to-fetch-progress)
+- [Handling of `null` arguments](#handling-of-null-arguments)
+- [Customizability](#customizability)
+
 This library is hosted in the [Maven Central Repository](https://maven-badges.herokuapp.com/maven-central/net.markenwerk/utils-data-fetcher). You can use it with the following coordinates:
 
 ```xml
@@ -40,9 +47,9 @@ This library provides a simple and lightweight alternative. For the sake of comp
  
 ## Usage
 
-### Fetching byte streams
+### Fetching `byte` streams
 
-This library provides the [`ByteFetcher`][ByteFetcher] which features two main functionalities to handle byte streams:
+This library provides the [`ByteFetcher`][ByteFetcher] which features two main functionalities to handle `byte` streams:
 
 ```java
 // create a simple ByteFetcher
@@ -55,9 +62,9 @@ byte[] bytes = fetcher.fetch(inputStream);
 fetcher.fetch(inputStream, outputStream);
 ```
 
-### Fetching character streams
+### Fetching `char` streams
 
-This library provides the [`CharacterFetcher`][CharacterFetcher] which features three main functionalities to handle character streams:
+This library provides the [`CharacterFetcher`][CharacterFetcher] which features three main functionalities to handle `char` streams:
 
 ```java
 // create a simple CharacterFetcher
@@ -105,14 +112,14 @@ foo.setContent(new BufferedFetcher().fetch(
 );
 ```
 
-### Handling of bad parameters
+### Handling of `null` arguments
 
 Missing or invalid arguments are handled gracefully with the following behaviour:
 
  - If `null` is given as the [`InputStream`][InputStream], or [`Readable`][Readable] it is simply ignored and handled as if there was nothing to read. That means, nothing is written to the [`OutputStream`][OutputStream] or [`Appendable`][Appendable] and, if requested, the [`OutputStream`][OutputStream] or [`Appendable`][Appendable] will be closed. 
  - If `null` is given as the [`OutputStream`][OutputStream] or [`Appendable`][Appendable], it is simply ignored, but the content of given [`InputStream`][InputStream] or [`Readable`][Readable] is fetched anyway. If requested, the [`InputStream`][InputStream] or [`Readable`][Readable] will be closed. 
  
-### Custom implementations
+### Customizability
  
 This library provides [`BufferedByteFetcher`][BufferedByteFetcher] as the simplest possible implementations of [`ByteFetcher`][ByteFetcher]. It eagerly allocates a `byte[]` during construction and uses it as a buffer to perform fetch operations by sequentially reading from the [`InputStream`][InputStream] into the buffer and then writing from the buffer to the [`OutputStream`][OutputStream]. It is not threadsafe.
 
