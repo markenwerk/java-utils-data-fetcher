@@ -88,8 +88,8 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher">BaseFetchProgressListener</a></span></code>
-<div class="block">A <a href="../../../../../../net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher"><code>BaseFetchProgressListener</code></a> is an implementation of
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher">FetchProgressAdapter</a></span></code>
+<div class="block">A <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchProgressAdapter</code></a> is an implementation of
  <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher"><code>FetchProgressListener</code></a> with empty methods.</div>
 </td>
 </tr>
@@ -104,13 +104,13 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">AbstractFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
+<td class="colLast"><span class="typeNameLabel">AbstractByteFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
     <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;out,
     <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">Fetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/Fetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
+<td class="colLast"><span class="typeNameLabel">ByteFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/ByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
     <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;out,
     <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>
 <div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a given
@@ -119,7 +119,7 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">AbstractFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
+<td class="colLast"><span class="typeNameLabel">AbstractByteFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
     <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;out,
     <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener,
     boolean&nbsp;closeIn,
@@ -127,7 +127,7 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">Fetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/Fetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
+<td class="colLast"><span class="typeNameLabel">ByteFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/ByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
     <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;out,
     <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener,
     boolean&nbsp;closeIn,
@@ -137,44 +137,145 @@
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><span class="typeNameLabel">AbstractBufferedFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
-      <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;out,
-      <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractCharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang">Appendable</a>&nbsp;out,
+    <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">CharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/CharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang">Appendable</a>&nbsp;out,
+    <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>
+<div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractCharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang">Appendable</a>&nbsp;out,
+    <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener,
+    boolean&nbsp;closeIn,
+    boolean&nbsp;closeOut)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">CharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/CharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang">Appendable</a>&nbsp;out,
+    <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener,
+    boolean&nbsp;closeIn,
+    boolean&nbsp;closeOut)</code>
+<div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>protected abstract void</code></td>
-<td class="colLast"><span class="typeNameLabel">AbstractFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
+<td class="colLast"><span class="typeNameLabel">AbstractByteFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
       <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;out,
       <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>
 <div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a given
  <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractBufferedByteFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;out,
+      <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractBufferedCharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang">Appendable</a>&nbsp;out,
+      <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected abstract void</code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractCharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang">Appendable</a>&nbsp;out,
+      <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>
+<div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>.</div>
+</td>
+</tr>
 <tr class="altColor">
 <td class="colFirst"><code>byte[]</code></td>
-<td class="colLast"><span class="typeNameLabel">AbstractFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
+<td class="colLast"><span class="typeNameLabel">AbstractByteFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
      <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>byte[]</code></td>
-<td class="colLast"><span class="typeNameLabel">Fetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/Fetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
+<td class="colLast"><span class="typeNameLabel">ByteFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/ByteFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
      <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>
 <div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a fresh byte[].</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>byte[]</code></td>
-<td class="colLast"><span class="typeNameLabel">AbstractFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
+<td class="colLast"><span class="typeNameLabel">AbstractByteFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
      <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener,
      boolean&nbsp;close)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>byte[]</code></td>
-<td class="colLast"><span class="typeNameLabel">Fetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/Fetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
+<td class="colLast"><span class="typeNameLabel">ByteFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/ByteFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in,
      <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener,
      boolean&nbsp;close)</code>
 <div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a fresh byte[].</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>char[]</code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractCharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#fetch-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+     <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>char[]</code></td>
+<td class="colLast"><span class="typeNameLabel">CharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/CharacterFetcher.html#fetch-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+     <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>
+<div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a fresh char[].</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>char[]</code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractCharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#fetch-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+     <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener,
+     boolean&nbsp;close)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>char[]</code></td>
+<td class="colLast"><span class="typeNameLabel">CharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/CharacterFetcher.html#fetch-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+     <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener,
+     boolean&nbsp;close)</code>
+<div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a fresh char[].</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractCharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#read-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">read</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+    <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">CharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/CharacterFetcher.html#read-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">read</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+    <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener)</code>
+<div class="block">Reads the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> as a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractCharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#read-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">read</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+    <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener,
+    boolean&nbsp;close)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">CharacterFetcher.</span><code><span class="memberNameLink"><a href="../../../../../../net/markenwerk/utils/data/fetcher/CharacterFetcher.html#read-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">read</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang">Readable</a>&nbsp;in,
+    <a href="../../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a>&nbsp;listener,
+    boolean&nbsp;close)</code>
+<div class="block">Reads the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> as a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>.</div>
 </td>
 </tr>
 </tbody>

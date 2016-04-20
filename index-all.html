@@ -73,21 +73,39 @@
 </a>
 <h2 class="title">A</h2>
 <dl>
-<dt><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">AbstractBufferedFetcher</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
+<dt><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">AbstractBufferedByteFetcher</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
 <dd>
-<div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractBufferedFetcher</code></a> is a sensible base implementation of
- <a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a> that uses a <code>byte[]</code> as buffer, to while copying all
- bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a> by sequentially
- reading from the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into the buffer and then writing from
- the buffer to the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
+<div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractBufferedByteFetcher</code></a> is a sensible base implementation of
+ <a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>ByteFetcher</code></a> that uses a <code>byte[]</code> as buffer, to while copying
+ all bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a> by
+ sequentially reading from the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into the buffer and then
+ writing from the buffer to the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#AbstractBufferedFetcher--">AbstractBufferedFetcher()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html#AbstractBufferedByteFetcher--">AbstractBufferedByteFetcher()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">AbstractFetcher</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
+<dt><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">AbstractBufferedCharacterFetcher</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
 <dd>
-<div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractFetcher</code></a> is a sensible base implementation of <a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a>.</div>
+<div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractBufferedCharacterFetcher</code></a> is a sensible base implementation of
+ <a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>CharacterFetcher</code></a> that uses a <code>char[]</code> as buffer, to while
+ copying all chars from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io"><code>Reader</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io"><code>Writer</code></a> by sequentially
+ reading from the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io"><code>Reader</code></a> into the buffer and then writing from the
+ buffer to the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io"><code>Writer</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html#AbstractFetcher--">AbstractFetcher()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#AbstractBufferedCharacterFetcher--">AbstractBufferedCharacterFetcher()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">AbstractByteFetcher</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
+<dd>
+<div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractByteFetcher</code></a> is a sensible base implementation of
+ <a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>ByteFetcher</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#AbstractByteFetcher--">AbstractByteFetcher()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractByteFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">AbstractCharacterFetcher</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
+<dd>
+<div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractCharacterFetcher</code></a> is a sensible base implementation of
+ <a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>CharacterFetcher</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#AbstractCharacterFetcher--">AbstractCharacterFetcher()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:B">
@@ -95,30 +113,46 @@
 </a>
 <h2 class="title">B</h2>
 <dl>
-<dt><a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">BaseFetchProgressListener</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
+<dt><a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">BufferedByteFetcher</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
 <dd>
-<div class="block">A <a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher"><code>BaseFetchProgressListener</code></a> is an implementation of
- <a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher"><code>FetchProgressListener</code></a> with empty methods.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html#BaseFetchProgressListener--">BaseFetchProgressListener()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher">BaseFetchProgressListener</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="net/markenwerk/utils/data/fetcher/BufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">BufferedFetcher</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
-<dd>
-<div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractBufferedFetcher</code></a> is a sensible base implementation of
- <a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a> that uses a <code>byte[]</code> as buffer, while copying all
+<div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractBufferedByteFetcher</code></a> is a sensible base implementation of
+ <a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>ByteFetcher</code></a> that uses a <code>byte[]</code> as buffer, while copying all
  bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a> by sequentially
  reading from the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into the buffer and then writing from
  the buffer to the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedFetcher.html#BufferedFetcher--">BufferedFetcher()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html#BufferedByteFetcher--">BufferedByteFetcher()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedByteFetcher</a></dt>
 <dd>
-<div class="block">Creates a new <a href="net/markenwerk/utils/data/fetcher/BufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>BufferedFetcher</code></a> with the default buffer size of one
- <a href="https://en.wikipedia.org/wiki/Kibibyte">kibibyte</a> (1024
- bytes).</div>
+<div class="block">Creates a new <a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>BufferedByteFetcher</code></a> with the default buffer size of
+ 1024 bytes.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedFetcher.html#BufferedFetcher-int-">BufferedFetcher(int)</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html#BufferedByteFetcher-int-">BufferedByteFetcher(int)</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedByteFetcher</a></dt>
 <dd>
-<div class="block">Creates a new <a href="net/markenwerk/utils/data/fetcher/BufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>BufferedFetcher</code></a> with the given buffer size.</div>
+<div class="block">Creates a new <a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>BufferedByteFetcher</code></a> with the given buffer size.</div>
+</dd>
+<dt><a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">BufferedCharacterFetcher</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
+<dd>
+<div class="block"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>AbstractBufferedCharacterFetcher</code></a> is a sensible base implementation of
+ <a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>CharacterFetcher</code></a> that uses a <code>char[]</code> as buffer, while copying
+ all chars from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io"><code>Reader</code></a> to an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io"><code>Writer</code></a> by sequentially reading
+ from the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io"><code>Reader</code></a> into the buffer and then writing from the buffer to
+ the <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io"><code>Writer</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html#BufferedCharacterFetcher--">BufferedCharacterFetcher()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedCharacterFetcher</a></dt>
+<dd>
+<div class="block">Creates a new <a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>BufferedCharacterFetcher</code></a> with the default buffer
+ size of 1024 characters.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html#BufferedCharacterFetcher-int-">BufferedCharacterFetcher(int)</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedCharacterFetcher</a></dt>
+<dd>
+<div class="block">Creates a new <a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher"><code>BufferedCharacterFetcher</code></a> with the given buffer
+ size.</div>
+</dd>
+<dt><a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">ByteFetcher</span></a> - Interface in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
+<dd>
+<div class="block">A <a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>ByteFetcher</code></a> can fetch the entire content of a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a fresh <code>byte[]</code> or copy it into a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </dd>
 </dl>
 <a name="I:C">
@@ -126,37 +160,75 @@
 </a>
 <h2 class="title">C</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html#copy-java.io.InputStream-java.io.OutputStream-">copy(InputStream, OutputStream)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></dt>
+<dt><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">CharacterFetcher</span></a> - Interface in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
+<dd>
+<div class="block">A <a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>CharacterFetcher</code></a> can fetch the entire content of a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a fresh <code>char[]</code> or <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> or copy it
+ into a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-">copy(InputStream, OutputStream)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html#copy-java.io.InputStream-java.io.OutputStream-boolean-boolean-">copy(InputStream, OutputStream, boolean, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-boolean-boolean-">copy(InputStream, OutputStream, boolean, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy(InputStream, OutputStream, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy(InputStream, OutputStream, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy(InputStream, OutputStream, FetchProgressListener, boolean, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy(InputStream, OutputStream, FetchProgressListener, boolean, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/Fetcher.html#copy-java.io.InputStream-java.io.OutputStream-">copy(InputStream, OutputStream)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher">Fetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-">copy(Readable, Appendable)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-boolean-boolean-">copy(Readable, Appendable, boolean, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy(Readable, Appendable, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy(Readable, Appendable, FetchProgressListener, boolean, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-">copy(InputStream, OutputStream)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">ByteFetcher</a></dt>
 <dd>
 <div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a given
  <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/Fetcher.html#copy-java.io.InputStream-java.io.OutputStream-boolean-boolean-">copy(InputStream, OutputStream, boolean, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher">Fetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-boolean-boolean-">copy(InputStream, OutputStream, boolean, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">ByteFetcher</a></dt>
 <dd>
 <div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a given
  <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/Fetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy(InputStream, OutputStream, FetchProgressListener)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher">Fetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy(InputStream, OutputStream, FetchProgressListener)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">ByteFetcher</a></dt>
 <dd>
 <div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a given
  <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/Fetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy(InputStream, OutputStream, FetchProgressListener, boolean, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher">Fetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html#copy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy(InputStream, OutputStream, FetchProgressListener, boolean, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">ByteFetcher</a></dt>
 <dd>
 <div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a given
  <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#createBuffer-int-">createBuffer(int)</a></span> - Static method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-">copy(Readable, Appendable)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-boolean-boolean-">copy(Readable, Appendable, boolean, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">copy(Readable, Appendable, FetchProgressListener)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#copy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-boolean-">copy(Readable, Appendable, FetchProgressListener, boolean, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html#createBuffer-int-">createBuffer(int)</a></span> - Static method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedByteFetcher</a></dt>
 <dd>
 <div class="block">Safely creates a new byte[] to be used as a buffer.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#createBuffer-int-">createBuffer(int)</a></span> - Static method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedCharacterFetcher</a></dt>
+<dd>
+<div class="block">Safely creates a new char[] to be used as a buffer.</div>
 </dd>
 </dl>
 <a name="I:D">
@@ -164,16 +236,27 @@
 </a>
 <h2 class="title">D</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#DEFAULT_BUFEFR_SIZE">DEFAULT_BUFEFR_SIZE</a></span> - Static variable in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html#DEFAULT_BUFEFR_SIZE">DEFAULT_BUFEFR_SIZE</a></span> - Static variable in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedByteFetcher</a></dt>
 <dd>
-<div class="block">The default buffer size of one kibibyte.</div>
+<div class="block">The default buffer size of 1024 bytes.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy(InputStream, OutputStream, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#DEFAULT_BUFEFR_SIZE">DEFAULT_BUFEFR_SIZE</a></span> - Static variable in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedCharacterFetcher</a></dt>
+<dd>
+<div class="block">The default buffer size of 1024 characters.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy(InputStream, OutputStream, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy(InputStream, OutputStream, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy(Readable, Appendable, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy(InputStream, OutputStream, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractByteFetcher</a></dt>
 <dd>
 <div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a given
  <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">doCopy(Readable, Appendable, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>
+<div class="block">Copies the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a given
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html?is-external=true" title="class or interface in java.lang"><code>Appendable</code></a>.</div>
 </dd>
 </dl>
 <a name="I:F">
@@ -181,52 +264,78 @@
 </a>
 <h2 class="title">F</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html#fetch-java.io.InputStream-">fetch(InputStream)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#fetch-java.io.InputStream-">fetch(InputStream)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html#fetch-java.io.InputStream-boolean-">fetch(InputStream, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#fetch-java.io.InputStream-boolean-">fetch(InputStream, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch(InputStream, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch(InputStream, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch(InputStream, FetchProgressListener, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch(InputStream, FetchProgressListener, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/Fetcher.html#fetch-java.io.InputStream-">fetch(InputStream)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher">Fetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#fetch-java.lang.Readable-">fetch(Readable)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#fetch-java.lang.Readable-boolean-">fetch(Readable, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#fetch-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch(Readable, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#fetch-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch(Readable, FetchProgressListener, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html#fetch-java.io.InputStream-">fetch(InputStream)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">ByteFetcher</a></dt>
 <dd>
 <div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a fresh byte[].</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/Fetcher.html#fetch-java.io.InputStream-boolean-">fetch(InputStream, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher">Fetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html#fetch-java.io.InputStream-boolean-">fetch(InputStream, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">ByteFetcher</a></dt>
 <dd>
 <div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a fresh byte[].</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/Fetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch(InputStream, FetchProgressListener, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher">Fetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch(InputStream, FetchProgressListener, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">ByteFetcher</a></dt>
 <dd>
 <div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a fresh byte[].</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/Fetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch(InputStream, FetchProgressListener)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher">Fetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html#fetch-java.io.InputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch(InputStream, FetchProgressListener)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">ByteFetcher</a></dt>
 <dd>
 <div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> into a fresh byte[].</div>
 </dd>
-<dt><a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">Fetcher</span></a> - Interface in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#fetch-java.lang.Readable-">fetch(Readable)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
 <dd>
-<div class="block">A <a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a> can fetch the entire content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
- into a fresh <code>byte[]</code> or copy it into a given <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
+<div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a fresh char[].</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#fetch-java.lang.Readable-boolean-">fetch(Readable, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a fresh char[].</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#fetch-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">fetch(Readable, FetchProgressListener)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a fresh char[].</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#fetch-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">fetch(Readable, FetchProgressListener, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Fetches the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> into a fresh char[].</div>
 </dd>
 <dt><a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">FetchException</span></a> - Exception in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
 <dd>
 <div class="block">A <a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> is a specialized <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io"><code>IOException</code></a> that indicates
- that a fetch operation of a <a href="net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a> has failed.</div>
+ that a fetch operation of a <a href="net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>ByteFetcher</code></a> has failed.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchException.html#FetchException-java.lang.String-java.lang.Throwable-">FetchException(String, Throwable)</a></span> - Constructor for exception net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a></dt>
 <dd>
-<div class="block">Constructs a <a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message and cause.</div>
+<div class="block">Creates a new <a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message and cause.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchException.html#FetchException-java.lang.String-">FetchException(String)</a></span> - Constructor for exception net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a></dt>
 <dd>
-<div class="block">Constructs a <a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message.</div>
+<div class="block">Creates a new <a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchException.html#FetchException-java.lang.Throwable-">FetchException(Throwable)</a></span> - Constructor for exception net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher">FetchException</a></dt>
 <dd>
-<div class="block">Constructs a <a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given cause.</div>
+<div class="block">Creates a new <a href="net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given cause.</div>
 </dd>
+<dt><a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">FetchProgressAdapter</span></a> - Class in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
+<dd>
+<div class="block">A <a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchProgressAdapter</code></a> is an implementation of
+ <a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher"><code>FetchProgressListener</code></a> with empty methods.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#FetchProgressAdapter--">FetchProgressAdapter()</a></span> - Constructor for class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher">FetchProgressAdapter</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">FetchProgressListener</span></a> - Interface in <a href="net/markenwerk/utils/data/fetcher/package-summary.html">net.markenwerk.utils.data.fetcher</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -243,43 +352,51 @@
 </a>
 <h2 class="title">O</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#obtainBuffer--">obtainBuffer()</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html#obtainBuffer--">obtainBuffer()</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedByteFetcher</a></dt>
 <dd>
 <div class="block">Called by
- <a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedFetcher.doCopy(InputStream, OutputStream, FetchProgressListener)</code></a>
+ <a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedByteFetcher.doCopy(InputStream, OutputStream, FetchProgressListener)</code></a>
  to obtain a <code>byte[]</code> to be used as a buffer.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedFetcher.html#obtainBuffer--">obtainBuffer()</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#obtainBuffer--">obtainBuffer()</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedCharacterFetcher</a></dt>
+<dd>
+<div class="block">Called by
+ <a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Readable, Appendable, FetchProgressListener)</code></a>
+ to obtain a <code>char[]</code> to be used as a buffer.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html#obtainBuffer--">obtainBuffer()</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedByteFetcher</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html#onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">onFetchFailed(FetchException, Long)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher">BaseFetchProgressListener</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html#obtainBuffer--">obtainBuffer()</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">onFetchFailed(FetchException, Long)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher">FetchProgressAdapter</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchFailed-net.markenwerk.utils.data.fetcher.FetchException-java.lang.Long-">onFetchFailed(FetchException, Long)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></dt>
 <dd>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has failed.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html#onFetchFinished--">onFetchFinished()</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher">BaseFetchProgressListener</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFetchFinished--">onFetchFinished()</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher">FetchProgressAdapter</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchFinished--">onFetchFinished()</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></dt>
 <dd>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has finished.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html#onFetchProgress-long-">onFetchProgress(long)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher">BaseFetchProgressListener</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFetchProgress-long-">onFetchProgress(long)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher">FetchProgressAdapter</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchProgress-long-">onFetchProgress(long)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></dt>
 <dd>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has progressed.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html#onFetchStarted--">onFetchStarted()</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher">BaseFetchProgressListener</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFetchStarted--">onFetchStarted()</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher">FetchProgressAdapter</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchStarted--">onFetchStarted()</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></dt>
 <dd>
 <div class="block">Indicates that the process of fetching bytes from an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a>
  has started.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html#onFetchSuccedded-java.lang.Long-">onFetchSuccedded(Long)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BaseFetchProgressListener.html" title="class in net.markenwerk.utils.data.fetcher">BaseFetchProgressListener</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html#onFetchSuccedded-java.lang.Long-">onFetchSuccedded(Long)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher">FetchProgressAdapter</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html#onFetchSuccedded-java.lang.Long-">onFetchSuccedded(Long)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher">FetchProgressListener</a></dt>
 <dd>
@@ -292,13 +409,48 @@
 </a>
 <h2 class="title">R</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#returnBuffer-byte:A-">returnBuffer(byte[])</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedFetcher</a></dt>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#read-java.lang.Readable-">read(Readable)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#read-java.lang.Readable-boolean-">read(Readable, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#read-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">read(Readable, FetchProgressListener)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html#read-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">read(Readable, FetchProgressListener, boolean)</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#read-java.lang.Readable-">read(Readable)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Reads the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> as a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#read-java.lang.Readable-boolean-">read(Readable, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Reads the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> as a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a></div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#read-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-">read(Readable, FetchProgressListener)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Reads the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> as a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html#read-java.lang.Readable-net.markenwerk.utils.data.fetcher.FetchProgressListener-boolean-">read(Readable, FetchProgressListener, boolean)</a></span> - Method in interface net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher">CharacterFetcher</a></dt>
+<dd>
+<div class="block">Reads the content of a given <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Readable.html?is-external=true" title="class or interface in java.lang"><code>Readable</code></a> as a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html#returnBuffer-byte:A-">returnBuffer(byte[])</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedByteFetcher</a></dt>
 <dd>
 <div class="block">Called by
- <a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedFetcher.doCopy(InputStream, OutputStream, FetchProgressListener)</code></a>
+ <a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html#doCopy-java.io.InputStream-java.io.OutputStream-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedByteFetcher.doCopy(InputStream, OutputStream, FetchProgressListener)</code></a>
  to return a <code>byte[]</code> that has previously been obtained from
- <a href="net/markenwerk/utils/data/fetcher/AbstractBufferedFetcher.html#obtainBuffer--"><code>AbstractBufferedFetcher.obtainBuffer()</code></a>.</div>
+ <a href="net/markenwerk/utils/data/fetcher/AbstractBufferedByteFetcher.html#obtainBuffer--"><code>AbstractBufferedByteFetcher.obtainBuffer()</code></a>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#returnBuffer-char:A-">returnBuffer(char[])</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">AbstractBufferedCharacterFetcher</a></dt>
+<dd>
+<div class="block">Called by
+ <a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#doCopy-java.lang.Readable-java.lang.Appendable-net.markenwerk.utils.data.fetcher.FetchProgressListener-"><code>AbstractBufferedCharacterFetcher.doCopy(Readable, Appendable, FetchProgressListener)</code></a>
+ to return a <code>char[]</code> that has previously been obtained from
+ <a href="net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html#obtainBuffer--"><code>AbstractBufferedCharacterFetcher.obtainBuffer()</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html#returnBuffer-byte:A-">returnBuffer(byte[])</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedByteFetcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html#returnBuffer-char:A-">returnBuffer(char[])</a></span> - Method in class net.markenwerk.utils.data.fetcher.<a href="net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html" title="class in net.markenwerk.utils.data.fetcher">BufferedCharacterFetcher</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:R">R</a>&nbsp;</div>
 <!-- ======= START OF BOTTOM NAVBAR ====== -->

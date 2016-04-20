@@ -42,8 +42,8 @@
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?net/markenwerk/utils/data/fetcher/FetchException.html" target="_top">Frames</a></li>
@@ -124,14 +124,14 @@
 <pre>public final class <span class="typeNameLabel">FetchException</span>
 extends <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block">A <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> is a specialized <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io"><code>IOException</code></a> that indicates
- that a fetch operation of a <a href="../../../../../net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a> has failed.</div>
+ that a fetch operation of a <a href="../../../../../net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>ByteFetcher</code></a> has failed.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>2.0.0</dd>
 <dt><span class="simpleTagLabel">Author:</span></dt>
 <dd>Torsten Krause (tk at markenwerk dot net)</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>Fetcher</code></a>, 
+<dd><a href="../../../../../net/markenwerk/utils/data/fetcher/ByteFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><code>ByteFetcher</code></a>, 
 <a href="../../../../../serialized-form.html#net.markenwerk.utils.data.fetcher.FetchException">Serialized Form</a></dd>
 </dl>
 </li>
@@ -153,18 +153,18 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.ht
 </tr>
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html#FetchException-java.lang.String-">FetchException</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;message)</code>
-<div class="block">Constructs a <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message.</div>
+<div class="block">Creates a new <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html#FetchException-java.lang.String-java.lang.Throwable-">FetchException</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;message,
               <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;cause)</code>
-<div class="block">Constructs a <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message and cause.</div>
+<div class="block">Creates a new <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message and cause.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html#FetchException-java.lang.Throwable-">FetchException</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;cause)</code>
-<div class="block">Constructs a <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given cause.</div>
+<div class="block">Creates a new <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given cause.</div>
 </td>
 </tr>
 </table>
@@ -212,8 +212,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.ht
 <h4>FetchException</h4>
 <pre>public&nbsp;FetchException(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;message,
                       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;cause)</pre>
-<div class="block">Constructs a <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message and cause. The
- given cause is chained to this exception.</div>
+<div class="block">Creates a new <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message and cause.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>message</code> - The message.</dd>
@@ -228,7 +227,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.ht
 <li class="blockList">
 <h4>FetchException</h4>
 <pre>public&nbsp;FetchException(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;message)</pre>
-<div class="block">Constructs a <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message.</div>
+<div class="block">Creates a new <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given message.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>message</code> - The message.</dd>
@@ -242,8 +241,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.ht
 <li class="blockList">
 <h4>FetchException</h4>
 <pre>public&nbsp;FetchException(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;cause)</pre>
-<div class="block">Constructs a <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given cause. The given cause
- is chained to this exception.</div>
+<div class="block">Creates a new <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a> with the given cause.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>cause</code> - The cause of this <a href="../../../../../net/markenwerk/utils/data/fetcher/FetchException.html" title="class in net.markenwerk.utils.data.fetcher"><code>FetchException</code></a>.</dd>
@@ -277,8 +275,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.ht
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../net/markenwerk/utils/data/fetcher/Fetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressListener.html" title="interface in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../net/markenwerk/utils/data/fetcher/CharacterFetcher.html" title="interface in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html" title="class in net.markenwerk.utils.data.fetcher"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?net/markenwerk/utils/data/fetcher/FetchException.html" target="_top">Frames</a></li>
