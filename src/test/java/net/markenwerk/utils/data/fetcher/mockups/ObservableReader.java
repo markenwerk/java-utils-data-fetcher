@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,56 +19,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package net.markenwerk.utils.data.fetcher;
+package net.markenwerk.utils.data.fetcher.mockups;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.Reader;
 
-/**
- * Wrapper for an another {@link OutputStream} that can tell, if
- * {@link OutputStream#close()} has been called;
- * 
- * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.0.0
- */
-class ObservableOutputStream extends OutputStream {
+@SuppressWarnings("javadoc")
+public class ObservableReader extends Reader {
 
-	private final OutputStream out;
+	private final Reader in;
 
 	private boolean closed;
 
-	/**
-	 * Creates a new {@link ObservableOutputStream} from a given
-	 * {@link OutputStream}.
-	 * 
-	 * @param out
-	 *            The {@link OutputStream} to wrap.
-	 */
-	public ObservableOutputStream(OutputStream out) {
-		this.out = out;
+	public ObservableReader(Reader in) {
+		this.in = in;
 	}
 
 	@Override
-	public void write(int b) throws IOException {
-		out.write(b);
+	public int read() throws IOException {
+		return in.read();
 	}
 
 	@Override
 	public void close() throws IOException {
 		if (closed) {
-			throw new IllegalStateException("Outputstream has already been closed");
+			throw new IllegalStateException("Reader has already been closed");
 		}
-		super.close();
+		in.close();
 		closed = true;
 	}
 
-	/**
-	 * Returns whether {@link OutputStream#close()} has been called on this
-	 * object.
-	 * 
-	 * @return {@literal true}, if {@link OutputStream#close()} has been called,
-	 *         {@literal false} otherwise.
-	 */
+	@Override
+	public int read(char[] cbuf, int off, int len) throws IOException {
+		return in.read(cbuf, off, len);
+	}
+
 	public boolean isClosed() {
 		return closed;
 	}

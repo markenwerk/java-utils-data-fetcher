@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,9 +22,8 @@
 package net.markenwerk.utils.data.fetcher;
 
 import java.io.CharArrayWriter;
+import java.io.Closeable;
 import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
 
 /**
  * {@link AbstractCharacterFetcher} is a sensible base implementation of
@@ -32,8 +31,8 @@ import java.io.Writer;
  * 
  * <p>
  * Implementers must only implement a single simplified method that copies all
- * characters from an {@link Reader} to an {@link Writer}:
- * {@link AbstractCharacterFetcher#doCopy(Reader, Writer, FetchProgressListener)}.
+ * characters from an {@link Readable} to an {@link Appendable}:
+ * {@link AbstractCharacterFetcher#doCopy(Readable, Appendable, FetchProgressListener)}.
  * 
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
@@ -42,65 +41,65 @@ import java.io.Writer;
 public abstract class AbstractCharacterFetcher implements CharacterFetcher {
 
 	@Override
-	public final char[] fetch(Reader in) throws FetchException {
+	public final char[] fetch(Readable in) throws FetchException {
 		return fetch(in, null, false);
 	}
 
 	@Override
-	public final char[] fetch(Reader in, boolean close) throws FetchException {
+	public final char[] fetch(Readable in, boolean close) throws FetchException {
 		return fetch(in, null, close);
 	}
 
 	@Override
-	public final char[] fetch(Reader in, FetchProgressListener listener) throws FetchException {
+	public final char[] fetch(Readable in, FetchProgressListener listener) throws FetchException {
 		return fetch(in, listener, false);
 	}
 
 	@Override
-	public final char[] fetch(Reader in, FetchProgressListener listener, boolean close) throws FetchException {
+	public final char[] fetch(Readable in, FetchProgressListener listener, boolean close) throws FetchException {
 		CharArrayWriter out = new CharArrayWriter();
 		copy(in, out, listener, close, true);
 		return out.toCharArray();
 	}
 
 	@Override
-	public final String read(Reader in) throws FetchException {
+	public final String read(Readable in) throws FetchException {
 		return new String(fetch(in, null, false));
 	}
 
 	@Override
-	public final String read(Reader in, boolean close) throws FetchException {
+	public final String read(Readable in, boolean close) throws FetchException {
 		return new String(fetch(in, null, close));
 	}
 
 	@Override
-	public final String read(Reader in, FetchProgressListener listener) throws FetchException {
+	public final String read(Readable in, FetchProgressListener listener) throws FetchException {
 		return new String(fetch(in, listener, false));
 	}
 
 	@Override
-	public final String read(Reader in, FetchProgressListener listener, boolean close) throws FetchException {
+	public final String read(Readable in, FetchProgressListener listener, boolean close) throws FetchException {
 		return new String(fetch(in, listener, close));
 	}
 
 	@Override
-	public final void copy(Reader in, Writer out) throws FetchException {
+	public final void copy(Readable in, Appendable out) throws FetchException {
 		copy(in, out, false, false);
 	}
 
 	@Override
-	public final void copy(Reader in, Writer out, boolean closeIn, boolean closeOut) throws FetchException {
+	public final void copy(Readable in, Appendable out, boolean closeIn, boolean closeOut) throws FetchException {
 		copy(in, out, null, closeIn, closeOut);
 	}
 
 	@Override
-	public final void copy(Reader in, Writer out, FetchProgressListener listener) throws FetchException {
+	public final void copy(Readable in, Appendable out, FetchProgressListener listener) throws FetchException {
 		copy(in, out, listener, false, false);
 	}
 
 	@Override
-	public final void copy(Reader in, Writer out, FetchProgressListener listener, boolean closeIn, boolean closeOut)
-			throws FetchException {
+	public final void copy(Readable in, Appendable out, FetchProgressListener listener, boolean closeIn,
+			boolean closeOut) throws FetchException {
 		if (null == in) {
 			in = NullReader.INSTANCE;
 		}
@@ -113,22 +112,22 @@ public abstract class AbstractCharacterFetcher implements CharacterFetcher {
 		doCopy(in, out, listener, closeIn, closeOut);
 	}
 
-	private void doCopy(Reader in, Writer out, FetchProgressListener listener, boolean closeIn, boolean closeOut)
+	private void doCopy(Readable in, Appendable out, FetchProgressListener listener, boolean closeIn, boolean closeOut)
 			throws FetchException {
 		try {
 			doCopy(in, out, listener);
 		} catch (FetchException e) {
 			throw e;
 		} finally {
-			if (closeIn) {
+			if (closeIn && in instanceof Closeable) {
 				try {
-					in.close();
+					((Closeable) in).close();
 				} catch (IOException e) {
 				}
 			}
-			if (closeOut) {
+			if (closeOut && out instanceof Closeable) {
 				try {
-					out.close();
+					((Closeable) out).close();
 				} catch (IOException e) {
 				}
 			}
@@ -137,26 +136,27 @@ public abstract class AbstractCharacterFetcher implements CharacterFetcher {
 	}
 
 	/**
-	 * Copies the content of a given {@link Reader} into a given {@link Writer}.
+	 * Copies the content of a given {@link Readable} into a given
+	 * {@link Appendable}.
 	 * 
 	 * <p>
-	 * It is guaranteed that neither the given {@link Reader} nor the given
-	 * {@link Writer} nor the given {@link FetchProgressListener} is
+	 * It is guaranteed that neither the given {@link Readable} nor the given
+	 * {@link Appendable} nor the given {@link FetchProgressListener} is
 	 * {@literal null}.
 	 * 
 	 * <p>
 	 * Implementers must not close either of the given streams.
 	 * 
 	 * @param in
-	 *            The {@link Reader} to read from.
+	 *            The {@link Readable} to read from.
 	 * @param out
-	 *            The {@link Writer} to write to.
+	 *            The {@link Appendable} to write to.
 	 * @param listener
 	 *            The {@link FetchProgressListener} to report to.
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link Reader} or writing to the given {@link Writer}.
+	 *             {@link Readable} or writing to the given {@link Appendable}.
 	 */
-	protected abstract void doCopy(Reader in, Writer out, FetchProgressListener listener) throws FetchException;
+	protected abstract void doCopy(Readable in, Appendable out, FetchProgressListener listener) throws FetchException;
 
 }

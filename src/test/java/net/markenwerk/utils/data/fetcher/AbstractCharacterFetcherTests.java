@@ -21,43 +21,44 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import java.io.CharArrayReader;
+import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.CharBuffer;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.markenwerk.utils.data.fetcher.mockups.FailableInputStream;
-import net.markenwerk.utils.data.fetcher.mockups.FailableOutputStream;
+import net.markenwerk.utils.data.fetcher.mockups.FailableReader;
+import net.markenwerk.utils.data.fetcher.mockups.FailableWriter;
 
 /**
- * JUnit tests for {@link ByteFetcher#fetch(InputStream)} methods on stream that
- * fail.
+ * JUnit tests for {@link CharacterFetcher#fetch(Readable)} methods on stream
+ * that fail.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @param <ActualFetcher>
- *            The actual {@link ByteFetcher} type to be tested.
+ *            The actual {@link CharacterFetcher} type to be tested.
  * @since 1.0.0
  */
-public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher> {
+public abstract class AbstractCharacterFetcherTests<ActualFetcher extends CharacterFetcher> {
 
-	private static final byte[] BYTES = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	private static final char[] CHARS = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-	private ByteFetcher fetcher;
+	private CharacterFetcher fetcher;
 
-	private FailableInputStream in;
+	private FailableReader in;
 
-	private ByteArrayOutputStream outBuffer;
+	private CharArrayWriter outBuffer;
 
-	private FailableOutputStream out;
+	private FailableWriter out;
 
 	/**
-	 * Create a new {@link ByteFetcher}.
+	 * Create a new {@link CharacterFetcher}.
 	 */
 	@Before
 	public void prepareFetcher() {
@@ -65,24 +66,24 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	}
 
 	/**
-	 * Creates the {@link ByteFetcher} to be tested.
+	 * Creates the {@link CharacterFetcher} to be tested.
 	 * 
-	 * @return The {@link ByteFetcher} to be tested.
+	 * @return The {@link CharacterFetcher} to be tested.
 	 */
 	protected abstract ActualFetcher createFetcher();
 
 	/**
-	 * Create a new {@link FailableInputStream} from an
-	 * {@link ByteArrayInputStream} that reads some BYTES.
+	 * Create a new {@link FailableReader} from an {@link CharArrayReader} that
+	 * reads some.
 	 */
 	@Before
 	public void prepareInputStream() {
-		in = new FailableInputStream(new ByteArrayInputStream(BYTES));
+		in = new FailableReader(new CharArrayReader(CHARS));
 	}
 
 	/**
-	 * Close the {@link FailableInputStream} created by
-	 * {@link AbstractByteFetcherTests#prepareInputStream()}.
+	 * Close the {@link FailableReader} created by
+	 * {@link AbstractCharacterFetcherTests#prepareInputStream()}.
 	 */
 	@After
 	public void closeInputStream() {
@@ -95,18 +96,17 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	}
 
 	/**
-	 * Create a new {@link FailableOutputStream} from an
-	 * {@link ByteArrayOutputStream}.
+	 * Create a new {@link FailableWriter} from an {@link CharArrayWriter}.
 	 */
 	@Before
 	public void prepareOutputStream() {
-		outBuffer = new ByteArrayOutputStream();
-		out = new FailableOutputStream(outBuffer);
+		outBuffer = new CharArrayWriter();
+		out = new FailableWriter(outBuffer);
 	}
 
 	/**
-	 * Close the {@link FailableOutputStream} created by
-	 * {@link AbstractByteFetcherTests#prepareOutputStream()}.
+	 * Close the {@link FailableWriter} created by
+	 * {@link AbstractCharacterFetcherTests#prepareOutputStream()}.
 	 */
 	@After
 	public void closeOutputStream() {
@@ -119,7 +119,7 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	}
 
 	/**
-	 * Fetch BYTES into a new {@code byte[]}, leaving the input stream open by
+	 * Fetch into a new {@code char[]}, leaving the input stream open by
 	 * default.
 	 * 
 	 * @throws IOException
@@ -128,16 +128,16 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	@Test
 	public void fetch_leaveStreamOpenByDefault() throws IOException {
 
-		byte[] bytes = fetcher.fetch(in);
+		char[] characters = fetcher.fetch(in);
 
-		Assert.assertArrayEquals(BYTES, bytes);
+		Assert.assertArrayEquals(CHARS, characters);
 		Assert.assertFalse(in.isClosed());
 
 	}
 
 	/**
-	 * Fetch BYTES into a new {@code byte[]}, leaving the input stream
-	 * explicitly open.
+	 * Fetch into a new {@code char[]}, leaving the input stream explicitly
+	 * open.
 	 * 
 	 * @throws IOException
 	 *             If the fetch process failed unexpectedly.
@@ -145,15 +145,15 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	@Test
 	public void fetch_leaveStreamOpen() throws IOException {
 
-		byte[] bytes = fetcher.fetch(in, false);
+		char[] characters = fetcher.fetch(in, false);
 
-		Assert.assertArrayEquals(BYTES, bytes);
+		Assert.assertArrayEquals(CHARS, characters);
 		Assert.assertFalse(in.isClosed());
 
 	}
 
 	/**
-	 * Fetch BYTES into a new {@code byte[]}, closing the input stream.
+	 * Fetch into a new {@code char[]}, closing the input stream.
 	 * 
 	 * @throws IOException
 	 *             If the fetch process failed unexpectedly.
@@ -161,15 +161,15 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	@Test
 	public void fetch_autoCloseStream() throws IOException {
 
-		byte[] bytes = fetcher.fetch(in, true);
+		char[] characters = fetcher.fetch(in, true);
 
-		Assert.assertArrayEquals(BYTES, bytes);
+		Assert.assertArrayEquals(CHARS, characters);
 		Assert.assertTrue(in.isClosed());
 
 	}
 
 	/**
-	 * Fetch BYTES into a new {@code byte[]}, {@literal null} as an
+	 * Fetch into a new {@code char[]}, {@literal null} as an
 	 * {@link InputStream}, which should yield an empty array.
 	 * 
 	 * @throws IOException
@@ -178,16 +178,80 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	@Test
 	public void fetch_withBadParameters_nullStream() throws IOException {
 
-		byte[] bytes = fetcher.fetch(null);
+		char[] characters = fetcher.fetch(null);
 
-		Assert.assertNotNull(bytes);
-		Assert.assertTrue(0 == bytes.length);
+		Assert.assertNotNull(characters);
+		Assert.assertTrue(0 == characters.length);
 
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, leaving both streams open by
-	 * default.
+	 * Read into a new {@code String}, leaving the input stream open by default.
+	 * 
+	 * @throws IOException
+	 *             If the fetch process failed unexpectedly.
+	 */
+	@Test
+	public void read_leaveStreamOpenByDefault() throws IOException {
+
+		String string = fetcher.read(in);
+
+		Assert.assertEquals(new String(CHARS), string);
+		Assert.assertFalse(in.isClosed());
+
+	}
+
+	/**
+	 * Read into a new {@code String}, leaving the input stream explicitly open.
+	 * 
+	 * @throws IOException
+	 *             If the fetch process failed unexpectedly.
+	 */
+	@Test
+	public void read_leaveStreamOpen() throws IOException {
+
+		String string = fetcher.read(in, false);
+
+		Assert.assertEquals(new String(CHARS), string);
+		Assert.assertFalse(in.isClosed());
+
+	}
+
+	/**
+	 * Read into a new {@code String}, closing the input stream.
+	 * 
+	 * @throws IOException
+	 *             If the fetch process failed unexpectedly.
+	 */
+	@Test
+	public void read_autoCloseStream() throws IOException {
+
+		String string = fetcher.read(in, true);
+
+		Assert.assertEquals(new String(CHARS), string);
+		Assert.assertTrue(in.isClosed());
+
+	}
+
+	/**
+	 * Read into a new {@code String}, {@literal null} as an {@link InputStream}
+	 * , which should yield an empty array.
+	 * 
+	 * @throws IOException
+	 *             If the fetch process failed unexpectedly.
+	 */
+	@Test
+	public void read_withBadParameters_nullStream() throws IOException {
+
+		String string = fetcher.read(null);
+
+		Assert.assertNotNull(string);
+		Assert.assertTrue(0 == string.length());
+
+	}
+
+	/**
+	 * Fetch into an {@link OutputStream}, leaving both streams open by default.
 	 * 
 	 * @throws IOException
 	 *             If the copy process failed unexpectedly.
@@ -197,15 +261,14 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 
 		fetcher.copy(in, out);
 
-		Assert.assertArrayEquals(BYTES, outBuffer.toByteArray());
+		Assert.assertArrayEquals(CHARS, outBuffer.toCharArray());
 		Assert.assertFalse(in.isClosed());
 		Assert.assertFalse(out.isClosed());
 
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, leaving both streams explicitly
-	 * open.
+	 * Fetch into an {@link OutputStream}, leaving both streams explicitly open.
 	 * 
 	 * @throws IOException
 	 *             If the copy process failed unexpectedly.
@@ -215,14 +278,14 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 
 		fetcher.copy(in, out, false, false);
 
-		Assert.assertArrayEquals(BYTES, outBuffer.toByteArray());
+		Assert.assertArrayEquals(CHARS, outBuffer.toCharArray());
 		Assert.assertFalse(in.isClosed());
 		Assert.assertFalse(out.isClosed());
 
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, closing both stream.
+	 * Fetch into an {@link OutputStream}, closing both stream.
 	 * 
 	 * @throws IOException
 	 *             If the copy process failed unexpectedly.
@@ -232,14 +295,14 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 
 		fetcher.copy(in, out, true, true);
 
-		Assert.assertArrayEquals(BYTES, outBuffer.toByteArray());
+		Assert.assertArrayEquals(CHARS, outBuffer.toCharArray());
 		Assert.assertTrue(in.isClosed());
 		Assert.assertTrue(out.isClosed());
 
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, closing both stream.
+	 * Fetch into an {@link OutputStream}, closing both stream.
 	 * 
 	 * @throws IOException
 	 *             If the copy process failed unexpectedly.
@@ -249,14 +312,14 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 
 		fetcher.copy(in, out, true, false);
 
-		Assert.assertArrayEquals(BYTES, outBuffer.toByteArray());
+		Assert.assertArrayEquals(CHARS, outBuffer.toCharArray());
 		Assert.assertTrue(in.isClosed());
 		Assert.assertFalse(out.isClosed());
 
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, closing both stream.
+	 * Fetch into an {@link OutputStream}, closing both stream.
 	 * 
 	 * @throws IOException
 	 *             If the copy process failed unexpectedly.
@@ -266,7 +329,7 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 
 		fetcher.copy(in, out, false, true);
 
-		Assert.assertArrayEquals(BYTES, outBuffer.toByteArray());
+		Assert.assertArrayEquals(CHARS, outBuffer.toCharArray());
 		Assert.assertFalse(in.isClosed());
 		Assert.assertTrue(out.isClosed());
 
@@ -284,12 +347,12 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 
 		fetcher.copy(null, out);
 
-		Assert.assertTrue(0 == outBuffer.toByteArray().length);
+		Assert.assertTrue(0 == outBuffer.toCharArray().length);
 
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, {@literal null} as an
+	 * Fetch into an {@link OutputStream}, {@literal null} as an
 	 * {@link OutputStream}, which should read the {@link InputStream} anyway.
 	 * 
 	 * @throws IOException
@@ -317,13 +380,13 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 
 		fetcher.copy(null, out, true, true);
 
-		Assert.assertTrue(0 == outBuffer.toByteArray().length);
+		Assert.assertTrue(0 == outBuffer.toCharArray().length);
 		Assert.assertTrue(out.isClosed());
 
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, {@literal null} as an
+	 * Fetch into an {@link OutputStream}, {@literal null} as an
 	 * {@link InputStream}, which should yield an empty array, closing both
 	 * stream.
 	 * 
@@ -352,7 +415,7 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 
 		fetcher.copy(null, null, false, false);
 
-		Assert.assertTrue(0 == outBuffer.toByteArray().length);
+		Assert.assertTrue(0 == outBuffer.toCharArray().length);
 
 	}
 
@@ -369,13 +432,13 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 
 		fetcher.copy(null, null, true, true);
 
-		Assert.assertTrue(0 == outBuffer.toByteArray().length);
+		Assert.assertTrue(0 == outBuffer.toCharArray().length);
 
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, failing on
-	 * {@link InputStream#read()}, leaving both streams open.
+	 * Fetch into an {@link OutputStream}, failing on {@link InputStream#read()}
+	 * , leaving both streams open.
 	 * 
 	 * @throws IOException
 	 *             If the copy process failed unexpectedly.
@@ -383,7 +446,7 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	@Test
 	public void copy_withFailingRead_leavStreamsOpen() throws IOException {
 
-		in.setFailons(FailableInputStream.FailOn.READ);
+		in.setFailons(FailableReader.FailOn.READ);
 		try {
 			fetcher.copy(in, out, false, false);
 		} catch (IOException e) {
@@ -395,8 +458,8 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, failing on
-	 * {@link InputStream#read()}, closing both stream.
+	 * Fetch into an {@link OutputStream}, failing on {@link InputStream#read()}
+	 * , closing both stream.
 	 * 
 	 * @throws IOException
 	 *             If the copy process failed unexpectedly.
@@ -404,7 +467,7 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	@Test
 	public void copy_withFailingRead_autoCloseStreams() throws IOException {
 
-		in.setFailons(FailableInputStream.FailOn.READ);
+		in.setFailons(FailableReader.FailOn.READ);
 		try {
 			fetcher.copy(in, out, true, true);
 		} catch (IOException e) {
@@ -416,7 +479,7 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, failing on
+	 * Fetch into an {@link OutputStream}, failing on
 	 * {@link OutputStream#write(int)}, which should yield an empty array,
 	 * leaving both streams open.
 	 * 
@@ -426,20 +489,20 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	@Test
 	public void copy_withFailingWrite_leavStreamsOpen() throws IOException {
 
-		out.setFailons(FailableOutputStream.FailOn.WRITE);
+		out.setFailons(FailableWriter.FailOn.WRITE);
 		try {
 			fetcher.copy(in, out, false, false);
 		} catch (IOException e) {
 		}
 
-		Assert.assertTrue(0 == outBuffer.toByteArray().length);
+		Assert.assertTrue(0 == outBuffer.toCharArray().length);
 		Assert.assertFalse(in.isClosed());
 		Assert.assertFalse(out.isClosed());
 
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, failing on
+	 * Fetch into an {@link OutputStream}, failing on
 	 * {@link OutputStream#write(int)}, which should yield an empty array,
 	 * closing both stream.
 	 * 
@@ -449,21 +512,21 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	@Test
 	public void copy_withFailingWrite_autoCloseStreams() throws IOException {
 
-		out.setFailons(FailableOutputStream.FailOn.WRITE);
+		out.setFailons(FailableWriter.FailOn.WRITE);
 
 		try {
 			fetcher.copy(in, out, true, true);
 		} catch (IOException e) {
 		}
 
-		Assert.assertTrue(0 == outBuffer.toByteArray().length);
+		Assert.assertTrue(0 == outBuffer.toCharArray().length);
 		Assert.assertTrue(in.isClosed());
 		Assert.assertTrue(out.isClosed());
 
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, failing on
+	 * Fetch into an {@link OutputStream}, failing on
 	 * {@link InputStream#close()} and {@link OutputStream#close()}, leaving
 	 * both streams open.
 	 * 
@@ -473,8 +536,8 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	@Test
 	public void copy_withFailingClose_leavStreamsOpen() throws IOException {
 
-		in.setFailons(FailableInputStream.FailOn.CLOSE);
-		out.setFailons(FailableOutputStream.FailOn.CLOSE);
+		in.setFailons(FailableReader.FailOn.CLOSE);
+		out.setFailons(FailableWriter.FailOn.CLOSE);
 		fetcher.copy(in, out, false, false);
 
 		Assert.assertFalse(in.isClosed());
@@ -483,7 +546,7 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	}
 
 	/**
-	 * Fetch BYTES into an {@link OutputStream}, failing on
+	 * Fetch into an {@link OutputStream}, failing on
 	 * {@link InputStream#close()} and {@link OutputStream#close()}, closing
 	 * both stream.
 	 * 
@@ -493,12 +556,45 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	@Test
 	public void copy_withFailingClose_autoCloseStreams() throws IOException {
 
-		in.setFailons(FailableInputStream.FailOn.CLOSE);
-		out.setFailons(FailableOutputStream.FailOn.CLOSE);
+		in.setFailons(FailableReader.FailOn.CLOSE);
+		out.setFailons(FailableWriter.FailOn.CLOSE);
 		fetcher.copy(in, out, true, true);
 
 		Assert.assertTrue(in.isClosed());
 		Assert.assertTrue(out.isClosed());
+
+	}
+
+	/**
+	 * Read into a new {@code String}, leaving the input stream open by default,
+	 * using the basic interfaces {@link Readable} and {@link Appendable}.
+	 * 
+	 * @throws IOException
+	 *             If the fetch process failed unexpectedly.
+	 */
+	@Test
+	public void read_basicInterfaces() throws IOException {
+
+		final String string = "foobar";
+
+		Readable readable = new Readable() {
+			private int index = -1;
+
+			@Override
+			public int read(CharBuffer cb) throws IOException {
+				if (index < string.length() - 1) {
+					cb.put(string.charAt(++index));
+					return 1;
+				} else {
+					return -1;
+				}
+			}
+		};
+
+		StringBuilder builder = new StringBuilder();
+		fetcher.copy(readable, builder);
+
+		Assert.assertEquals(string, builder.toString());
 
 	}
 

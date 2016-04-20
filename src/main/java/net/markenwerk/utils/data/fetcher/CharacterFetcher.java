@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,13 +21,12 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
-import java.io.Reader;
-import java.io.Writer;
+import java.io.Closeable;
 
 /**
  * A {@link CharacterFetcher} can fetch the entire content of a given
- * {@link Reader} into a fresh {@code char[]} or {@link String} or copy it into
- * a given {@link Writer}.
+ * {@link Readable} into a fresh {@code char[]} or {@link String} or copy it
+ * into a given {@link Appendable}.
  * 
  * <p>
  * All methods take optional parameters to specify the buffer size and to
@@ -36,7 +35,7 @@ import java.io.Writer;
  * 
  * <pre>
  * {
- * 	foo.setContent(fetcher.fetch(new FileReader(file), true));
+ * 	foo.setContent(fetcher.fetch(new FileReadable(file), true));
  * }
  * </pre>
  * 
@@ -44,7 +43,7 @@ import java.io.Writer;
  * 
  * <pre>
  * {
- * 	Reader in = new FileReader(file);
+ * 	Readable in = new FileReadable(file);
  * 	foo.setContent(fetcher.fetch(in));
  * 	in.close();
  * }
@@ -56,276 +55,300 @@ import java.io.Writer;
 public interface CharacterFetcher {
 
 	/**
-	 * Fetches the content of a given {@link Reader} into a fresh char[].
+	 * Fetches the content of a given {@link Readable} into a fresh char[].
 	 *
 	 * <p>
-	 * See {@link CharacterFetcher#copy(Reader, Writer, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link CharacterFetcher#copy(Readable, Appendable, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
-	 *            The {@link Reader} to read from.
+	 *            The {@link Readable} to read from.
 	 * @return A new {@code char[]}, containing the content of the given
-	 *         {@link Reader}.
+	 *         {@link Readable}.
+	 *         
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link Reader}.
+	 *             {@link Readable}.
 	 */
-	public char[] fetch(Reader in) throws FetchException;
+	public char[] fetch(Readable in) throws FetchException;
 
 	/**
-	 * Fetches the content of a given {@link Reader} into a fresh char[].
+	 * Fetches the content of a given {@link Readable} into a fresh char[].
 	 *
 	 * <p>
-	 * See {@link CharacterFetcher#copy(Reader, Writer, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link CharacterFetcher#copy(Readable, Appendable, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
-	 *            The {@link Reader} to read from.
+	 *            The {@link Readable} to read from.
 	 * @param close
-	 *            Whether to close the given {@link Reader}, after reading from
-	 *            it.
+	 *            Whether to close the given {@link Readable}, after reading
+	 *            from it, if the given {@link Readable} is {@link Closeable}.
 	 * @return A new {@code char[]}, containing the content of the given
-	 *         {@link Reader}.
+	 *         {@link Readable}.
+	 *         
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link Reader}. {@link FetchException FetchExceptions} thrown
-	 *             while trying to close the given {@link Reader}, if requested,
-	 *             are ignored.
+	 *             {@link Readable}. {@link FetchException FetchExceptions}
+	 *             thrown while trying to close the given {@link Readable}, if
+	 *             requested, are ignored.
 	 */
-	public char[] fetch(Reader in, boolean close) throws FetchException;
+	public char[] fetch(Readable in, boolean close) throws FetchException;
 
+	
 	/**
-	 * Fetches the content of a given {@link Reader} into a fresh char[].
+	 * Fetches the content of a given {@link Readable} into a fresh char[].
 	 *
 	 * <p>
-	 * See {@link CharacterFetcher#copy(Reader, Writer, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link CharacterFetcher#copy(Readable, Appendable, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
-	 *            The {@link Reader} to read from.
-	 * @param listener
-	 *            The {@link FetchProgressListener} to report to.
-	 * @param close
-	 *            Whether to close the given {@link Reader}, after reading from
-	 *            it.
-	 * @return A new {@code char[]}, containing the content of the given
-	 *         {@link Reader}.
-	 * @throws FetchException
-	 *             If anything went wrong while reading from the given
-	 *             {@link Reader}. {@link FetchException FetchExceptions} thrown
-	 *             while trying to close the given {@link Reader}, if requested,
-	 *             are ignored.
-	 */
-	public char[] fetch(Reader in, FetchProgressListener listener, boolean close) throws FetchException;
-
-	/**
-	 * Fetches the content of a given {@link Reader} into a fresh char[].
-	 *
-	 * <p>
-	 * See {@link CharacterFetcher#copy(Reader, Writer, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
-	 * 
-	 * @param in
-	 *            The {@link Reader} to read from.
+	 *            The {@link Readable} to read from.
 	 * @param listener
 	 *            The {@link FetchProgressListener} to report to.
 	 * @return A new {@code char[]}, containing the content of the given
-	 *         {@link Reader}.
+	 *         {@link Readable}.
+	 *         
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link Reader}.
+	 *             {@link Readable}.
 	 */
-	public char[] fetch(Reader in, FetchProgressListener listener) throws FetchException;
+	public char[] fetch(Readable in, FetchProgressListener listener) throws FetchException;
 
+	
 	/**
-	 * Reads the content of a given {@link Reader} as a {@link String}.
+	 * Fetches the content of a given {@link Readable} into a fresh char[].
 	 *
 	 * <p>
-	 * See {@link CharacterFetcher#copy(Reader, Writer, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link CharacterFetcher#copy(Readable, Appendable, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
-	 *            The {@link Reader} to read from.
-	 * @return A new {@code char[]}, containing the content of the given
-	 *         {@link Reader}.
-	 * @throws FetchException
-	 *             If anything went wrong while reading from the given
-	 *             {@link Reader}.
-	 */
-	public String read(Reader in) throws FetchException;
-
-	/**
-	 * Reads the content of a given {@link Reader} as a {@link String}
-	 *
-	 * <p>
-	 * See {@link CharacterFetcher#copy(Reader, Writer, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
-	 * 
-	 * @param in
-	 *            The {@link Reader} to read from.
-	 * @param close
-	 *            Whether to close the given {@link Reader}, after reading from
-	 *            it.
-	 * @return A new {@code char[]}, containing the content of the given
-	 *         {@link Reader}.
-	 * @throws FetchException
-	 *             If anything went wrong while reading from the given
-	 *             {@link Reader}. {@link FetchException FetchExceptions} thrown
-	 *             while trying to close the given {@link Reader}, if requested,
-	 *             are ignored.
-	 */
-	public String read(Reader in, boolean close) throws FetchException;
-
-	/**
-	 * Reads the content of a given {@link Reader} as a {@link String}.
-	 *
-	 * <p>
-	 * See {@link CharacterFetcher#copy(Reader, Writer, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
-	 * 
-	 * @param in
-	 *            The {@link Reader} to read from.
+	 *            The {@link Readable} to read from.
 	 * @param listener
 	 *            The {@link FetchProgressListener} to report to.
 	 * @param close
-	 *            Whether to close the given {@link Reader}, after reading from
-	 *            it.
+	 *            Whether to close the given {@link Readable}, after reading
+	 *            from it, if the given {@link Readable} is {@link Closeable}.
 	 * @return A new {@code char[]}, containing the content of the given
-	 *         {@link Reader}.
+	 *         {@link Readable}.
+	 *         
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link Reader}. {@link FetchException FetchExceptions} thrown
-	 *             while trying to close the given {@link Reader}, if requested,
-	 *             are ignored.
+	 *             {@link Readable}. {@link FetchException FetchExceptions}
+	 *             thrown while trying to close the given {@link Readable}, if
+	 *             requested, are ignored.
 	 */
-	public String read(Reader in, FetchProgressListener listener, boolean close) throws FetchException;
+	public char[] fetch(Readable in, FetchProgressListener listener, boolean close) throws FetchException;
 
+	
+	
 	/**
-	 * Reads the content of a given {@link Reader} as a {@link String}.
+	 * Reads the content of a given {@link Readable} as a {@link String}.
 	 *
 	 * <p>
-	 * See {@link CharacterFetcher#copy(Reader, Writer, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link CharacterFetcher#copy(Readable, Appendable, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
-	 *            The {@link Reader} to read from.
+	 *            The {@link Readable} to read from.
+	 * @return A new {@code char[]}, containing the content of the given
+	 *         {@link Readable}.
+	 *         
+	 * @throws FetchException
+	 *             If anything went wrong while reading from the given
+	 *             {@link Readable}.
+	 */
+	public String read(Readable in) throws FetchException;
+
+	/**
+	 * Reads the content of a given {@link Readable} as a {@link String}
+	 *
+	 * <p>
+	 * See {@link CharacterFetcher#copy(Readable, Appendable, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
+	 * 
+	 * @param in
+	 *            The {@link Readable} to read from.
+	 * @param close
+	 *            Whether to close the given {@link Readable}, after reading
+	 *            from it, if the given {@link Readable} is {@link Closeable}.
+	 * @return A new {@code char[]}, containing the content of the given
+	 *         {@link Readable}.
+	 *         
+	 * @throws FetchException
+	 *             If anything went wrong while reading from the given
+	 *             {@link Readable}. {@link FetchException FetchExceptions}
+	 *             thrown while trying to close the given {@link Readable}, if
+	 *             requested, are ignored.
+	 */
+	public String read(Readable in, boolean close) throws FetchException;
+
+
+	/**
+	 * Reads the content of a given {@link Readable} as a {@link String}.
+	 *
+	 * <p>
+	 * See {@link CharacterFetcher#copy(Readable, Appendable, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
+	 * 
+	 * @param in
+	 *            The {@link Readable} to read from.
 	 * @param listener
 	 *            The {@link FetchProgressListener} to report to.
 	 * @return A new {@code char[]}, containing the content of the given
-	 *         {@link Reader}.
+	 *         {@link Readable}.
+	 *         
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link Reader}.
+	 *             {@link Readable}.
 	 */
-	public String read(Reader in, FetchProgressListener listener) throws FetchException;
+	public String read(Readable in, FetchProgressListener listener) throws FetchException;
 
 	/**
-	 * Copies the content of a given {@link Reader} into a given {@link Writer}.
+	 * Reads the content of a given {@link Readable} as a {@link String}.
 	 *
 	 * <p>
-	 * See {@link CharacterFetcher#copy(Reader, Writer, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link CharacterFetcher#copy(Readable, Appendable, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
-	 *            The {@link Reader} to read from.
+	 *            The {@link Readable} to read from.
+	 * @param listener
+	 *            The {@link FetchProgressListener} to report to.
+	 * @param close
+	 *            Whether to close the given {@link Readable}, after reading
+	 *            from it, if the given {@link Readable} is {@link Closeable}.
+	 * @return A new {@code char[]}, containing the content of the given
+	 *         {@link Readable}.
+	 *         
+	 * @throws FetchException
+	 *             If anything went wrong while reading from the given
+	 *             {@link Readable}. {@link FetchException FetchExceptions}
+	 *             thrown while trying to close the given {@link Readable}, if
+	 *             requested, are ignored.
+	 */
+	public String read(Readable in, FetchProgressListener listener, boolean close) throws FetchException;
+
+	
+	/**
+	 * Copies the content of a given {@link Readable} into a given
+	 * {@link Appendable}.
+	 *
+	 * <p>
+	 * See {@link CharacterFetcher#copy(Readable, Appendable, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
+	 * 
+	 * @param in
+	 *            The {@link Readable} to read from.
 	 * @param out
-	 *            The {@link Writer} to write to.
+	 *            The {@link Appendable} to write to.
+	 *            
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link Reader} or writing to the given {@link Writer}.
+	 *             {@link Readable} or appending to the given {@link Appendable}.
 	 */
-	public void copy(Reader in, Writer out) throws FetchException;
+	public void copy(Readable in, Appendable out) throws FetchException;
 
 	/**
-	 * Copies the content of a given {@link Reader} into a given {@link Writer}.
+	 * Copies the content of a given {@link Readable} into a given
+	 * {@link Appendable}.
 	 * 
 	 * <p>
 	 * Missing or invalid arguments are handled gracefully with the following
 	 * behaviour.
 	 * 
 	 * <p>
-	 * A {@code null} is given as an {@link Reader}, it is simply ignored and
+	 * A {@code null} is given as an {@link Readable}, it is simply ignored and
 	 * handled as if there was nothing to read. If {@code closeOut} is
-	 * {@literal true}, the given {@link Writer} will be closed anyway
+	 * {@literal true}, the given {@link Appendable} will be closed anyway
 	 * 
 	 * <p>
-	 * A {@code null} is given as an {@link Writer}, it is simply ignored, but
-	 * the content of given {@link Reader} is fetched anyway. If {@code closeIn}
-	 * is {@literal true}, the given {@link Reader} will be closed anyway
+	 * A {@code null} is given as an {@link Appendable}, it is simply ignored,
+	 * but the content of given {@link Readable} is fetched anyway. If
+	 * {@code closeIn} is {@literal true}, the given {@link Readable} will be
+	 * closed anyway
 	 * 
 	 * @param in
-	 *            The {@link Reader} to read from.
+	 *            The {@link Readable} to read from.
 	 * @param out
-	 *            The {@link Writer} to write to.
+	 *            The {@link Appendable} to write to.
 	 * @param closeIn
-	 *            Whether to close the given {@link Reader}, after reading from
-	 *            it.
+	 *            Whether to close the given {@link Readable}, after reading
+	 *            from it, if the given {@link Readable} is {@link Closeable}.
 	 * @param closeOut
-	 *            Whether to close the given {@link Writer}, after writing to
-	 *            it.
+	 *            Whether to close the given {@link Appendable}, after appending
+	 *            to it, if the given {@link Appendable} is {@link Closeable}.
+	 *            
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link Reader} or writing to the given {@link Writer}.
+	 *             {@link Readable} or appending to the given {@link Appendable}.
 	 *             {@link FetchException FetchExceptions} thrown while trying to
 	 *             close one of the given streams, if requested, are ignored.
 	 */
-	public void copy(Reader in, Writer out, boolean closeIn, boolean closeOut) throws FetchException;
+	public void copy(Readable in, Appendable out, boolean closeIn, boolean closeOut) throws FetchException;
 
 	/**
-	 * Copies the content of a given {@link Reader} into a given {@link Writer}.
+	 * Copies the content of a given {@link Readable} into a given
+	 * {@link Appendable}.
 	 *
 	 * <p>
-	 * See {@link CharacterFetcher#copy(Reader, Writer, boolean, boolean)} for
-	 * the handling of missing or invalid arguments.
+	 * See {@link CharacterFetcher#copy(Readable, Appendable, boolean, boolean)}
+	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
-	 *            The {@link Reader} to read from.
+	 *            The {@link Readable} to read from.
 	 * @param out
-	 *            The {@link Writer} to write to.
+	 *            The {@link Appendable} to write to.
 	 * @param listener
 	 *            The {@link FetchProgressListener} to report to.
+	 *            
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link Reader} or writing to the given {@link Writer}.
+	 *             {@link Readable} or appending to the given {@link Appendable}.
 	 */
-	public void copy(Reader in, Writer out, FetchProgressListener listener) throws FetchException;
+	public void copy(Readable in, Appendable out, FetchProgressListener listener) throws FetchException;
 
 	/**
-	 * Copies the content of a given {@link Reader} into a given {@link Writer}.
+	 * Copies the content of a given {@link Readable} into a given
+	 * {@link Appendable}.
 	 * 
 	 * <p>
 	 * Missing or invalid arguments are handled gracefully with the following
 	 * behaviour.
 	 * 
 	 * <p>
-	 * A {@code null} is given as an {@link Reader}, it is simply ignored and
+	 * A {@code null} is given as an {@link Readable}, it is simply ignored and
 	 * handled as if there was nothing to read. If {@code closeOut} is
-	 * {@literal true}, the given {@link Writer} will be closed anyway
+	 * {@literal true}, the given {@link Appendable} will be closed anyway
 	 * 
 	 * <p>
-	 * A {@code null} is given as an {@link Writer}, it is simply ignored, but
-	 * the content of given {@link Reader} is fetched anyway. If {@code closeIn}
-	 * is {@literal true}, the given {@link Reader} will be closed anyway
+	 * A {@code null} is given as an {@link Appendable}, it is simply ignored,
+	 * but the content of given {@link Readable} is fetched anyway. If
+	 * {@code closeIn} is {@literal true}, the given {@link Readable} will be
+	 * closed anyway
 	 * 
 	 * @param in
-	 *            The {@link Reader} to read from.
+	 *            The {@link Readable} to read from.
 	 * @param out
-	 *            The {@link Writer} to write to.
+	 *            The {@link Appendable} to write to.
 	 * @param listener
 	 *            The {@link FetchProgressListener} to report to.
 	 * @param closeIn
-	 *            Whether to close the given {@link Reader}, after reading from
-	 *            it.
+	 *            Whether to close the given {@link Readable}, after reading
+	 *            from it, if the given {@link Readable} is {@link Closeable}.
 	 * @param closeOut
-	 *            Whether to close the given {@link Writer}, after writing to
-	 *            it.
+	 *            Whether to close the given {@link Appendable}, after appending
+	 *            to it, if the given {@link Appendable} is {@link Closeable}.
+	 *            
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link Reader} or writing to the given {@link Writer}.
-	 *             {@link FetchException FetchExceptions} thrown while trying to
-	 *             close one of the given streams, if requested, are ignored.
+	 *             {@link Readable} or appending to the given {@link Appendable}.
+	 *             {@link FetchException FetchExceptions} thrown while trying
+	 *             to close one of the given streams, if requested, are ignored.
 	 */
-	public void copy(Reader in, Writer out, FetchProgressListener listener, boolean closeIn, boolean closeOut)
+	public void copy(Readable in, Appendable out, FetchProgressListener listener, boolean closeIn, boolean closeOut)
 			throws FetchException;
 
 }

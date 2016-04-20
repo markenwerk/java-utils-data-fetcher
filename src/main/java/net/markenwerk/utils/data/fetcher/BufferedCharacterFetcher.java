@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,10 @@ import java.io.Writer;
  * for every operation. A {@link BufferedCharacterFetcher} is therefore not
  * threadsafe.
  * 
+ * <p>
+ * After a buffer has been used, it is overwritten with zeros, to remove any
+ * buffered information from the memory.
+ * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 3.0.0
  */
@@ -65,6 +69,17 @@ public final class BufferedCharacterFetcher extends AbstractBufferedCharacterFet
 	@Override
 	protected char[] obtainBuffer() {
 		return buffer;
+	}
+
+	@Override
+	protected void returnBuffer(char[] buffer) {
+		cleanBuffer();
+	}
+
+	private void cleanBuffer() {
+		for (int i = 0, n = buffer.length; i < n; i++) {
+			buffer[i] = 0;
+		}
 	}
 
 }

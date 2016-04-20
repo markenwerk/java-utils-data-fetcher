@@ -19,74 +19,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package net.markenwerk.utils.data.fetcher;
+package net.markenwerk.utils.data.fetcher.mockups;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.EnumSet;
 
-/**
- * Wrapper for an another {@link InputStream} that will fail on specific
- * operations;
- * 
- * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.0.0
- */
-class FailableInputStream extends ObservableInputStream {
+@SuppressWarnings("javadoc")
+public class FailableOutputStream extends ObservableOutputStream {
 
-	/**
-	 * Enumeration of operations, a {@link FailableInputStream} can fail on.
-	 * 
-	 * @author Torsten Krause (tk at markenwerk dot net)
-	 * @since 1.1.1
-	 *
-	 */
 	public static enum FailOn {
 
-		/**
-		 * Lets a {@link FailableInputStream} fail on
-		 * {@link FailableInputStream#read()}.
-		 */
-		READ,
+		WRITE,
 
-		/**
-		 * Lets a {@link FailableInputStream} fail on
-		 * {@link FailableInputStream#close()}.
-		 */
 		CLOSE;
 
 	}
 
 	private final EnumSet<FailOn> failOns = EnumSet.noneOf(FailOn.class);
 
-	/**
-	 * Creates a new {@link FailableInputStream} from a given {@link InputStream}
-	 * .
-	 * 
-	 * @param in
-	 *           The {@link OutputStream} to wrap.
-	 */
-	public FailableInputStream(InputStream in) {
-		super(in);
+	public FailableOutputStream(OutputStream out) {
+		super(out);
 	}
 
-	/**
-	 * Specify the operation this {@link FailableInputStream} will fail on.
-	 * 
-	 * @param failOns
-	 *           The operations to fail on.
-	 */
 	public void setFailons(FailOn... failOns) {
 		this.failOns.clear();
 		this.failOns.addAll(Arrays.asList(failOns));
 	}
 
 	@Override
-	public int read() throws IOException {
-		failOn(FailOn.READ);
-		return super.read();
+	public void write(int b) throws IOException {
+		failOn(FailOn.WRITE);
+		super.write(b);
 	}
 
 	@Override
@@ -97,8 +62,8 @@ class FailableInputStream extends ObservableInputStream {
 
 	private void failOn(FailOn failOn) throws IOException {
 		if (failOns.contains(failOn)) {
-			throw new IOException(
-					getClass().getSimpleName() + " was asked to fail on " + failOn.name().toLowerCase() + ".");
+			throw new IOException(getClass().getSimpleName() + " was asked to fail on " + failOn.name().toLowerCase()
+					+ ".");
 		}
 	}
 

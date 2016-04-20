@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,73 +19,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package net.markenwerk.utils.data.fetcher;
+package net.markenwerk.utils.data.fetcher.mockups;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.Reader;
 import java.util.Arrays;
 import java.util.EnumSet;
 
-/**
- * Wrapper for an another {@link OutputStream} that will fail on specific
- * operations;
- * 
- * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.0.0
- */
-class FailableOutputStream extends ObservableOutputStream {
+@SuppressWarnings("javadoc")
+public class FailableReader extends ObservableReader {
 
-	/**
-	 * Enumeration of operations, a {@link FailableOutputStream} can fail on.
-	 * 
-	 * @author Torsten Krause (tk at markenwerk dot net)
-	 * @since 1.1.1
-	 *
-	 */
 	public static enum FailOn {
 
-		/**
-		 * Lets a {@link FailableOutputStream} fail on
-		 * {@link FailableOutputStream#write(int)}.
-		 */
-		WRITE,
+		READ,
 
-		/**
-		 * Lets a {@link FailableOutputStream} fail on
-		 * {@link FailableOutputStream#close()}.
-		 */
 		CLOSE;
 
 	}
 
 	private final EnumSet<FailOn> failOns = EnumSet.noneOf(FailOn.class);
 
-	/**
-	 * Creates a new {@link FailableOutputStream} from a given
-	 * {@link OutputStream}.
-	 * 
-	 * @param out
-	 *           The {@link OutputStream} to wrap.
-	 */
-	public FailableOutputStream(OutputStream out) {
-		super(out);
+	public FailableReader(Reader in) {
+		super(in);
 	}
 
-	/**
-	 * Specify the operation this {@link FailableOutputStream} will fail on.
-	 * 
-	 * @param failOns
-	 *           The operations to fail on.
-	 */
 	public void setFailons(FailOn... failOns) {
 		this.failOns.clear();
 		this.failOns.addAll(Arrays.asList(failOns));
 	}
 
 	@Override
-	public void write(int b) throws IOException {
-		failOn(FailOn.WRITE);
-		super.write(b);
+	public int read() throws IOException {
+		failOn(FailOn.READ);
+		return super.read();
 	}
 
 	@Override
@@ -96,8 +62,8 @@ class FailableOutputStream extends ObservableOutputStream {
 
 	private void failOn(FailOn failOn) throws IOException {
 		if (failOns.contains(failOn)) {
-			throw new IOException(
-					getClass().getSimpleName() + " was asked to fail on " + failOn.name().toLowerCase() + ".");
+			throw new IOException(getClass().getSimpleName() + " was asked to fail on " + failOn.name().toLowerCase()
+					+ ".");
 		}
 	}
 

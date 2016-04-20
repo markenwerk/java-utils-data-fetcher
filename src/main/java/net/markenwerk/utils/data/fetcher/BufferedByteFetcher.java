@@ -36,6 +36,10 @@ import java.io.OutputStream;
  * for every operation. A {@link BufferedByteFetcher} is therefore not
  * threadsafe.
  * 
+ * <p>
+ * After a buffer has been used, it is overwritten with zeros, to remove any
+ * buffered information from the memory.
+ * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.0.0
  */
@@ -64,6 +68,17 @@ public final class BufferedByteFetcher extends AbstractBufferedByteFetcher {
 	@Override
 	protected byte[] obtainBuffer() {
 		return buffer;
+	}
+
+	@Override
+	protected void returnBuffer(byte[] buffer) {
+		cleanBuffer();
+	}
+
+	private void cleanBuffer() {
+		for (int i = 0, n = buffer.length; i < n; i++) {
+			buffer[i] = 0;
+		}
 	}
 
 }

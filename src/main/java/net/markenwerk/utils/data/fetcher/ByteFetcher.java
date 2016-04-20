@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -78,6 +78,7 @@ public interface ByteFetcher {
 	 *            The {@link InputStream} to read from.
 	 * @return A new {@code byte[]}, containing the content of the given
 	 *         {@link InputStream}.
+	 * 
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream}.
@@ -98,6 +99,7 @@ public interface ByteFetcher {
 	 *            from it.
 	 * @return A new {@code byte[]}, containing the content of the given
 	 *         {@link InputStream}.
+	 * 
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream}. {@link FetchException FetchExceptions}
@@ -122,6 +124,7 @@ public interface ByteFetcher {
 	 *            from it.
 	 * @return A new {@code byte[]}, containing the content of the given
 	 *         {@link InputStream}.
+	 * 
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream}. {@link FetchException FetchExceptions}
@@ -143,6 +146,7 @@ public interface ByteFetcher {
 	 *            The {@link FetchProgressListener} to report to.
 	 * @return A new {@code byte[]}, containing the content of the given
 	 *         {@link InputStream}.
+	 * 
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream}.
@@ -161,6 +165,7 @@ public interface ByteFetcher {
 	 *            The {@link InputStream} to read from.
 	 * @param out
 	 *            The {@link OutputStream} to write to.
+	 * 
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given
@@ -197,6 +202,7 @@ public interface ByteFetcher {
 	 * @param closeOut
 	 *            Whether to close the given {@link OutputStream}, after writing
 	 *            to it.
+	 * 
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given
@@ -220,6 +226,7 @@ public interface ByteFetcher {
 	 *            The {@link OutputStream} to write to.
 	 * @param listener
 	 *            The {@link FetchProgressListener} to report to.
+	 * 
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given
@@ -258,6 +265,7 @@ public interface ByteFetcher {
 	 * @param closeOut
 	 *            Whether to close the given {@link OutputStream}, after writing
 	 *            to it.
+	 * 
 	 * @throws FetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given

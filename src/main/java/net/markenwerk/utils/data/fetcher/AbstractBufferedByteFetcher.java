@@ -27,20 +27,22 @@ import java.io.OutputStream;
 
 /**
  * {@link AbstractBufferedByteFetcher} is a sensible base implementation of
- * {@link ByteFetcher} that uses a {@code byte[]} as buffer, to while copying all
- * bytes from an {@link InputStream} to an {@link OutputStream} by sequentially
- * reading from the {@link InputStream} into the buffer and then writing from
- * the buffer to the {@link OutputStream}.
+ * {@link ByteFetcher} that uses a {@code byte[]} as buffer, to while copying
+ * all bytes from an {@link InputStream} to an {@link OutputStream} by
+ * sequentially reading from the {@link InputStream} into the buffer and then
+ * writing from the buffer to the {@link OutputStream}.
  * 
  * <p>
- * Implementers must only implement a single method that provides a
+ * Implementers must only implement the methods
+ * {@link AbstractBufferedByteFetcher#obtainBuffer()} and
+ * {@link AbstractBufferedByteFetcher#returnBuffer(byte[])} that manage a
  * {@code byte[]} to be used as a buffer in
- * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
- * : {@link AbstractBufferedByteFetcher#obtainBuffer()}.
+ * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}.
  * 
  * <p>
  * Implementers may also override
- * {@link AbstractBufferedByteFetcher#returnBuffer(byte[])}, which is called after
+ * {@link AbstractBufferedByteFetcher#returnBuffer(byte[])}, which is called
+ * after
  * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
  * has finished using it.
  * 
@@ -58,9 +60,10 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 	 * Safely creates a new {@literal byte[]} to be used as a buffer.
 	 * 
 	 * @param bufferSize
-	 *           The size of the {@literal byte[]} to be created. Defaults to the
-	 *           {@link AbstractBufferedByteFetcher#DEFAULT_BUFEFR_SIZE default}
-	 *           buffer size, if the given buffer size is not positive.
+	 *            The size of the {@literal byte[]} to be created. Defaults to
+	 *            the {@link AbstractBufferedByteFetcher#DEFAULT_BUFEFR_SIZE
+	 *            default} buffer size, if the given buffer size is not
+	 *            positive.
 	 * @return The new {@literal byte[]}.
 	 */
 	protected static final byte[] createBuffer(int bufferSize) {
@@ -84,14 +87,18 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 			listener.onFetchProgress(total);
 			listener.onFetchSuccedded(total);
 		} catch (IOException e) {
-			FetchException fetchException = new FetchException("Fetch failed after " + total + " "
-					+ (1 == total ? "byte has" : "bytes have") + " been copied successully.", e);
-			listener.onFetchFailed(fetchException, total);
-			throw fetchException;
+			throw createException(listener, total, e);
 		} finally {
 			listener.onFetchFinished();
 			returnBuffer(buffer);
 		}
+	}
+
+	private FetchException createException(FetchProgressListener listener, long total, IOException e) {
+		FetchException fetchException = new FetchException("Fetch failed after " + total + " "
+				+ (1 == total ? "byte has" : "bytes have") + " been copied successully.", e);
+		listener.onFetchFailed(fetchException, total);
+		return fetchException;
 	}
 
 	/**
@@ -101,7 +108,8 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 	 * 
 	 * <p>
 	 * Every {@code byte[]} that is returned by this method will be passed as an
-	 * argument of {@link AbstractBufferedByteFetcher#returnBuffer(byte[])} after
+	 * argument of {@link AbstractBufferedByteFetcher#returnBuffer(byte[])}
+	 * after
 	 * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
 	 * has finished using it.
 	 * 
@@ -117,9 +125,8 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 	 * {@link AbstractBufferedByteFetcher#obtainBuffer()}.
 	 * 
 	 * @param buffer
-	 *           The {@code byte[]} to be returned.
+	 *            The {@code byte[]} to be returned.
 	 */
-	protected void returnBuffer(byte[] buffer) {
-	}
+	protected abstract void returnBuffer(byte[] buffer);
 
 }
