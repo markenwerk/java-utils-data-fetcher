@@ -7,10 +7,11 @@
 [![Issues](https://img.shields.io/github/issues/markenwerk/java-utils-data-fetcher.svg)](https://github.com/markenwerk/java-utils-data-fetcher/issues)
 [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/markenwerk/java-utils-data-fetcher/blob/master/LICENSE)
 
-
 ## Overview
 
 This is a simple helper to fetch the complete content of an input stream or a readable. It is, among other things, intended as an alternative to using [`IOUtils#readFully`](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/IOUtils.java#IOUtils.readFully%28java.io.InputStream%2Cint%2Cboolean%29) for this everyday task.
+
+Consult the [documentation](http://markenwerk.github.io/java-utils-data-fetcher/index.html) and  the [usage description](#usage) for further information:
 
 - [Fetching `byte` streams](#fetching-byte-streams)
 - [Fetching `char` streams](#fetching-char-streams)
@@ -18,6 +19,8 @@ This is a simple helper to fetch the complete content of an input stream or a re
 - [Listen to fetch progress](#listen-to-fetch-progress)
 - [Handling of `null` arguments](#handling-of-null-arguments)
 - [Customizability](#customizability)
+
+## Maven
 
 This library is hosted in the [Maven Central Repository](https://maven-badges.herokuapp.com/maven-central/net.markenwerk/utils-data-fetcher). You can use it with the following coordinates:
 
@@ -28,8 +31,6 @@ This library is hosted in the [Maven Central Repository](https://maven-badges.he
 	<version>2.1.2</version>
 </dependency>
 ```
-
-Consult the [usage description](#usage) and [Javadoc](http://markenwerk.github.io/java-utils-data-fetcher/index.html) for further information.
 
 ## Motivation
 
