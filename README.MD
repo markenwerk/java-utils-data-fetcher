@@ -86,14 +86,14 @@ fetcher.fetch(readable, appendable);
 All methods have optional `boolean` parameters, that can be used to instruct the [`ByteFetcher`][ByteFetcher] or [`CharacterFetcher`][CharacterFetcher] to close the supplied streams. Doing so allows to write compact code like:
 
 ```java
-foo.setContent(new BufferedFetcher().fetch(new FileInputStream(file), true));
+foo.setContent(new BufferedByteFetcher().fetch(new FileInputStream(file), true));
 ```
 
 Otherwise, it would be necessary to write unnecessarily verbose code like:
 
 ```java
 InputStream in = new FileInputStream(file);
-foo.setContent(new BufferedFetcher().fetch(in));
+foo.setContent(new BufferedByteFetcher().fetch(in));
 in.close();
 ```
 
@@ -102,7 +102,7 @@ in.close();
 All methods optionally take a [`FetchProgressListener`][FetchProgressListener] that gets notified on various points in the lifecycle (`started`, `progressed`, `succeeded` or `failed`, `finished`) of a fetch operation. The [`BaseFetchProgressListener`][BaseFetchProgressListener] is a convenient base implementation with empty methods.
 
 ```java
-foo.setContent(new BufferedFetcher().fetch(
+foo.setContent(new BufferedByteFetcher().fetch(
 	new FileInputStream(file),
 	new BaseFetchProgressListener() {
 		public void onFetchProgress(long bytesFetched) {
