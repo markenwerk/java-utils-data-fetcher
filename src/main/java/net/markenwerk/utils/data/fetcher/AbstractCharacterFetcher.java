@@ -167,11 +167,10 @@ public abstract class AbstractCharacterFetcher implements CharacterFetcher {
 			return (Writer) out;
 		} else {
 			return new Writer() {
+
 				@Override
 				public void write(char[] buffer, int offset, int length) throws IOException {
-					for (int i = offset, n = offset + length; i < n; i++) {
-						out.append(buffer[i]);
-					}
+					out.append(CharBuffer.wrap(buffer, offset, length));
 				}
 
 				@Override
