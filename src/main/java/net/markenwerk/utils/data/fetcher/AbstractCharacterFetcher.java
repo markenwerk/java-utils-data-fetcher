@@ -118,20 +118,23 @@ public abstract class AbstractCharacterFetcher implements CharacterFetcher {
 
 	private void doCopy(Readable in, Appendable out, FetchProgressListener listener, boolean closeIn, boolean closeOut)
 			throws FetchException {
+		doCopy(makeReader(in), makeWriter(out), listener, closeIn, closeOut);
+	}
+
+	private void doCopy(Reader in, Writer out, FetchProgressListener listener, boolean closeIn, boolean closeOut)
+			throws FetchException {
 		try {
-			doCopy(makeReader(in), makeWriter(out), listener);
-		} catch (FetchException e) {
-			throw e;
+			doCopy(in, out, listener);
 		} finally {
-			if (closeIn && in instanceof Closeable) {
+			if (closeIn) {
 				try {
-					((Closeable) in).close();
+					in.close();
 				} catch (IOException e) {
 				}
 			}
-			if (closeOut && out instanceof Closeable) {
+			if (closeOut) {
 				try {
-					((Closeable) out).close();
+					out.close();
 				} catch (IOException e) {
 				}
 			}
