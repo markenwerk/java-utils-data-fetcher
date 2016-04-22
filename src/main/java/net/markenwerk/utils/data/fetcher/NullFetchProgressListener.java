@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,13 +22,13 @@
 package net.markenwerk.utils.data.fetcher;
 
 /**
- * A {@link NullFetchProgressListener} is a {@link FetchProgressListener} that
- * does nothing.
+ * A {@link NullFetchProgressListener} is an {@link IdleFetchProgressListener}
+ * that does nothing.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 2.1.0
  */
-class NullFetchProgressListener extends FetchProgressAdapter {
+class NullFetchProgressListener extends IdleFetchProgressListener {
 
 	public static final NullFetchProgressListener INSTANCE = new NullFetchProgressListener();
 

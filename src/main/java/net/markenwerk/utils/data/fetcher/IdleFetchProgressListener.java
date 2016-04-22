@@ -22,15 +22,14 @@
 package net.markenwerk.utils.data.fetcher;
 
 /**
- * A {@link FetchProgressAdapter} is an implementation of
- * {@link FetchProgressListener} with empty methods. It is intended a base for
- * custom {@link FetchProgressListener} implementations, that don't need to
- * implement all methods.
+ * An {@link IdleFetchProgressListener} is a {@link FetchProgressListener} with
+ * empty methods. It is intended a base for custom {@link FetchProgressListener}
+ * implementations, that don't need to implement all methods.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 2.1.0
+ * @since 3.1.0
  */
-public abstract class FetchProgressAdapter implements FetchProgressListener {
+public abstract class IdleFetchProgressListener implements FetchProgressListener {
 
 	@Override
 	public void onStarted() {
@@ -51,5 +50,5 @@ public abstract class FetchProgressAdapter implements FetchProgressListener {
 	@Override
 	public void onFinished() {
 	}
-	
+
 }

@@ -99,12 +99,12 @@ in.close();
 
 ### Listen to fetch progress
 
-All methods optionally take a [`FetchProgressListener`][FetchProgressListener] that gets notified on various points in the lifecycle (`started`, `progressed`, `succeeded` or `failed`, `finished`) of a fetch operation. The [`FetchProgressAdapter`][FetchProgressAdapter] is a convenient base implementation with empty methods.
+All methods optionally take a [`FetchProgressListener`][FetchProgressListener] that gets notified on various points in the lifecycle (`started`, `progressed`, `succeeded` or `failed`, `finished`) of a fetch operation. The [`IdleFetchProgressListener`][IdleFetchProgressListener] is a convenient base implementation with empty methods.
 
 ```java
 foo.setContent(new BufferedByteFetcher().fetch(
 	new FileInputStream(file),
-	new FetchProgressAdapter() {
+	new IdleFetchProgressListener() {
 		public void onProgress(long bytesFetched) {
 			System.out.println(bytesFetched + " bytes fetched so far.");
 		}
@@ -135,12 +135,12 @@ Variations of the buffered copying strategy (e.g. lazy buffer creation, threadsa
 [AbstractBufferedCharacterFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractBufferedCharacterFetcher.html
 [AbstractByteFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractByteFetcher.html
 [AbstractCharacterFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/AbstractCharacterFetcher.html
-[FetchProgressAdapter]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/FetchProgressAdapter.html
 [BufferedByteFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/BufferedByteFetcher.html
 [BufferedCharacterFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/BufferedCharacterFetcher.html
 [ByteFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/ByteFetcher.html
 [CharacterFetcher]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/CharacterFetcher.html
 [FetchProgressListener]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/FetchProgressListener.html
+[IdleFetchProgressListener]: http://markenwerk.github.io/java-utils-data-fetcher/index.html?net/markenwerk/utils/data/fetcher/IdleFetchProgressListener.html
 
 [Appendable]: http://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Appendable.html
 [InputStream]: http://docs.oracle.com/javase/8/docs/api/index.html?java/io/InputStream.html
