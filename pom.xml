@@ -223,7 +223,7 @@
 							</execution>
 						</executions>
 					</plugin>
-					
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-scm-publish-plugin</artifactId>
@@ -259,6 +259,11 @@
 						<groupId>org.jacoco</groupId>
 						<artifactId>jacoco-maven-plugin</artifactId>
 						<version>0.7.6.201602180812</version>
+						<configuration>
+							<excludes>
+								<exclude>**/*Exception.*</exclude>
+							</excludes>
+						</configuration>
 						<executions>
 							<execution>
 								<id>prepare-agent</id>
