@@ -13,7 +13,7 @@ This is a simple helper to fetch the complete content of an input stream. It is,
 
 Consult the [documentation](http://markenwerk.github.io/java-utils-data-fetcher/index.html) and  the [usage description](#usage) for further information:
 
-- [Fetching data streams](#fetching-byte-streams)
+- [Fetching data streams](#fetching-data-streams)
 - [Automatic closing of supplied streams](#automatic-closing-of-supplied-streams)
 - [Listen to fetch progress](#listen-to-fetch-progress)
 - [Handling of `null` arguments](#handling-of-null-arguments)
