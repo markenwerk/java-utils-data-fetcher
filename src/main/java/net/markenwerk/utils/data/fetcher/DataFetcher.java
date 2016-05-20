@@ -25,7 +25,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * A {@link ByteFetcher} can fetch the entire content of a given
+ * A {@link DataFetcher} can fetch the entire content of a given
  * {@link InputStream} into a fresh {@code byte[]} or copy it into a given
  * {@link OutputStream}.
  * 
@@ -63,15 +63,15 @@ import java.io.OutputStream;
  * </pre>
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 2.0.0
+ * @since 4.0.0
  */
-public interface ByteFetcher {
+public interface DataFetcher {
 
 	/**
 	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
 	 *
 	 * <p>
-	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * See {@link DataFetcher#copy(InputStream, OutputStream, boolean, boolean)}
 	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
@@ -79,17 +79,17 @@ public interface ByteFetcher {
 	 * @return A new {@code byte[]}, containing the content of the given
 	 *         {@link InputStream}.
 	 * 
-	 * @throws FetchException
+	 * @throws DataFetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream}.
 	 */
-	public byte[] fetch(InputStream in) throws FetchException;
+	public byte[] fetch(InputStream in) throws DataFetchException;
 
 	/**
 	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
 	 *
 	 * <p>
-	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * See {@link DataFetcher#copy(InputStream, OutputStream, boolean, boolean)}
 	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
@@ -100,65 +100,65 @@ public interface ByteFetcher {
 	 * @return A new {@code byte[]}, containing the content of the given
 	 *         {@link InputStream}.
 	 * 
-	 * @throws FetchException
+	 * @throws DataFetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link InputStream}. {@link FetchException FetchExceptions}
+	 *             {@link InputStream}. {@link DataFetchException FetchExceptions}
 	 *             thrown while trying to close the given {@link InputStream},
 	 *             if requested, are ignored.
 	 */
-	public byte[] fetch(InputStream in, boolean close) throws FetchException;
+	public byte[] fetch(InputStream in, boolean close) throws DataFetchException;
 
 	/**
 	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
 	 *
 	 * <p>
-	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * See {@link DataFetcher#copy(InputStream, OutputStream, boolean, boolean)}
 	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
 	 * @param listener
-	 *            The {@link FetchProgressListener} to report to.
+	 *            The {@link DataFetchProgressListener} to report to.
 	 * @param close
 	 *            Whether to close the given {@link InputStream}, after reading
 	 *            from it.
 	 * @return A new {@code byte[]}, containing the content of the given
 	 *         {@link InputStream}.
 	 * 
-	 * @throws FetchException
+	 * @throws DataFetchException
 	 *             If anything went wrong while reading from the given
-	 *             {@link InputStream}. {@link FetchException FetchExceptions}
+	 *             {@link InputStream}. {@link DataFetchException FetchExceptions}
 	 *             thrown while trying to close the given {@link InputStream},
 	 *             if requested, are ignored.
 	 */
-	public byte[] fetch(InputStream in, FetchProgressListener listener, boolean close) throws FetchException;
+	public byte[] fetch(InputStream in, DataFetchProgressListener listener, boolean close) throws DataFetchException;
 
 	/**
 	 * Fetches the content of a given {@link InputStream} into a fresh byte[].
 	 *
 	 * <p>
-	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * See {@link DataFetcher#copy(InputStream, OutputStream, boolean, boolean)}
 	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
 	 *            The {@link InputStream} to read from.
 	 * @param listener
-	 *            The {@link FetchProgressListener} to report to.
+	 *            The {@link DataFetchProgressListener} to report to.
 	 * @return A new {@code byte[]}, containing the content of the given
 	 *         {@link InputStream}.
 	 * 
-	 * @throws FetchException
+	 * @throws DataFetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream}.
 	 */
-	public byte[] fetch(InputStream in, FetchProgressListener listener) throws FetchException;
+	public byte[] fetch(InputStream in, DataFetchProgressListener listener) throws DataFetchException;
 
 	/**
 	 * Copies the content of a given {@link InputStream} into a given
 	 * {@link OutputStream}.
 	 *
 	 * <p>
-	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * See {@link DataFetcher#copy(InputStream, OutputStream, boolean, boolean)}
 	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
@@ -166,12 +166,12 @@ public interface ByteFetcher {
 	 * @param out
 	 *            The {@link OutputStream} to write to.
 	 * 
-	 * @throws FetchException
+	 * @throws DataFetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given
 	 *             {@link OutputStream}.
 	 */
-	public void copy(InputStream in, OutputStream out) throws FetchException;
+	public void copy(InputStream in, OutputStream out) throws DataFetchException;
 
 	/**
 	 * Copies the content of a given {@link InputStream} into a given
@@ -203,21 +203,21 @@ public interface ByteFetcher {
 	 *            Whether to close the given {@link OutputStream}, after writing
 	 *            to it.
 	 * 
-	 * @throws FetchException
+	 * @throws DataFetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given
-	 *             {@link OutputStream}. {@link FetchException FetchExceptions}
+	 *             {@link OutputStream}. {@link DataFetchException FetchExceptions}
 	 *             thrown while trying to close one of the given streams, if
 	 *             requested, are ignored.
 	 */
-	public void copy(InputStream in, OutputStream out, boolean closeIn, boolean closeOut) throws FetchException;
+	public void copy(InputStream in, OutputStream out, boolean closeIn, boolean closeOut) throws DataFetchException;
 
 	/**
 	 * Copies the content of a given {@link InputStream} into a given
 	 * {@link OutputStream}.
 	 *
 	 * <p>
-	 * See {@link ByteFetcher#copy(InputStream, OutputStream, boolean, boolean)}
+	 * See {@link DataFetcher#copy(InputStream, OutputStream, boolean, boolean)}
 	 * for the handling of missing or invalid arguments.
 	 * 
 	 * @param in
@@ -225,14 +225,14 @@ public interface ByteFetcher {
 	 * @param out
 	 *            The {@link OutputStream} to write to.
 	 * @param listener
-	 *            The {@link FetchProgressListener} to report to.
+	 *            The {@link DataFetchProgressListener} to report to.
 	 * 
-	 * @throws FetchException
+	 * @throws DataFetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given
 	 *             {@link OutputStream}.
 	 */
-	public void copy(InputStream in, OutputStream out, FetchProgressListener listener) throws FetchException;
+	public void copy(InputStream in, OutputStream out, DataFetchProgressListener listener) throws DataFetchException;
 
 	/**
 	 * Copies the content of a given {@link InputStream} into a given
@@ -258,7 +258,7 @@ public interface ByteFetcher {
 	 * @param out
 	 *            The {@link OutputStream} to write to.
 	 * @param listener
-	 *            The {@link FetchProgressListener} to report to.
+	 *            The {@link DataFetchProgressListener} to report to.
 	 * @param closeIn
 	 *            Whether to close the given {@link InputStream}, after reading
 	 *            from it.
@@ -266,14 +266,14 @@ public interface ByteFetcher {
 	 *            Whether to close the given {@link OutputStream}, after writing
 	 *            to it.
 	 * 
-	 * @throws FetchException
+	 * @throws DataFetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given
-	 *             {@link OutputStream}. {@link FetchException FetchExceptions}
+	 *             {@link OutputStream}. {@link DataFetchException FetchExceptions}
 	 *             thrown while trying to close one of the given streams, if
 	 *             requested, are ignored.
 	 */
-	public void copy(InputStream in, OutputStream out, FetchProgressListener listener, boolean closeIn, boolean closeOut)
-			throws FetchException;
+	public void copy(InputStream in, OutputStream out, DataFetchProgressListener listener, boolean closeIn, boolean closeOut)
+			throws DataFetchException;
 
 }

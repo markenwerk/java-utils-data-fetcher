@@ -25,9 +25,9 @@ import java.io.InputStream;
 
 /**
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 2.1.0
+ * @since 4.0.0
  */
-public interface FetchProgressListener {
+public interface DataFetchProgressListener {
 
 	/**
 	 * Indicates that the process of fetching bytes from an {@link InputStream}
@@ -40,7 +40,7 @@ public interface FetchProgressListener {
 	 * has progressed.
 	 * 
 	 * <p>
-	 * The progress will only be reported if the {@link ByteFetcher} is capable of
+	 * The progress will only be reported if the {@link DataFetcher} is capable of
 	 * monitoring the progress.
 	 * 
 	 * @param bytesFetched
@@ -54,7 +54,7 @@ public interface FetchProgressListener {
 	 * 
 	 * @param bytesFetched
 	 *            Total total amount of bytes fetched or {@literal null}, if the
-	 *            {@link ByteFetcher} is not capable of monitoring the progress.
+	 *            {@link DataFetcher} is not capable of monitoring the progress.
 	 */
 	public void onSuccedded(Long bytesFetched);
 
@@ -63,17 +63,17 @@ public interface FetchProgressListener {
 	 * has failed.
 	 * 
 	 * @param exception
-	 *            The {@link FetchException} that caused the process to fail.
-	 *            This is the same {@link FetchException} that is thrown in the
-	 *            failing method of {@link ByteFetcher} that this
-	 *            {@link FetchProgressListener} has been given to.
+	 *            The {@link DataFetchException} that caused the process to fail.
+	 *            This is the same {@link DataFetchException} that is thrown in the
+	 *            failing method of {@link DataFetcher} that this
+	 *            {@link DataFetchProgressListener} has been given to.
 	 * 
 	 * @param bytesFetched
 	 *            Total total amount of bytes fetched before the process failed
-	 *            or {@literal null}, if the {@link ByteFetcher} is not capable of
+	 *            or {@literal null}, if the {@link DataFetcher} is not capable of
 	 *            monitoring the progress.
 	 */
-	public void onFailed(FetchException exception, Long bytesFetched);
+	public void onFailed(DataFetchException exception, Long bytesFetched);
 
 	/**
 	 * Indicates that the process of fetching bytes from an {@link InputStream}
@@ -81,8 +81,8 @@ public interface FetchProgressListener {
 	 * 
 	 * <p>
 	 * This method will be called after either
-	 * {@link FetchProgressListener#onSuccedded(Long)} or
-	 * {@link FetchProgressListener#onFailed(FetchException, Long)} has
+	 * {@link DataFetchProgressListener#onSuccedded(Long)} or
+	 * {@link DataFetchProgressListener#onFailed(DataFetchException, Long)} has
 	 * been called.
 	 */
 	public void onFinished();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,28 +22,49 @@
 package net.markenwerk.utils.data.fetcher;
 
 import java.io.IOException;
-import java.io.Reader;
 
 /**
- * A {@link NullReader} is an {@link Reader} that does nothing.
+ * A {@link DataFetchException} is a specialized {@link IOException} that indicates
+ * that a fetch operation of a {@link DataFetcher} has failed.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 3.0.0
+ * @since 4.0.0
+ * @see DataFetcher
  */
-class NullReader extends Reader {
+public final class DataFetchException extends IOException {
 
-	public static final NullReader INSTANCE = new NullReader();
+	private static final long serialVersionUID = 8161906006366859761L;
 
-	private NullReader() {
+	/**
+	 * Creates a new {@link DataFetchException} with the given message and cause.
+	 *
+	 * @param message
+	 *            The message.
+	 * @param cause
+	 *            The cause of this {@link DataFetchException}.
+	 */
+	public DataFetchException(String message, Throwable cause) {
+		super(message, cause);
 	}
 
-	@Override
-	public int read(char[] buffer, int offset, int length) throws IOException {
-		return -1;
+	/**
+	 * Creates a new {@link DataFetchException} with the given message.
+	 *
+	 * @param message
+	 *            The message.
+	 */
+	public DataFetchException(String message) {
+		super(message);
 	}
 
-	@Override
-	public void close() throws IOException {
+	/**
+	 * Creates a new {@link DataFetchException} with the given cause.
+	 *
+	 * @param cause
+	 *            The cause of this {@link DataFetchException}.
+	 */
+	public DataFetchException(Throwable cause) {
+		super(null == cause ? null : cause.getMessage(), cause);
 	}
 
 }

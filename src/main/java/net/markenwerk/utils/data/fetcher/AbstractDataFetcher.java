@@ -26,78 +26,91 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import net.markenwerk.commons.nulls.NullInputStream;
+import net.markenwerk.commons.nulls.NullOutputStream;
+
 /**
- * {@link AbstractByteFetcher} is a sensible base implementation of
- * {@link ByteFetcher}.
+ * {@link AbstractDataFetcher} is a sensible base implementation of
+ * {@link DataFetcher}.
  * 
  * <p>
  * Implementers must only implement a single simplified method that copies all
  * bytes from an {@link InputStream} to an {@link OutputStream}:
- * {@link AbstractByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}.
+ * {@link AbstractDataFetcher#doCopy(InputStream, OutputStream, DataFetchProgressListener)}.
  * 
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 2.0.0
+ * @since 4.0.0
  */
-public abstract class AbstractByteFetcher implements ByteFetcher {
+public abstract class AbstractDataFetcher implements DataFetcher {
+
+	private static final InputStream NULL_INPUT_STREAM = new NullInputStream();
+
+	private static final OutputStream NULL_OUTPUT_STREAM = new NullOutputStream();
+
+	private static final DataFetchProgressListener NULL_LISTENER = new IdleDataFetchProgressListener() {
+	};
 
 	@Override
-	public final byte[] fetch(InputStream in) throws FetchException {
+	public final byte[] fetch(InputStream in) throws DataFetchException {
 		return fetch(in, null, false);
 	}
 
 	@Override
-	public final byte[] fetch(InputStream in, boolean close) throws FetchException {
+	public final byte[] fetch(InputStream in, boolean close) throws DataFetchException {
 		return fetch(in, null, close);
 	}
 
 	@Override
-	public final byte[] fetch(InputStream in, FetchProgressListener listener) throws FetchException {
+	public final byte[] fetch(InputStream in, DataFetchProgressListener listener) throws DataFetchException {
 		return fetch(in, listener, false);
 	}
 
 	@Override
-	public final byte[] fetch(InputStream in, FetchProgressListener listener, boolean close) throws FetchException {
+	public final byte[] fetch(InputStream in, DataFetchProgressListener listener, boolean close)
+			throws DataFetchException {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		copy(in, out, listener, close, true);
 		return out.toByteArray();
 	}
 
 	@Override
-	public final void copy(InputStream in, OutputStream out) throws FetchException {
+	public final void copy(InputStream in, OutputStream out) throws DataFetchException {
 		copy(in, out, false, false);
 	}
 
 	@Override
-	public final void copy(InputStream in, OutputStream out, boolean closeIn, boolean closeOut) throws FetchException {
+	public final void copy(InputStream in, OutputStream out, boolean closeIn, boolean closeOut)
+			throws DataFetchException {
 		copy(in, out, null, closeIn, closeOut);
 	}
 
 	@Override
-	public final void copy(InputStream in, OutputStream out, FetchProgressListener listener) throws FetchException {
+	public final void copy(InputStream in, OutputStream out, DataFetchProgressListener listener)
+			throws DataFetchException {
 		copy(in, out, listener, false, false);
 	}
 
 	@Override
-	public final void copy(InputStream in, OutputStream out, FetchProgressListener listener, boolean closeIn,
-			boolean closeOut) throws FetchException {
+	public final void copy(InputStream in, OutputStream out, DataFetchProgressListener listener, boolean closeIn,
+			boolean closeOut) throws DataFetchException {
 		if (null == in) {
-			in = NullInputStream.INSTANCE;
+			in = NULL_INPUT_STREAM;
 		}
 		if (null == out) {
-			out = NullOutputStream.INSTANCE;
+			out = NULL_OUTPUT_STREAM;
 		}
 		if (null == listener) {
-			listener = NullFetchProgressListener.INSTANCE;
+			listener = NULL_LISTENER;
 		}
 		doCopy(in, out, listener, closeIn, closeOut);
 	}
 
-	private void doCopy(InputStream in, OutputStream out, FetchProgressListener listener, boolean closeIn,
-			boolean closeOut) throws FetchException {
+	private void doCopy(InputStream in, OutputStream out, DataFetchProgressListener listener, boolean closeIn,
+			boolean closeOut) throws DataFetchException {
 		try {
 			doCopy(in, out, listener);
-		} catch (FetchException e) {
+		} catch (DataFetchException e) {
 			throw e;
 		} finally {
 			if (closeIn) {
@@ -122,7 +135,7 @@ public abstract class AbstractByteFetcher implements ByteFetcher {
 	 * 
 	 * <p>
 	 * It is guaranteed that neither the given {@link InputStream} nor the given
-	 * {@link OutputStream} nor the given {@link FetchProgressListener} is
+	 * {@link OutputStream} nor the given {@link DataFetchProgressListener} is
 	 * {@literal null}.
 	 * 
 	 * <p>
@@ -133,13 +146,13 @@ public abstract class AbstractByteFetcher implements ByteFetcher {
 	 * @param out
 	 *            The {@link OutputStream} to write to.
 	 * @param listener
-	 *            The {@link FetchProgressListener} to report to.
-	 * @throws FetchException
+	 *            The {@link DataFetchProgressListener} to report to.
+	 * @throws DataFetchException
 	 *             If anything went wrong while reading from the given
 	 *             {@link InputStream} or writing to the given
 	 *             {@link OutputStream}.
 	 */
-	protected abstract void doCopy(InputStream in, OutputStream out, FetchProgressListener listener)
-			throws FetchException;
+	protected abstract void doCopy(InputStream in, OutputStream out, DataFetchProgressListener listener)
+			throws DataFetchException;
 
 }

@@ -26,30 +26,30 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * {@link AbstractBufferedByteFetcher} is a sensible base implementation of
- * {@link ByteFetcher} that uses a {@code byte[]} as buffer, to while copying
+ * {@link AbstractBufferedDataFetcher} is a sensible base implementation of
+ * {@link DataFetcher} that uses a {@code byte[]} as buffer, to while copying
  * all bytes from an {@link InputStream} to an {@link OutputStream} by
  * sequentially reading from the {@link InputStream} into the buffer and then
  * writing from the buffer to the {@link OutputStream}.
  * 
  * <p>
  * Implementers must only implement the methods
- * {@link AbstractBufferedByteFetcher#obtainBuffer()} and
- * {@link AbstractBufferedByteFetcher#returnBuffer(byte[])} that manage a
+ * {@link AbstractBufferedDataFetcher#obtainBuffer()} and
+ * {@link AbstractBufferedDataFetcher#returnBuffer(byte[])} that manage a
  * {@code byte[]} to be used as a buffer in
- * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}.
+ * {@link AbstractBufferedDataFetcher#doCopy(InputStream, OutputStream, DataFetchProgressListener)}.
  * 
  * <p>
  * Implementers may also override
- * {@link AbstractBufferedByteFetcher#returnBuffer(byte[])}, which is called
+ * {@link AbstractBufferedDataFetcher#returnBuffer(byte[])}, which is called
  * after
- * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+ * {@link AbstractBufferedDataFetcher#doCopy(InputStream, OutputStream, DataFetchProgressListener)}
  * has finished using it.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 2.0.0
+ * @since 4.0.0
  */
-public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
+public abstract class AbstractBufferedDataFetcher extends AbstractDataFetcher {
 
 	/**
 	 * The default buffer size of 1024 bytes.
@@ -61,7 +61,7 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 	 * 
 	 * @param bufferSize
 	 *            The size of the {@literal byte[]} to be created. Defaults to
-	 *            the {@link AbstractBufferedByteFetcher#DEFAULT_BUFEFR_SIZE
+	 *            the {@link AbstractBufferedDataFetcher#DEFAULT_BUFEFR_SIZE
 	 *            default} buffer size, if the given buffer size is not
 	 *            positive.
 	 * @return The new {@literal byte[]}.
@@ -71,7 +71,7 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 	}
 
 	@Override
-	protected final void doCopy(InputStream in, OutputStream out, FetchProgressListener listener) throws FetchException {
+	protected final void doCopy(InputStream in, OutputStream out, DataFetchProgressListener listener) throws DataFetchException {
 		byte[] buffer = obtainBuffer();
 		listener.onStarted();
 		long total = 0;
@@ -94,8 +94,8 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 		}
 	}
 
-	private FetchException createException(FetchProgressListener listener, long total, IOException e) {
-		FetchException fetchException = new FetchException("Fetch failed after " + total + " "
+	private DataFetchException createException(DataFetchProgressListener listener, long total, IOException e) {
+		DataFetchException fetchException = new DataFetchException("Fetch failed after " + total + " "
 				+ (1 == total ? "byte has" : "bytes have") + " been copied successully.", e);
 		listener.onFailed(fetchException, total);
 		return fetchException;
@@ -103,14 +103,14 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 
 	/**
 	 * Called by
-	 * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+	 * {@link AbstractBufferedDataFetcher#doCopy(InputStream, OutputStream, DataFetchProgressListener)}
 	 * to obtain a {@code byte[]} to be used as a buffer.
 	 * 
 	 * <p>
 	 * Every {@code byte[]} that is returned by this method will be passed as an
-	 * argument of {@link AbstractBufferedByteFetcher#returnBuffer(byte[])}
+	 * argument of {@link AbstractBufferedDataFetcher#returnBuffer(byte[])}
 	 * after
-	 * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+	 * {@link AbstractBufferedDataFetcher#doCopy(InputStream, OutputStream, DataFetchProgressListener)}
 	 * has finished using it.
 	 * 
 	 * 
@@ -120,9 +120,9 @@ public abstract class AbstractBufferedByteFetcher extends AbstractByteFetcher {
 
 	/**
 	 * Called by
-	 * {@link AbstractBufferedByteFetcher#doCopy(InputStream, OutputStream, FetchProgressListener)}
+	 * {@link AbstractBufferedDataFetcher#doCopy(InputStream, OutputStream, DataFetchProgressListener)}
 	 * to return a {@code byte[]} that has previously been obtained from
-	 * {@link AbstractBufferedByteFetcher#obtainBuffer()}.
+	 * {@link AbstractBufferedDataFetcher#obtainBuffer()}.
 	 * 
 	 * @param buffer
 	 *            The {@code byte[]} to be returned.

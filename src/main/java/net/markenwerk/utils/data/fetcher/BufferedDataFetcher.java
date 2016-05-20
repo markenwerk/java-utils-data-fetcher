@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,19 +21,19 @@
  */
 package net.markenwerk.utils.data.fetcher;
 
-import java.io.Reader;
-import java.io.Writer;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
- * {@link AbstractBufferedCharacterFetcher} is a sensible base implementation of
- * {@link CharacterFetcher} that uses a {@code char[]} as buffer, while copying
- * all chars from an {@link Reader} to an {@link Writer} by sequentially reading
- * from the {@link Reader} into the buffer and then writing from the buffer to
- * the {@link Writer}.
+ * {@link AbstractBufferedDataFetcher} is a sensible base implementation of
+ * {@link DataFetcher} that uses a {@code byte[]} as buffer, while copying all
+ * bytes from an {@link InputStream} to an {@link OutputStream} by sequentially
+ * reading from the {@link InputStream} into the buffer and then writing from
+ * the buffer to the {@link OutputStream}.
  * 
  * <p>
  * The buffer is eagerly allocated in the constructor just once and then used
- * for every operation. A {@link BufferedCharacterFetcher} is therefore not
+ * for every operation. A {@link BufferedDataFetcher} is therefore not
  * threadsafe.
  * 
  * <p>
@@ -41,38 +41,37 @@ import java.io.Writer;
  * buffered information from the memory.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 3.0.0
+ * @since 4.0.0
  */
-public final class BufferedCharacterFetcher extends AbstractBufferedCharacterFetcher {
+public final class BufferedDataFetcher extends AbstractBufferedDataFetcher {
 
-	private final char[] buffer;
+	private final byte[] buffer;
 
 	/**
-	 * Creates a new {@link BufferedCharacterFetcher} with the default buffer
-	 * size of 1024 characters.
+	 * Creates a new {@link BufferedDataFetcher} with the default buffer size of
+	 * 1024 bytes.
 	 */
-	public BufferedCharacterFetcher() {
+	public BufferedDataFetcher() {
 		this(DEFAULT_BUFEFR_SIZE);
 	}
 
 	/**
-	 * Creates a new {@link BufferedCharacterFetcher} with the given buffer
-	 * size.
+	 * Creates a new {@link BufferedDataFetcher} with the given buffer size.
 	 * 
 	 * @param bufferSize
 	 *            The buffer size.
 	 */
-	public BufferedCharacterFetcher(int bufferSize) {
+	public BufferedDataFetcher(int bufferSize) {
 		buffer = createBuffer(bufferSize);
 	}
 
 	@Override
-	protected char[] obtainBuffer() {
+	protected byte[] obtainBuffer() {
 		return buffer;
 	}
 
 	@Override
-	protected void returnBuffer(char[] buffer) {
+	protected void returnBuffer(byte[] buffer) {
 		cleanBuffer();
 	}
 

@@ -36,19 +36,19 @@ import net.markenwerk.utils.data.fetcher.mockups.FailableInputStream;
 import net.markenwerk.utils.data.fetcher.mockups.FailableOutputStream;
 
 /**
- * JUnit tests for {@link ByteFetcher#fetch(InputStream)} methods on stream that
+ * JUnit tests for {@link DataFetcher#fetch(InputStream)} methods on stream that
  * fail.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @param <ActualFetcher>
- *            The actual {@link ByteFetcher} type to be tested.
+ *            The actual {@link DataFetcher} type to be tested.
  * @since 1.0.0
  */
-public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher> {
+public abstract class AbstractByteFetcherTests<ActualFetcher extends DataFetcher> {
 
 	private static final byte[] BYTES = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-	private ByteFetcher fetcher;
+	private DataFetcher fetcher;
 
 	private FailableInputStream in;
 
@@ -57,7 +57,7 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	private FailableOutputStream out;
 
 	/**
-	 * Create a new {@link ByteFetcher}.
+	 * Create a new {@link DataFetcher}.
 	 */
 	@Before
 	public void prepareFetcher() {
@@ -65,9 +65,9 @@ public abstract class AbstractByteFetcherTests<ActualFetcher extends ByteFetcher
 	}
 
 	/**
-	 * Creates the {@link ByteFetcher} to be tested.
+	 * Creates the {@link DataFetcher} to be tested.
 	 * 
-	 * @return The {@link ByteFetcher} to be tested.
+	 * @return The {@link DataFetcher} to be tested.
 	 */
 	protected abstract ActualFetcher createFetcher();
 

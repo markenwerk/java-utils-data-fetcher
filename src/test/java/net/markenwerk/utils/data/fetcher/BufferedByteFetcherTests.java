@@ -24,18 +24,18 @@ package net.markenwerk.utils.data.fetcher;
 import java.io.InputStream;
 
 /**
- * JUnit tests for {@link BufferedByteFetcher#fetch(InputStream)} methods on stream
+ * JUnit tests for {@link BufferedDataFetcher#fetch(InputStream)} methods on stream
  * that fail.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public class BufferedByteFetcherTests extends AbstractByteFetcherTests<BufferedByteFetcher> {
+public class BufferedByteFetcherTests extends AbstractByteFetcherTests<BufferedDataFetcher> {
 
-	private final BufferedByteFetcher instance = new BufferedByteFetcher();
+	private final BufferedDataFetcher instance = new BufferedDataFetcher();
 
 	@Override
-	protected BufferedByteFetcher createFetcher() {
+	protected BufferedDataFetcher createFetcher() {
 		return instance;
 	}
 

@@ -22,14 +22,15 @@
 package net.markenwerk.utils.data.fetcher;
 
 /**
- * An {@link IdleFetchProgressListener} is a {@link FetchProgressListener} with
- * empty methods. It is intended a base for custom {@link FetchProgressListener}
- * implementations, that don't need to implement all methods.
+ * An {@link IdleDataFetchProgressListener} is a
+ * {@link DataFetchProgressListener} with empty methods. It is intended a base
+ * implementation for custom {@link DataFetchProgressListener} implementations,
+ * that don't need to implement all methods.
  * 
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 3.1.0
+ * @since 4.0.0
  */
-public abstract class IdleFetchProgressListener implements FetchProgressListener {
+public class IdleDataFetchProgressListener implements DataFetchProgressListener {
 
 	@Override
 	public void onStarted() {
@@ -44,7 +45,7 @@ public abstract class IdleFetchProgressListener implements FetchProgressListener
 	}
 
 	@Override
-	public void onFailed(FetchException exception, Long bytesFetched) {
+	public void onFailed(DataFetchException exception, Long bytesFetched) {
 	}
 
 	@Override
