@@ -59,7 +59,7 @@ DataFetcher fetcher = new BufferedDataFetcher();
 byte[] bytes = fetcher.fetch(inputStream);
 
 // copy the content of an InputStream into an OutputStream
-fetcher.fetch(inputStream, outputStream);
+fetcher.copy(inputStream, outputStream);
 ```
 
 ### Automatic closing of supplied streams
@@ -83,13 +83,15 @@ in.close();
 All methods optionally take a [`DataFetchProgressListener`][DataFetchProgressListener] that gets notified on various points in the lifecycle (`started`, `progressed`, `succeeded` or `failed`, `finished`) of a fetch operation. The [`IdleDataFetchProgressListener`][IdleDataFetchProgressListener] is a convenient base implementation with empty methods.
 
 ```java
-foo.setContent(new BufferedDataFetcher().fetch(
-	new FileInputStream(file),
+new BufferedDataFetcher().copy(
+	new FileInputStream(inFile),
+	new FileOutputStream(outFile),
 	new IdleDataFetchProgressListener() {
 		public void onProgress(long bytesFetched) {
-			System.out.println(bytesFetched + " bytes fetched so far.");
+			System.out.println(bytesFetched + " bytes copied so far.");
 		}
 	},
+	true, 
 	true
 );
 ```
