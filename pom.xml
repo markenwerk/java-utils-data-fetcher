@@ -63,7 +63,7 @@
 		<dependency>
 			<groupId>net.markenwerk</groupId>
 			<artifactId>commons-nulls</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.4</version>
 		</dependency>
 
 		<dependency>
@@ -192,7 +192,7 @@
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.7</version>
+						<version>1.6.8</version>
 						<extensions>true</extensions>
 						<configuration>
 							<serverId>ossrh</serverId>
@@ -264,7 +264,7 @@
 					<plugin>
 						<groupId>org.jacoco</groupId>
 						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>0.7.7.201606060606</version>
+						<version>0.7.9</version>
 						<configuration>
 							<excludes>
 								<exclude>**/*Exception.*</exclude>
@@ -283,7 +283,7 @@
 					<plugin>
 						<groupId>org.eluder.coveralls</groupId>
 						<artifactId>coveralls-maven-plugin</artifactId>
-						<version>4.2.0</version>
+						<version>4.3.0</version>
 					</plugin>
 				</plugins>
 			</build>
